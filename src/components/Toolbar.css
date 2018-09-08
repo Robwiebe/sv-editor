@@ -1,0 +1,10 @@
+.toolbar {
+    width: fit-content;
+    max-height: 100px;
+    margin: 0 auto;
+}
+
+.toolbarButtons {
+    width: 100px;
+    height: 100px;
+}

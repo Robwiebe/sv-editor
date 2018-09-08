@@ -1,0 +1,139 @@
+html, body, h1, h2, h3, h4, h5, h6, p, strong, u {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+    vertical-align: baseline;
+    white-space: pre-wrap;
+    font-family: 'Noto Sans', sans-serif;
+    /* font-family: 'UniSkriptEnglishGlobal-Bold'; */
+}
+HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+body {
+    line-height: 1.35;
+    font-size: 18px;
+    margin-top: -40px;
+    padding-top: -200px;
+}
+
+Editor {
+    width: 80%;
+    height: fit-content;
+    min-height: 300px;
+    border: 2px solid;
+}
+
+img {
+    height: 50px;
+    width: auto;
+    margin: 5px;
+}
+
+p, h1, h2, h3, h4, h5, strong, u, {
+    text-decoration: none;
+}
+
+h2, h3, h4 {
+    position: relative;
+    display: block;
+    width: fit-content;
+    max-width: auto;
+	border-radius: .43em;
+    padding: 8px 15px;
+    margin: 10px 0;
+    box-shadow: 2px 4px 2px 0px rgba(0,0,0,0.28);
+}
+
+h2:after,
+h3:after,
+h4:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top: 0;
+	margin-left: 15px;
+	margin-top: -16px;
+}
+
+h1, h5 {
+    color: rgb(180, 180, 180);
+    margin-bottom: 20px;
+    font-size: 70%;
+}
+
+h4 {
+    background: rgb(142, 227, 255);
+    color: darkblue;
+}
+
+h4:after {
+	border-bottom-color: rgb(142, 227, 255);
+}
+
+h3 {
+    background: #b9f8b9;
+    color: #006400;
+}
+
+h3:after {
+	border-bottom-color: #b9f8b9;
+}
+
+h2 {
+    background: #ffadad;
+    color: #d60000;
+}
+
+h2:after {
+	border-bottom-color: #ffadad;
+}
+
+h5 {
+    margin-top: 10px;
+    display: block;
+    width: 90%;
+    margin-left: 5%;
+}
+
+h6 {
+    font-size: 110%;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #3e6bff;
+}
+
+strong {
+    font-weight: bold;
+}
+
+u {
+    vertical-align: super;
+    font-size: 70%;
+    text-decoration: none;
+}
+
+strong, u {
+    /* display: none; */
+    white-space: pre-wrap;
+    margin-right: 1.5px;
+    margin-left: 1.5px;
+}
+
+h1 {
+    text-transform: uppercase;
+    margin-top: -10px;
+}
+
+p {
+    margin-bottom: 0px;
+}
