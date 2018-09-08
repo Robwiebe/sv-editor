@@ -3,6 +3,7 @@ import { Editor } from 'slate-react'
 import { Value } from 'slate'
 import './App.css'
 import Toolbar from './components/Toolbar'
+import SVLogo from './images/SVReader.png'
 
 const existingValue = JSON.parse(localStorage.getItem('content'))
 const initialValue = Value.fromJSON(
@@ -120,12 +121,17 @@ function renderEditor(props) {
   const { children } = props
   return (
     <div>
+      <img style={{
+        marginLeft: '40%',
+        width: '20%',
+        height: 'auto'
+      }} src={SVLogo} alt='SourceView Reader' />
       <p 
             style={{
                 color: 'Black',
                 fontSize: '20px',
                 textAlign:'center'
-            }}>SourceView Bible<br />Editor</p>
+            }}>EDITOR<br/><br />Commands:<br /><br />CTRL + B  =  Chapter<br />CTRL + U  =  Verse<br />CTRL + 1  =  Source<br />CTRL + P  =  Black Text<br />CTRL + 2  =  Red Speech Bubble<br />CTRL + 3  =  Green Speech Bubble<br />CTRL + 4  =  Blue Speech Bubble<br />CTRL + 5  =  Footnote<br />CTRL + 6  =  Subtitle</p><br />
       <Toolbar />
       {children}
     </div>
