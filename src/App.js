@@ -4,30 +4,100 @@ import { Value } from 'slate'
 import './App.css'
 import Toolbar from './components/Toolbar'
 import SVLogo from './images/SVReader.png'
+import Html from 'slate-html-serializer'
 
-const existingValue = JSON.parse(localStorage.getItem('content'))
-const initialValue = Value.fromJSON(
-  existingValue || {
-    document: {
-      nodes: [
-        {
+//----------------------------------------
+//--------------- RULES ------------------
+//----------------------------------------
+// Add a dictionary of Block tags.
+const BLOCK_TAGS = {
+  p: 'paragraph',
+  p: 'p',
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  pre: 'code',
+}
+
+// Add a dictionary of mark tags.
+const MARK_TAGS = {
+  strong: 'bold',
+  u: 'underline',
+}
+
+const rules = [
+  // Add our first rule with a deserializing function.
+  {
+    deserialize(el, next) {
+      if (el.tagName.toLowerCase() == 'p') {
+        return {
           object: 'block',
           type: 'paragraph',
-          nodes: [
-            {
-              object: 'text',
-              leaves: [
-                {
-                  text: 'A line of text in a paragraph.',
-                },
-              ],
-            },
-          ],
-        },
-      ],
+          data: {
+            className: el.getAttribute('class'),
+          },
+          nodes: next(el.childNodes),
+        }
+      }
     },
-  }
-)
+    // Add a serializing function property to our rule...
+    // Switch serialize to handle more blocks...
+    serialize(obj, children) {
+      if (obj.object == 'block') {
+        switch (obj.type) {
+          case 'paragraph':
+            return <p className={obj.data.get('className')}>{children}</p>
+          case 'p':
+            return <p className={obj.data.get('className')}>{children}</p>
+          case 'h1':
+            return <h1>{children}</h1>
+          case 'h2':
+            return <h2>{children}</h2>
+          case 'h3':
+            return <h3>{children}</h3>
+          case 'h4':
+            return <h4>{children}</h4>
+          case 'h5':
+            return <h5>{children}</h5>
+          case 'h6':
+            return <h6>{children}</h6>
+        }
+      }
+    },
+  },
+  // Add a new rule that handles marks...
+  {
+      deserialize(el, next) {
+      const type = MARK_TAGS[el.tagName.toLowerCase()]
+      if (type) {
+          return {
+          object: 'mark',
+          type: type,
+          nodes: next(el.childNodes),
+          }
+      }
+      },
+      serialize(obj, children) {
+      if (obj.object == 'mark') {
+          switch (obj.type) {
+          case 'bold':
+              return <strong>{children}</strong>
+          case 'underline':
+              return <u>{children}</u>
+          }
+      }
+      },
+  },
+]
+
+// Create a new serializer instance with our `rules` from above.
+const html = new Html({ rules })
+
+// Load the initial value from Local Storage or a default.
+const initialValue = localStorage.getItem('content') || '<p></p>'
 
 // Define a React component renderer for our h1 blocks.
 function Heading1Node(props) {
@@ -140,22 +210,26 @@ function renderEditor(props) {
 
 // Define our app...
 class App extends React.Component {
-  // Set the initial value when the app is first constructed.
   state = {
-    value: initialValue,
+    value: html.deserialize(initialValue),
   }
 
-  // On change, update the app's React state with the new editor value.
   onChange = ({ value }) => {
-    // Check to see if the document has changed before saving.
-    if (value.document !== this.state.value.document) {
-      const content = JSON.stringify(value.toJSON())
-      localStorage.setItem('content', content)
+    // When the document changes, save the serialized HTML to Local Storage.
+    if (value.document != this.state.value.document) {
+      const string = html.serialize(value)
+      localStorage.setItem('content', string)
     }
 
     this.setState({ value })
   }
 
+  // applyFormat = (id, change ) => {
+  //   if (id === 'Chapter') {
+  //     change.toggleMark('bold')
+  //     return true
+  //   }
+  // }
   // Define a new handler which prints the key that was pressed.
   onKeyDown = (event, change) => {
     if (!event.ctrlKey) {
