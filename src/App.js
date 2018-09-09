@@ -201,7 +201,7 @@ function renderEditor(props) {
                 color: 'Black',
                 fontSize: '20px',
                 textAlign:'center'
-            }}>EDITOR<br/><br />Commands:<br /><br />CTRL + B  =  Chapter<br />CTRL + U  =  Verse<br />CTRL + 1  =  Source<br />CTRL + P  =  Black Text<br />CTRL + 2  =  Red Speech Bubble<br />CTRL + 3  =  Green Speech Bubble<br />CTRL + 4  =  Blue Speech Bubble<br />CTRL + 5  =  Footnote<br />CTRL + 6  =  Subtitle</p><br />
+            }}>EDITOR<br/><br />Commands:<br /><br />CTRL + B  =  Chapter<br />CTRL + U  =  Verse<br />CTRL + 1  =  Source<br />CTRL + P  =  Black Text<br />CTRL + 2  =  Red Speech Bubble<br />CTRL + 3  =  Green Speech Bubble<br />CTRL + 4  =  Blue Speech Bubble<br />CTRL + 5  =  Footnote<br />CTRL + 6  =  Subtitle<br />CTRL + ENTER  =  Paragraph break (within the same colored text)</p><br />
       <Toolbar />
       {children}
     </div>
