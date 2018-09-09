@@ -6,6 +6,8 @@ import Toolbar from './components/Toolbar'
 import SVLogo from './images/SVReader.png'
 import Html from 'slate-html-serializer'
 
+const DEFAULT_NODE = 'paragraph'
+
 //----------------------------------------
 //--------------- RULES ------------------
 //----------------------------------------
@@ -19,7 +21,6 @@ const BLOCK_TAGS = {
   h4: 'h4',
   h5: 'h5',
   h6: 'h6',
-  pre: 'code',
 }
 
 // Add a dictionary of mark tags.
@@ -32,7 +33,7 @@ const rules = [
   // Add our first rule with a deserializing function.
   {
     deserialize(el, next) {
-      if (el.tagName.toLowerCase() == 'p') {
+      if (el.tagName.toLowerCase() === 'p') {
         return {
           object: 'block',
           type: 'paragraph',
@@ -46,7 +47,7 @@ const rules = [
     // Add a serializing function property to our rule...
     // Switch serialize to handle more blocks...
     serialize(obj, children) {
-      if (obj.object == 'block') {
+      if (obj.object === 'block') {
         switch (obj.type) {
           case 'paragraph':
             return <p className={obj.data.get('className')}>{children}</p>
@@ -81,7 +82,7 @@ const rules = [
       }
       },
       serialize(obj, children) {
-      if (obj.object == 'mark') {
+      if (obj.object === 'mark') {
           switch (obj.type) {
           case 'bold':
               return <strong>{children}</strong>
@@ -92,13 +93,18 @@ const rules = [
       },
   },
 ]
-
+//----------------------------------------
+//----- SERIALIZING & LOCALSTORAGE -------
+//----------------------------------------
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules })
 
 // Load the initial value from Local Storage or a default.
 const initialValue = localStorage.getItem('content') || '<p></p>'
 
+//----------------------------------------
+//----------- RENDERING JSX --------------
+//----------------------------------------
 // Define a React component renderer for our h1 blocks.
 function Heading1Node(props) {
   return (
@@ -161,6 +167,9 @@ function ParagraphNode(props) {
   )
 }
 
+//----------------------------------------
+//-------------- HOTKEYS -----------------
+//----------------------------------------
 function MarkHotkey(options) {
   const { type, key } = options
 
@@ -186,28 +195,34 @@ const plugins = [
   MarkHotkey({ key: 'u', type: 'underline' }),
 ];
 
+//----------------------------------------
+//----------- RENDER EDITOR --------------
+//----------------------------------------
 // Rendering the Editor design
-function renderEditor(props) {
-  const { children } = props
-  return (
-    <div>
-      <img style={{
-        marginLeft: '40%',
-        width: '20%',
-        height: 'auto'
-      }} src={SVLogo} alt='SourceView Reader' />
-      <p 
-            style={{
-                color: 'Black',
-                fontSize: '20px',
-                textAlign:'center'
-            }}>EDITOR<br/><br />Commands:<br /><br />CTRL + B  =  Chapter<br />CTRL + U  =  Verse<br />CTRL + 1  =  Source<br />CTRL + P  =  Black Text<br />CTRL + 2  =  Red Speech Bubble<br />CTRL + 3  =  Green Speech Bubble<br />CTRL + 4  =  Blue Speech Bubble<br />CTRL + 5  =  Footnote<br />CTRL + 6  =  Subtitle<br />CTRL + ENTER  =  Paragraph break (within the same colored text)</p><br />
-      <Toolbar />
-      {children}
-    </div>
-  )
-}
+// function renderEditor(props) {
+//   const { children } = props
+//   return (
+//     <div>
+//       <img style={{
+//         marginLeft: '40%',
+//         width: '20%',
+//         height: 'auto'
+//       }} src={SVLogo} alt='SourceView Reader' />
+//       <p 
+//             style={{
+//                 color: 'Black',
+//                 fontSize: '20px',
+//                 textAlign:'center'
+//             }}>EDITOR<br/><br />Commands:<br /><br />CTRL + B  =  Chapter<br />CTRL + U  =  Verse<br />CTRL + 1  =  Source<br />CTRL + P  =  Black Text<br />CTRL + 2  =  Red Speech Bubble<br />CTRL + 3  =  Green Speech Bubble<br />CTRL + 4  =  Blue Speech Bubble<br />CTRL + 5  =  Footnote<br />CTRL + 6  =  Subtitle<br />CTRL + ENTER  =  Paragraph break (within the same colored text)</p><br />
+//       <Toolbar />
+//       {children}
+//     </div>
+//   )
+// }
 
+//----------------------------------------
+//---------------- APP -------------------
+//----------------------------------------
 // Define our app...
 class App extends React.Component {
   state = {
@@ -216,7 +231,7 @@ class App extends React.Component {
 
   onChange = ({ value }) => {
     // When the document changes, save the serialized HTML to Local Storage.
-    if (value.document != this.state.value.document) {
+    if (value.document !== this.state.value.document) {
       const string = html.serialize(value)
       localStorage.setItem('content', string)
     }
@@ -224,12 +239,6 @@ class App extends React.Component {
     this.setState({ value })
   }
 
-  // applyFormat = (id, change ) => {
-  //   if (id === 'Chapter') {
-  //     change.toggleMark('bold')
-  //     return true
-  //   }
-  // }
   // Define a new handler which prints the key that was pressed.
   onKeyDown = (event, change) => {
     if (!event.ctrlKey) {
@@ -314,12 +323,58 @@ class App extends React.Component {
     }
   }
   
+  /**
+   * Check if the current selection has a mark with `type` in it.
+   *
+   * @param {String} type
+   * @return {Boolean}
+   */
+
+  hasMark = type => {
+    const { value } = this.state
+    return value.activeMarks.some(mark => mark.type == type)
+  }
+
+  /**
+   * Check if the any of the currently selected blocks are of `type`.
+   *
+   * @param {String} type
+   * @return {Boolean}
+   */
+
+  hasBlock = type => {
+    const { value } = this.state
+    return value.blocks.some(node => node.type == type)
+  }
+
   // Render the editor.
   render() {
     return (
     <div style={{
       margin: '0',
       paddingTop: '0px'}}>
+      <img style={{
+        marginLeft: '40%',
+        width: '20%',
+        height: 'auto'
+      }} src={SVLogo} alt='SourceView Reader' />
+      <p 
+            style={{
+                color: 'Black',
+                fontSize: '20px',
+                textAlign:'center'
+            }}>EDITOR<br/><br />Commands:<br /><br />CTRL + B  =  Chapter<br />CTRL + U  =  Verse<br />CTRL + 1  =  Source<br />CTRL + P  =  Black Text<br />CTRL + 2  =  Red Speech Bubble<br />CTRL + 3  =  Green Speech Bubble<br />CTRL + 4  =  Blue Speech Bubble<br />CTRL + 5  =  Footnote<br />CTRL + 6  =  Subtitle<br />CTRL + ENTER  =  Paragraph break (within the same colored text)</p><br />
+      <Toolbar
+          chapter={event => this.onClickMark(event, 'bold')}
+          verse={event => this.onClickMark(event, 'underline')}
+          black={event => this.onClickBlock(event, 'p')}
+          source={event => this.onClickBlock(event, 'h1')}
+          red={event => this.onClickBlock(event, 'h2')}
+          green={event => this.onClickBlock(event, 'h3')}
+          blue={event => this.onClickBlock(event, 'h4')}
+          footnote={event => this.onClickBlock(event, 'h5')}
+          subtitle={event => this.onClickBlock(event, 'h6')}
+      />
       <Editor 
         style={{
           width: '80%',
@@ -329,7 +384,8 @@ class App extends React.Component {
           margin: '-2px auto 0 auto',
           padding: '5px'
         }}
-        renderEditor={renderEditor}
+        // renderEditor={renderEditor}
+        placeholder="Paste Your Bible text here..."
         plugins={plugins}
         value={this.state.value} 
         onChange={this.onChange}
@@ -340,7 +396,73 @@ class App extends React.Component {
     </div>
     )}
 
-  // Add a `renderNode` method to render blocks.
+    /**
+   * When a mark button is clicked, toggle the current mark.
+   *
+   * @param {Event} event
+   * @param {String} type
+   */
+
+  onClickMark = (event, type) => {
+    event.preventDefault()
+    const { value } = this.state
+    const change = value.change().toggleMark(type)
+    this.onChange(change)
+  }
+
+  /**
+   * When a block button is clicked, toggle the block type.
+   *
+   * @param {Event} event
+   * @param {String} type
+   */
+
+  onClickBlock = (event, type) => {
+    event.preventDefault()
+    const { value } = this.state
+    const change = value.change()
+    const { document } = value
+
+    // Handle everything but list buttons.
+    if (type != 'bulleted-list' && type != 'numbered-list') {
+      const isActive = this.hasBlock(type)
+      const isList = this.hasBlock('list-item')
+
+      if (isList) {
+        change
+          .setBlocks(isActive ? DEFAULT_NODE : type)
+          .unwrapBlock('bulleted-list')
+          .unwrapBlock('numbered-list')
+      } else {
+        change.setBlocks(isActive ? DEFAULT_NODE : type)
+      }
+    } else {
+      // Handle the extra wrapping required for list buttons.
+      const isList = this.hasBlock('list-item')
+      const isType = value.blocks.some(block => {
+        return !!document.getClosest(block.key, parent => parent.type == type)
+      })
+
+      if (isList && isType) {
+        change
+          .setBlocks(DEFAULT_NODE)
+          .unwrapBlock('bulleted-list')
+          .unwrapBlock('numbered-list')
+      } else if (isList) {
+        change
+          .unwrapBlock(
+            type == 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
+          )
+          .wrapBlock(type)
+      } else {
+        change.setBlocks('list-item').wrapBlock(type)
+      }
+    }
+
+    this.onChange(change)
+  }
+
+// Add a `renderNode` method to render blocks.
   renderNode = props => {
     switch (props.node.type) {
       case 'p':

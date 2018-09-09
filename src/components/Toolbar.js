@@ -22,15 +22,15 @@ const Toolbar = (props) => {
             textAlign: 'center',
             backgroundColor: 'lightyellow'
           }}>
-            <img className={styles.toolbarButtons} src={Chapter} alt='Chapter'/>
-            <img className={styles.toolbarButtons} src={Verse} alt='Verse'/>
-            <img className={styles.toolbarButtons} src={Source} alt='Source'/>
-            <img className={styles.toolbarButtons} src={Black} alt='Black'/>
-            <img className={styles.toolbarButtons} src={Red} alt='Red'/>
-            <img className={styles.toolbarButtons} src={Green} alt='Green'/>
-            <img className={styles.toolbarButtons} src={Blue} alt='Blue'/>
-            <img className={styles.toolbarButtons} src={Footnote} alt='Footnote'/>
-            <img className={styles.toolbarButtons} src={Subtitle} alt='Subtitle'/>
+            <img className={styles.toolbarButtons} src={Chapter} onClick={props.chapter} alt='Chapter'/>
+            <img className={styles.toolbarButtons} src={Verse} onClick={props.verse} alt='Verse'/>
+            <img className={styles.toolbarButtons} src={Source} onClick={props.source} alt='Source'/>
+            <img className={styles.toolbarButtons} src={Black} onClick={props.black} alt='Black'/>
+            <img className={styles.toolbarButtons} src={Red} onClick={props.red} alt='Red'/>
+            <img className={styles.toolbarButtons} src={Green} onClick={props.green} alt='Green'/>
+            <img className={styles.toolbarButtons} src={Blue} onClick={props.blue} alt='Blue'/>
+            <img className={styles.toolbarButtons} src={Footnote} onClick={props.footnote} alt='Footnote'/>
+            <img className={styles.toolbarButtons} src={Subtitle} onClick={props.subtitle} alt='Subtitle'/>
         </div>
     )
 }
