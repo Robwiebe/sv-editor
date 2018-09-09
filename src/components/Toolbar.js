@@ -8,6 +8,8 @@ import Green from '../images/Green.png'
 import Blue from '../images/Blue.png'
 import Footnote from '../images/Footnote.png'
 import Subtitle from '../images/Subtitle.png'
+import SVReader from '../images/SVReader.png'
+import Editor from '../images/editor.png'
 import styles from './Toolbar.css'
 
 const Toolbar = (props) => {
@@ -20,8 +22,15 @@ const Toolbar = (props) => {
             margin: '0 auto',
             borderRadius: '10px',
             textAlign: 'center',
-            backgroundColor: 'lightyellow'
+            backgroundColor: 'rgba(255,255,255,1)',
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            right: '0',
+            zIndex: '1000'
           }}>
+            <img className={styles.toolbarButtons} src={SVReader} alt='Logo' style={{marginRight: '0px'}}/>
+            <img className={styles.toolbarButtons} src={Editor} alt='Logo' style={{marginRight: '20px'}}/>
             <img className={styles.toolbarButtons} src={Chapter} onClick={props.chapter} alt='Chapter'/>
             <img className={styles.toolbarButtons} src={Verse} onClick={props.verse} alt='Verse'/>
             <img className={styles.toolbarButtons} src={Source} onClick={props.source} alt='Source'/>
