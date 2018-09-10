@@ -3,8 +3,11 @@ import { Editor } from 'slate-react'
 import { Value } from 'slate'
 import './App.css'
 import Toolbar from './components/Toolbar'
+import Inputs1 from './components/Inputs1'
+import Inputs2 from './components/Inputs2'
 import SVLogo from './images/SVReader.png'
 import Html from 'slate-html-serializer'
+import Data from './data/English.json'
 
 const DEFAULT_NODE = 'paragraph'
 
@@ -100,7 +103,7 @@ const rules = [
 const html = new Html({ rules })
 
 // Load the initial value from Local Storage or a default.
-const initialValue = localStorage.getItem('content') || '<p></p>'
+const initialValue = localStorage.getItem('html') || '<p></p>'
 
 //----------------------------------------
 //----------- RENDERING JSX --------------
@@ -195,30 +198,6 @@ const plugins = [
   MarkHotkey({ key: 'u', type: 'underline' }),
 ];
 
-//----------------------------------------
-//----------- RENDER EDITOR --------------
-//----------------------------------------
-// Rendering the Editor design
-// function renderEditor(props) {
-//   const { children } = props
-//   return (
-//     <div>
-//       <img style={{
-//         marginLeft: '40%',
-//         width: '20%',
-//         height: 'auto'
-//       }} src={SVLogo} alt='SourceView Reader' />
-//       <p 
-//             style={{
-//                 color: 'Black',
-//                 fontSize: '20px',
-//                 textAlign:'center'
-//             }}>EDITOR<br/><br />Commands:<br /><br />CTRL + B  =  Chapter<br />CTRL + U  =  Verse<br />CTRL + 1  =  Source<br />CTRL + P  =  Black Text<br />CTRL + 2  =  Red Speech Bubble<br />CTRL + 3  =  Green Speech Bubble<br />CTRL + 4  =  Blue Speech Bubble<br />CTRL + 5  =  Footnote<br />CTRL + 6  =  Subtitle<br />CTRL + ENTER  =  Paragraph break (within the same colored text)</p><br />
-//       <Toolbar />
-//       {children}
-//     </div>
-//   )
-// }
 
 //----------------------------------------
 //---------------- APP -------------------
@@ -227,13 +206,33 @@ const plugins = [
 class App extends React.Component {
   state = {
     value: html.deserialize(initialValue),
+    data: Data,
+    story: null,
+    title: "",
+    bookId: null,
+    bookName: "",
+    ref: null,
+    prevPath: "/",
+    path: '/300',
+    nextPath: '/301',
+    display: 'none',
+    questionsTitle: null,
+    Question1: null,
+    Question2: null,
+    Question3: null,
+    Question4: null
   }
+
+//----------------------------------------
+//----------- INPUT FIELDS ---------------
+//----------------------------------------
+  
 
   onChange = ({ value }) => {
     // When the document changes, save the serialized HTML to Local Storage.
     if (value.document !== this.state.value.document) {
       const string = html.serialize(value)
-      localStorage.setItem('content', string)
+      localStorage.setItem('html', string)
     }
 
     this.setState({ value })
@@ -347,6 +346,37 @@ class App extends React.Component {
     return value.blocks.some(node => node.type == type)
   }
 
+  // Function to set state and local storage when story selected from dropdown menu
+  handleChange = e => {
+    this.setState({
+      story: e.target.value,
+      data: Data[e.target.value],
+      title: Data[e.target.value].title,
+      bookId: Data[e.target.value].bookId,
+      bookName: Data[e.target.value].bookName,
+      ref: Data[e.target.value].ref,
+      display:   Data[e.target.value].display,
+      questionsTitle:   Data[e.target.value].questionsTitle,
+      Question1:   Data[e.target.value].Question1,
+      Question2:   Data[e.target.value].Question2,
+      Question3:   Data[e.target.value].Question3,
+      Question4:   Data[e.target.value].Question4
+    })
+    localStorage.setItem('story', e.target.value)
+    // localStorage.setItem('title', Data[e.target.value].title)
+    localStorage.setItem('bookId', Data[e.target.value].bookId)
+    // localStorage.setItem('bookName', Data[e.target.value].bookName)
+    localStorage.setItem('ref', Data[e.target.value].ref)
+    localStorage.setItem('prevPath', Data[e.target.value].prevPath)
+    localStorage.setItem('path', Data[e.target.value].path)
+    localStorage.setItem('nextPath', Data[e.target.value].nextPath)
+    localStorage.setItem('display', Data[e.target.value].display)
+    // localStorage.setItem('questionsTitle', Data[e.target.value].questionsTitle)
+    // localStorage.setItem('Question1', Data[e.target.value].Question1)
+    // localStorage.setItem('Question2', Data[e.target.value].Question2)
+    // localStorage.setItem('Question3', Data[e.target.value].Question3)
+    // localStorage.setItem('Question4', Data[e.target.value].Question4)
+};
   // Render the editor.
   render() {
     return (
@@ -354,12 +384,21 @@ class App extends React.Component {
       margin: '0',
       paddingTop: '0px'}}>
       <p 
-            style={{
-                color: 'Black',
-                fontSize: '20px',
-                textAlign:'center',
-                marginTop: '100px'
-            }}>Commands:<hr style={{width: '120px', margin: '0 auto'}}/><br /><span style={{color: 'darkblue'}}>CTRL + ENTER</span>  =  Paragraph break (within the same colored text)</p><br />
+        style={{
+            color: 'Black',
+            fontSize: '20px',
+            textAlign:'center',
+            marginTop: '150px'
+        }}>Commands:</p>
+      <hr style={{width: '120px', margin: '0 auto'}}/>
+      <p
+        style={{
+          color: 'Black',
+          fontSize: '20px',
+          textAlign:'center',
+      }}><span style={{color: 'darkblue'}}>CTRL + ENTER</span>  =  Paragraph break (within the same colored text)</p><br />
+      <hr  style={{width: '420px', margin: '0 auto', border: 'solid 2px'}}/>
+      <br />
       <Toolbar
           chapter={event => this.onClickMark(event, 'bold')}
           verse={event => this.onClickMark(event, 'underline')}
@@ -371,6 +410,19 @@ class App extends React.Component {
           footnote={event => this.onClickBlock(event, 'h5')}
           subtitle={event => this.onClickBlock(event, 'h6')}
       />
+      <div style={{
+        margin: '0 auto 20px auto',
+        textAlign: 'center'
+      }}>
+        <Inputs1 
+          storyNum={this.state.story}
+          display={this.state.display}
+          reference={this.state.ref}
+          title={this.state.title}
+          bookName={this.state.bookName}
+          handleChange={this.handleChange}
+        />
+      </div>
       <Editor 
         style={{
           width: '80%',
@@ -381,7 +433,6 @@ class App extends React.Component {
           marginBottom: '50px',
           padding: '5px'
         }}
-        // renderEditor={renderEditor}
         placeholder="Paste Your Bible text here..."
         plugins={plugins}
         value={this.state.value} 
@@ -390,6 +441,20 @@ class App extends React.Component {
         onClick={this.onClick}
         renderNode={this.renderNode}
         renderMark={this.renderMark} />
+        <div style={{
+          width: '80%',
+          margin: '0 auto 20px auto',
+          textAlign: 'left'
+        }}>
+          <Inputs2 
+            display={this.state.display}
+            questionsTitle={this.state.questionsTitle}
+            Question1={this.state.Question1}
+            Question2={this.state.Question2}
+            Question3={this.state.Question3}
+            Question4={this.state.Question4}
+          />
+        </div>
     </div>
     )}
 
