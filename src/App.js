@@ -8,6 +8,8 @@ import Inputs2 from './components/Inputs2'
 import SVLogo from './images/SVReader.png'
 import Html from 'slate-html-serializer'
 import Data from './data/English.json'
+import Language from './components/LanguageInput'
+import SaveButton from './components/SaveButton'
 
 const DEFAULT_NODE = 'paragraph'
 
@@ -348,8 +350,9 @@ class App extends React.Component {
 
   // Function to set state and local storage when story selected from dropdown menu
   handleChange = e => {
+    const storyNum = parseInt(e.target.value) + 300;
     this.setState({
-      story: e.target.value,
+      story: storyNum,
       data: Data[e.target.value],
       title: Data[e.target.value].title,
       bookId: Data[e.target.value].bookId,
@@ -362,7 +365,7 @@ class App extends React.Component {
       Question3:   Data[e.target.value].Question3,
       Question4:   Data[e.target.value].Question4
     })
-    localStorage.setItem('story', e.target.value)
+    localStorage.setItem('story', storyNum)
     // localStorage.setItem('title', Data[e.target.value].title)
     localStorage.setItem('bookId', Data[e.target.value].bookId)
     // localStorage.setItem('bookName', Data[e.target.value].bookName)
@@ -377,6 +380,12 @@ class App extends React.Component {
     // localStorage.setItem('Question3', Data[e.target.value].Question3)
     // localStorage.setItem('Question4', Data[e.target.value].Question4)
 };
+
+  languageChange = e => {
+    this.setState({language: e.target.value})
+    localStorage.setItem('language', e.target.value)
+  }
+
   // Render the editor.
   render() {
     return (
@@ -414,6 +423,9 @@ class App extends React.Component {
         margin: '0 auto 20px auto',
         textAlign: 'center'
       }}>
+        <Language 
+          languageChange={this.languageChange}
+        />
         <Inputs1 
           storyNum={this.state.story}
           display={this.state.display}
@@ -454,6 +466,24 @@ class App extends React.Component {
             Question3={this.state.Question3}
             Question4={this.state.Question4}
           />
+          <hr />
+          <SaveButton 
+            language={localStorage.getItem('language')}
+            story={localStorage.getItem('story')}
+            display={localStorage.getItem('display')}
+            bookId={localStorage.getItem('bookId')}
+            bookName={localStorage.getItem('bookName')}
+            reference={localStorage.getItem('ref')}
+            prevPath={localStorage.getItem('prevPath')}
+            nextPath={localStorage.getItem('nextPath')}
+            path={localStorage.getItem('path')}
+            html={localStorage.getItem('html')}
+            questionsTitle={localStorage.getItem('questionsTitle')}
+            Q1={localStorage.getItem('Question1')}
+            Q2={localStorage.getItem('Question2')}
+            Q3={localStorage.getItem('Question3')}
+            Q4={localStorage.getItem('Question4')}
+            />
         </div>
     </div>
     )}

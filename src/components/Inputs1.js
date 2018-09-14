@@ -16,8 +16,8 @@ const Inputs = (props) => {
       
     return (
         <div style={{textAlign: 'left', margin: '0 auto', width: '80%'}}>
-            <p>SELECT YOUR STORY:<br />Story Number:</p>
-            <select selected={props.currentValue} name="Story Number" onChange={props.handleChange}>
+            <p style={{textDecoration: 'underline', color: 'darkred'}}>SELECT YOUR STORY:</p><p>Story Number:</p>
+            <select selected={props.currentValue} name="Story Number" onChange={props.handleChange} style={{fontSize: '15px', height: '30px', margin: '10px'}}>
                 <option value='null'>-</option>
                 <option value='0'>300</option>
                 <option value='1'>301</option>
