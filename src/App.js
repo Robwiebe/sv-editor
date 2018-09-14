@@ -10,6 +10,7 @@ import Html from 'slate-html-serializer'
 import Data from './data/English.json'
 import Language from './components/LanguageInput'
 import SaveButton from './components/SaveButton'
+import axios from 'axios'
 
 const DEFAULT_NODE = 'paragraph'
 
@@ -351,23 +352,20 @@ class App extends React.Component {
   // Function to set state and local storage when story selected from dropdown menu
   handleChange = e => {
     const storyNum = parseInt(e.target.value) + 300;
+    axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${storyNum}.json`)
+      .then(response => {
+        this.setState({savedData: response.data})
+        console.log(this.state.savedData)
+      });
+      
+    
     this.setState({
       story: storyNum,
       data: Data[e.target.value],
-      title: Data[e.target.value].title,
-      bookId: Data[e.target.value].bookId,
-      bookName: Data[e.target.value].bookName,
-      ref: Data[e.target.value].ref,
-      display:   Data[e.target.value].display,
-      questionsTitle:   Data[e.target.value].questionsTitle,
-      Question1:   Data[e.target.value].Question1,
-      Question2:   Data[e.target.value].Question2,
-      Question3:   Data[e.target.value].Question3,
-      Question4:   Data[e.target.value].Question4
     })
     localStorage.setItem('story', storyNum)
-    // localStorage.setItem('title', Data[e.target.value].title)
-    localStorage.setItem('bookId', Data[e.target.value].bookId)
+    localStorage.setItem('title', this.state.savedData.title)
+    localStorage.setItem('bookId', this.state.savedData.bookId)
     // localStorage.setItem('bookName', Data[e.target.value].bookName)
     localStorage.setItem('ref', Data[e.target.value].ref)
     localStorage.setItem('prevPath', Data[e.target.value].prevPath)
