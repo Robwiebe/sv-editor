@@ -1,25 +1,25 @@
 import React from 'react'
 import { Editor } from 'slate-react'
-// import { Value } from 'slate'
 import './App.css'
 import Toolbar from './components/Toolbar'
 import Inputs1 from './components/Inputs1'
-// import SVLogo from './images/SVReader.png'
 import Html from 'slate-html-serializer'
 import Data from './data/English.json'
 import Language from './components/LanguageInput'
-import SaveButton from './components/SaveButton'
+import PrevData from './components/PrevData'
 import axios from 'axios'
 
-const DEFAULT_NODE = 'paragraph'
+const DEFAULT_NODE = 'p'
 
-const initialValue = localStorage.getItem('html') || '<p></p>'
+const initialValue = '<p></p>'
+
+
 //----------------------------------------
 //--------------- RULES ------------------
 //----------------------------------------
 // Add a dictionary of Block tags.
 const BLOCK_TAGS = {
-  p: 'paragraph',
+  p: 'p',
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
@@ -55,8 +55,6 @@ const rules = [
     serialize(obj, children) {
       if (obj.object === 'block') {
         switch (obj.type) {
-          case 'paragraph':
-            return <p className={obj.data.get('className')}>{children}</p>
           case 'p':
             return <p className={obj.data.get('className')}>{children}</p>
           case 'h1':
@@ -104,9 +102,6 @@ const rules = [
 //----------------------------------------
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules })
-
-// Load the initial value from Local Storage or a default.
-// const initialValue = this.state.savedData.html || `<p></p>`
 
 //----------------------------------------
 //----------- RENDERING JSX --------------
@@ -215,59 +210,170 @@ class App extends React.Component {
 
   }
 
+  
+  
 //----------------------------------------
 //------ INPUT FIELDS FUNCTIONS ----------
 //----------------------------------------
   storyTitleInput = (event) => {
-    if (this.state.title === "" || event.target.value !== this.state.title) 
-      this.setState({title: event.target.value})
+    const val = event.target.value
+    if (this.state.updatedData.title === "" || val !== this.state.updatedData.title) 
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          title: val,
+          story: this.state.data.story + 300
+          }
+        })
+      )
       console.log(this.state)
   }
 
   bookNameInput = (event) => {
-    if (event.target.value !== this.state.bookName) 
-    this.setState({bookName: event.target.value})
-    console.log(this.state)
+    const val = event.target.value
+    if (this.state.updatedData.bookName === "" || val !== this.state.updatedData.bookName) 
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          bookName: val,
+          story: this.state.data.story + 300
+          }
+        })
+      )
+      console.log(this.state)
   }
   
   qTitleInput = (event) => {
-    if (event.target.value !== this.state.questionsTitle) 
-    this.setState({questionsTitle: event.target.value})
-    console.log(this.state)
+    const val = event.target.value
+    if (this.state.updatedData.questionsTitle === "" || val !== this.state.updatedData.questionsTitle) 
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          questionsTitle: val,
+          story: this.state.data.story + 300
+          }
+        })
+      )
+      console.log(this.state)
   }
   
   q1Input = (event) => {
-    if (event.target.value !== this.state.Question1) 
-    this.setState({Question1: event.target.value})
-    console.log(this.state)
+    const val = event.target.value
+    if (this.state.updatedData.Question1 === "" || val !== this.state.updatedData.Question1) 
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          Question1: val,
+          story: this.state.data.story + 300
+          }
+        })
+      )
+      console.log(this.state)
   }
   
   q2Input = (event) => {
-    if (event.target.value !== this.state.Question2) 
-    this.setState({Question2: event.target.value})
-    console.log(this.state)
+    const val = event.target.value
+    if (this.state.updatedData.Question2 === "" || val !== this.state.updatedData.Question2) 
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          Question2: val,
+          story: this.state.data.story + 300
+          }
+        })
+      )
+      console.log(this.state)
   }
   
   q3Input = (event) => {
-    if (event.target.value !== this.state.Question3) 
-    this.setState({Question3: event.target.value})
-    console.log(this.state)
+    const val = event.target.value
+    if (this.state.updatedData.Question3 === "" || val !== this.state.updatedData.Question3) 
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          Question3: val,
+          story: this.state.data.story + 300
+          }
+        })
+      )
+      console.log(this.state)
   }
   
   q4Input = (event) => {
-    if (event.target.value !== this.state.Question4) 
-    this.setState({Question4: event.target.value})
-    console.log(this.state)
+    const val = event.target.value
+    if (this.state.updatedData.Question4 === "" || val !== this.state.updatedData.Question4) 
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          Question4: val,
+          story: this.state.data.story + 300
+          }
+        })
+      )
+      console.log(this.state)
   }
 
+  settingInputValues = () => {
+    if (this.state.savedData !== null) {
+      const titleInput = {
+        value: this.state.savedData.title
+      }
+      
+      const bookNameInput = {
+        value: this.state.savedData.bookName
+      }
+      
+      const questionsTitleInput = {
+        value: this.state.savedData.questionsTitle
+      }
+      
+      const Question1Input = {
+        value: this.state.savedData.Question1
+      }
+      
+      const Question2Input = {
+        value: this.state.savedData.Question2
+      }
+      
+      const Question3Input = {
+        value: this.state.savedData.Question3
+      }
+      
+      const Question4Input = {
+        value: this.state.savedData.Question4
+      }
+      titleInput.disabled = false;
+      bookNameInput.disabled = false;
+      questionsTitleInput.disabled = false;
+      Question1Input.disabled = false;
+      Question2Input.disabled = false;
+      Question3Input.disabled = false;
+      Question4Input.disabled = false;
+    }
+  }
   onChange = ({ value }) => {
     // When the document changes, save the serialized HTML to Local Storage.
     if (value.document !== this.state.value.document) {
       const string = html.serialize(value)
-      this.setState({html: string})
+      this.setState(prevState => ({
+        ...prevState,
+        updatedData: {
+          ...prevState.updatedData,
+          html: string,
+          story: this.state.data.story + 300
+          }
+        }))
     }
 
     this.setState({ value })
+    console.log(this.state)
   }
 
   // Define a new handler which prints the key that was pressed.
@@ -380,57 +486,72 @@ class App extends React.Component {
 
     // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
+    const storyData = Data[parseInt(e.target.value)];
     const storyNum = parseInt(e.target.value) + 300;
-    this.setState({data: Data[parseInt(e.target.value)]})
+    this.setState({
+      data: storyData,
+      updatedData: storyData
+    })
     await axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${storyNum}.json`)
       .then(response => {
+        if (response.data !== null) {
         this.setState({
-          savedData: response.data,
-          story: storyNum
-        });
-      }) 
+          updatedData: response.data,
+          savedData: response.data
+        })};
+      })
     console.log(this.state)
-    if (this.state.savedData !== null) {
-    this.setState({
+    if (this.state.savedData.html === undefined) {
+      this.setState({
+        value: html.deserialize(this.state.updatedData.html)
+      })
+    } else {
+      this.setState({
         value: html.deserialize(this.state.savedData.html)
       })
     }
+    this.settingInputValues();
+
     };
 
   languageChange = e => {
     this.setState({language: e.target.value})
-    // localStorage.setItem('language', e.target.value)
   }
 
+  previousDataDisplayed = (key) => {
+    if (this.state.savedData !== null) {
+      console.log('previousDataDisplayed')
+      return(<p>{key}</p>)
+    }
+  }
 
   saveInput = () => {
     const items = {
-        language: this.state.language,
-        story: this.state.story,
-        display: this.state.data.display,
-        bookId: this.state.data.bookId,
-        bookName: this.state.bookName,
-        ref: this.state.data.reference,
-        prevPath: this.state.data.prevPath,
-        nextPath: this.state.data.nextPath,
-        path: this.state.data.path,
-        html: this.state.html,
-        title: this.state.title,
-        questionsTitle: this.state.questionsTitle,
-        Question1: this.state.Question1,
-        Question2: this.state.Question2,
-        Question3: this.state.Question3,
-        Question4: this.state.Question4,
+        language: this.state.updatedData.language,
+        story: this.state.updatedData.story,
+        display: this.state.updatedData.display,
+        bookId: this.state.updatedData.bookId,
+        bookName: this.state.updatedData.bookName,
+        ref: this.state.updatedData.reference,
+        prevPath: this.state.updatedData.prevPath,
+        nextPath: this.state.updatedData.nextPath,
+        path: this.state.updatedData.path,
+        html: this.state.updatedData.html,
+        title: this.state.updatedData.title,
+        questionsTitle: this.state.updatedData.questionsTitle,
+        Question1: this.state.updatedData.Question1,
+        Question2: this.state.updatedData.Question2,
+        Question3: this.state.updatedData.Question3,
+        Question4: this.state.updatedData.Question4,
     }
     
-    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${this.state.story}.json`, items)
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${this.state.updatedData.story}.json`, items)
+    .then(alert('Your data was saved successfully!'))
+    .catch(error => alert(`Sorry, there was an error:\n${error}`));
   }
 
   // Render the editor.
   render() {
-    // localStorage.clear();
     return (
     <div style={{
       margin: '0',
@@ -474,14 +595,18 @@ class App extends React.Component {
           handleChange={this.handleChange}
         />
         <hr />
-        <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.reference}</h1>
-        <p>Story Title:<br /><span style={{color: 'red'}}>{this.state.data.title}</span></p>
-        <input type='text' placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
-        <br />
-        <hr />
-        <p>BookName:<br /><span style={{color: 'red'}}>{this.state.data.bookName}</span></p>
-        <input type='text' placeholder='Translation of red text goes here...' onChange={this.bookNameInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
-        <br />
+        <div style={{marginLeft: '10%', textAlign: 'left'}}>
+          <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.reference}</h1>
+          <p>English Story Title: <span style={{color: 'red'}}>{this.state.data.title}</span></p>
+          <PrevData data={this.state.savedData !== null && this.state.savedData.title } />
+          <input type='text' placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
+          <br />
+          <hr />
+          <p>English Book Name: <span style={{color: 'red'}}>{this.state.data.bookName}</span></p>
+          <PrevData data={this.state.savedData !== null && this.state.savedData.bookName } />
+          <input type='text' placeholder='Translation of red text goes here...' onChange={this.bookNameInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
+          <br />
+        </div>
       </div>
       <Editor 
         style={{
@@ -507,23 +632,28 @@ class App extends React.Component {
           textAlign: 'left'
         }}>
           <div style={{display: `${this.state.data.display}`}}>
-            <p>Questions Title:<br /><span style={{color: 'red'}}>{this.state.data.questionsTitle}</span></p>
+            <p>English Questions Title: <span style={{color: 'red'}}>{this.state.data.questionsTitle}</span></p>
+            <PrevData data={this.state.savedData !== null && this.state.savedData.questionsTitle } />
             <input type='text' placeholder='Translation of red text goes here...' onChange={this.qTitleInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
-            <p>Question #1:<br /><span style={{color: 'red'}}>{this.state.data.Question1}</span></p>
+            <p>English Question #1:<span style={{color: 'red'}}>{this.state.data.Question1}</span></p>
+            <PrevData data={this.state.savedData !== null && this.state.savedData.Question1 } />
             <input type='text' placeholder='Translation of red text goes here...' onChange={this.q1Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
-            <p>Question #2:<br /><span style={{color: 'red'}}>{this.state.data.Question2}</span></p>
+            <p>English Question #2:<span style={{color: 'red'}}>{this.state.data.Question2}</span></p>
+            <PrevData data={this.state.savedData !== null && this.state.savedData.Question2 } />
             <input type='text' placeholder='Translation of red text goes here...' onChange={this.q2Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
-            <p>Question #3:<br /><span style={{color: 'red'}}>{this.state.data.Question3}</span></p>
+            <p>English Question #3: <span style={{color: 'red'}}>{this.state.data.Question3}</span></p>
+            <PrevData data={this.state.savedData !== null && this.state.savedData.Question3 } />
             <input type='text' placeholder='Translation of red text goes here...' onChange={this.q3Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
-            <p>Question #4:<br /><span style={{color: 'red'}}>{this.state.data.Question4}</span></p>
+            <p>English Question #4: <span style={{color: 'red'}}>{this.state.data.Question4}</span></p>
+            <PrevData data={this.state.savedData !== null && this.state.savedData.Question4 } />
             <input type='text' placeholder='Translation of red text goes here...' onChange={this.q4Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
         </div>
