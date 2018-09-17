@@ -4,7 +4,6 @@ import { Editor } from 'slate-react'
 import './App.css'
 import Toolbar from './components/Toolbar'
 import Inputs1 from './components/Inputs1'
-import Inputs2 from './components/Inputs2'
 // import SVLogo from './images/SVReader.png'
 import Html from 'slate-html-serializer'
 import Data from './data/English.json'
@@ -202,6 +201,8 @@ const plugins = [
   MarkHotkey({ key: 'u', type: 'underline' }),
 ];
 
+
+
 //----------------------------------------
 //---------------- APP -------------------
 //----------------------------------------
@@ -211,12 +212,53 @@ class App extends React.Component {
     value: html.deserialize(initialValue),
     data: Data[132],
     savedData: ""
+
   }
 
 //----------------------------------------
-//----------- INPUT FIELDS ---------------
+//------ INPUT FIELDS FUNCTIONS ----------
 //----------------------------------------
+  storyTitleInput = (event) => {
+    if (this.state.title === "" || event.target.value !== this.state.title) 
+      this.setState({title: event.target.value})
+      console.log(this.state)
+  }
+
+  bookNameInput = (event) => {
+    if (event.target.value !== this.state.bookName) 
+    this.setState({bookName: event.target.value})
+    console.log(this.state)
+  }
   
+  qTitleInput = (event) => {
+    if (event.target.value !== this.state.questionsTitle) 
+    this.setState({questionsTitle: event.target.value})
+    console.log(this.state)
+  }
+  
+  q1Input = (event) => {
+    if (event.target.value !== this.state.Question1) 
+    this.setState({Question1: event.target.value})
+    console.log(this.state)
+  }
+  
+  q2Input = (event) => {
+    if (event.target.value !== this.state.Question2) 
+    this.setState({Question2: event.target.value})
+    console.log(this.state)
+  }
+  
+  q3Input = (event) => {
+    if (event.target.value !== this.state.Question3) 
+    this.setState({Question3: event.target.value})
+    console.log(this.state)
+  }
+  
+  q4Input = (event) => {
+    if (event.target.value !== this.state.Question4) 
+    this.setState({Question4: event.target.value})
+    console.log(this.state)
+  }
 
   onChange = ({ value }) => {
     // When the document changes, save the serialized HTML to Local Storage.
@@ -226,7 +268,6 @@ class App extends React.Component {
     }
 
     this.setState({ value })
-    console.log(this.state)
   }
 
   // Define a new handler which prints the key that was pressed.
@@ -344,45 +385,47 @@ class App extends React.Component {
     await axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${storyNum}.json`)
       .then(response => {
         this.setState({
-          savedData: response.data
+          savedData: response.data,
+          story: storyNum
         });
       }) 
     console.log(this.state)
+    if (this.state.savedData !== null) {
     this.setState({
         value: html.deserialize(this.state.savedData.html)
       })
-    
+    }
     };
-      
-  
-    // this.setState({
-    //   story: storyNum,
-    //   data: Data[e.target.value],
-    // })
-    // if (this.state.savedData === undefined) {
-    //   console.log('No data saved for this story yet')
-    // } else {
-    //   console.log(this.state.savedData);
-    // }
-    // localStorage.setItem('story', storyNum)
-    // localStorage.setItem('title', this.state.savedData.title || null)
-    // localStorage.setItem('bookId', this.state.savedData.bookId)
-    // localStorage.setItem('bookName', Data[e.target.value].bookName)
-    // localStorage.setItem('ref', Data[e.target.value].ref)
-    // localStorage.setItem('prevPath', Data[e.target.value].prevPath)
-    // localStorage.setItem('path', Data[e.target.value].path)
-    // localStorage.setItem('nextPath', Data[e.target.value].nextPath)
-    // localStorage.setItem('display', Data[e.target.value].display)
-    // localStorage.setItem('questionsTitle', Data[e.target.value].questionsTitle)
-    // localStorage.setItem('Question1', Data[e.target.value].Question1)
-    // localStorage.setItem('Question2', Data[e.target.value].Question2)
-    // localStorage.setItem('Question3', Data[e.target.value].Question3)
-    // localStorage.setItem('Question4', Data[e.target.value].Question4)
-// };
 
   languageChange = e => {
     this.setState({language: e.target.value})
     // localStorage.setItem('language', e.target.value)
+  }
+
+
+  saveInput = () => {
+    const items = {
+        language: this.state.language,
+        story: this.state.story,
+        display: this.state.data.display,
+        bookId: this.state.data.bookId,
+        bookName: this.state.bookName,
+        ref: this.state.data.reference,
+        prevPath: this.state.data.prevPath,
+        nextPath: this.state.data.nextPath,
+        path: this.state.data.path,
+        html: this.state.html,
+        title: this.state.title,
+        questionsTitle: this.state.questionsTitle,
+        Question1: this.state.Question1,
+        Question2: this.state.Question2,
+        Question3: this.state.Question3,
+        Question4: this.state.Question4,
+    }
+    
+    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${this.state.story}.json`, items)
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
   }
 
   // Render the editor.
@@ -428,12 +471,17 @@ class App extends React.Component {
         />
         <Inputs1 
           storyNum={this.state.data.story}
-          display={this.state.data.display}
-          reference={this.state.data.ref}
-          title={this.state.data.title}
-          bookName={this.state.data.bookName}
           handleChange={this.handleChange}
         />
+        <hr />
+        <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.reference}</h1>
+        <p>Story Title:<br /><span style={{color: 'red'}}>{this.state.data.title}</span></p>
+        <input type='text' placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
+        <br />
+        <hr />
+        <p>BookName:<br /><span style={{color: 'red'}}>{this.state.data.bookName}</span></p>
+        <input type='text' placeholder='Translation of red text goes here...' onChange={this.bookNameInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
+        <br />
       </div>
       <Editor 
         style={{
@@ -458,34 +506,32 @@ class App extends React.Component {
           margin: '0 auto 20px auto',
           textAlign: 'left'
         }}>
-          <Inputs2 
-            display={this.state.data.display}
-            questionsTitle={this.state.data.questionsTitle}
-            Question1={this.state.data.Question1}
-            Question2={this.state.data.Question2}
-            Question3={this.state.data.Question3}
-            Question4={this.state.data.Question4}
-          />
-          <hr />
-          <SaveButton 
-            currentState={this.state.savedData}
-            language={localStorage.getItem('language')}
-            story={localStorage.getItem('story')}
-            display={localStorage.getItem('display')}
-            bookId={localStorage.getItem('bookId')}
-            bookName={localStorage.getItem('bookName')}
-            reference={localStorage.getItem('ref')}
-            prevPath={localStorage.getItem('prevPath')}
-            nextPath={localStorage.getItem('nextPath')}
-            path={localStorage.getItem('path')}
-            html={localStorage.getItem('html')}
-            questionsTitle={localStorage.getItem('questionsTitle')}
-            Q1={localStorage.getItem('Question1')}
-            Q2={localStorage.getItem('Question2')}
-            Q3={localStorage.getItem('Question3')}
-            Q4={localStorage.getItem('Question4')}
-            />
+          <div style={{display: `${this.state.data.display}`}}>
+            <p>Questions Title:<br /><span style={{color: 'red'}}>{this.state.data.questionsTitle}</span></p>
+            <input type='text' placeholder='Translation of red text goes here...' onChange={this.qTitleInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <br />
+            <hr />
+            <p>Question #1:<br /><span style={{color: 'red'}}>{this.state.data.Question1}</span></p>
+            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q1Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <br />
+            <hr />
+            <p>Question #2:<br /><span style={{color: 'red'}}>{this.state.data.Question2}</span></p>
+            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q2Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <br />
+            <hr />
+            <p>Question #3:<br /><span style={{color: 'red'}}>{this.state.data.Question3}</span></p>
+            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q3Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <br />
+            <hr />
+            <p>Question #4:<br /><span style={{color: 'red'}}>{this.state.data.Question4}</span></p>
+            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q4Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <br />
         </div>
+          <hr />
+          <div>
+           <button onClick={this.saveInput} style={{height: '25px', width: 'fit-content', padding: '5px'}}>SAVE</button>
+        </div>
+    </div>
     </div>
     )}
 

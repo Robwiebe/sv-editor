@@ -1,23 +1,10 @@
 import React from 'react'
 
-
-const Inputs = (props) => {
-    
-      function storyTitleInput (event) {
-        if (event.target.value !== localStorage.getItem('title')) 
-          localStorage.setItem('title', event.target.value)
-      }
-    
-      function bookNameInput (event) {
-        if (event.target.value !== localStorage.getItem('bookName')) 
-          localStorage.setItem('bookName', event.target.value)
-      }
-    
-      
+const Inputs = (props) => {      
     return (
         <div style={{textAlign: 'left', margin: '0 auto', width: '80%'}}>
             <p style={{textDecoration: 'underline', color: 'darkred'}}>SELECT YOUR STORY:</p><p>Story Number:</p>
-            <select selected={props.currentValue} name="Story Number" onChange={props.handleChange} style={{fontSize: '15px', height: '30px', margin: '10px'}}>
+            <select name="Story Number" onChange={props.handleChange} style={{fontSize: '15px', height: '30px', margin: '10px'}}>
                 <option value='null'>-</option>
                 <option value='0'>300</option>
                 <option value='1'>301</option>
@@ -153,19 +140,9 @@ const Inputs = (props) => {
                 <option value='131'>431</option>
             </select>
             <br />
-            <hr />
-            <h1 style={{display: `${props.display}`, margin: '5px'}}>REFERENCE: {props.bookName} {props.reference}</h1>
-            <p>Story Title:<br /><span style={{color: 'red'}}>{props.title}</span></p>
-            <input type='text' placeholder='Translation of red text goes here...' onChange={storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
-            <br />
-            <hr />
-            <p>BookName:<br /><span style={{color: 'red'}}>{props.bookName}</span></p>
-            <input type='text' placeholder='Translation of red text goes here...' onChange={bookNameInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
-            <br />
             
         </div>
     )
-    
 }
 
 export default Inputs;
