@@ -156,11 +156,11 @@ const Inputs = (props) => {
             <hr />
             <h1 style={{display: `${props.display}`, margin: '5px'}}>REFERENCE: {props.bookName} {props.reference}</h1>
             <p>Story Title:<br /><span style={{color: 'red'}}>{props.title}</span></p>
-            <input type='text' placeholder='Translation of red text goes here...' onChange={storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}}/>
+            <input type='text' placeholder='Translation of red text goes here...' onChange={storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
             <br />
             <hr />
             <p>BookName:<br /><span style={{color: 'red'}}>{props.bookName}</span></p>
-            <input type='text' placeholder='Translation of red text goes here...' onChange={bookNameInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}}/>
+            <input type='text' placeholder='Translation of red text goes here...' onChange={bookNameInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
             <br />
             
         </div>

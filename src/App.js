@@ -1,11 +1,11 @@
 import React from 'react'
 import { Editor } from 'slate-react'
-import { Value } from 'slate'
+// import { Value } from 'slate'
 import './App.css'
 import Toolbar from './components/Toolbar'
 import Inputs1 from './components/Inputs1'
 import Inputs2 from './components/Inputs2'
-import SVLogo from './images/SVReader.png'
+// import SVLogo from './images/SVReader.png'
 import Html from 'slate-html-serializer'
 import Data from './data/English.json'
 import Language from './components/LanguageInput'
@@ -14,13 +14,13 @@ import axios from 'axios'
 
 const DEFAULT_NODE = 'paragraph'
 
+const initialValue = localStorage.getItem('html') || '<p></p>'
 //----------------------------------------
 //--------------- RULES ------------------
 //----------------------------------------
 // Add a dictionary of Block tags.
 const BLOCK_TAGS = {
   p: 'paragraph',
-  p: 'p',
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
@@ -39,10 +39,11 @@ const rules = [
   // Add our first rule with a deserializing function.
   {
     deserialize(el, next) {
-      if (el.tagName.toLowerCase() === 'p') {
+      const type = BLOCK_TAGS[el.tagName.toLowerCase()]
+      if (type) {
         return {
           object: 'block',
-          type: 'paragraph',
+          type: type,
           data: {
             className: el.getAttribute('class'),
           },
@@ -106,7 +107,7 @@ const rules = [
 const html = new Html({ rules })
 
 // Load the initial value from Local Storage or a default.
-const initialValue = localStorage.getItem('html') || '<p></p>'
+// const initialValue = this.state.savedData.html || `<p></p>`
 
 //----------------------------------------
 //----------- RENDERING JSX --------------
@@ -201,7 +202,6 @@ const plugins = [
   MarkHotkey({ key: 'u', type: 'underline' }),
 ];
 
-
 //----------------------------------------
 //---------------- APP -------------------
 //----------------------------------------
@@ -209,21 +209,8 @@ const plugins = [
 class App extends React.Component {
   state = {
     value: html.deserialize(initialValue),
-    data: Data,
-    story: null,
-    title: "",
-    bookId: null,
-    bookName: "",
-    ref: null,
-    prevPath: "/",
-    path: '/300',
-    nextPath: '/301',
-    display: 'none',
-    questionsTitle: null,
-    Question1: null,
-    Question2: null,
-    Question3: null,
-    Question4: null
+    data: Data[132],
+    savedData: ""
   }
 
 //----------------------------------------
@@ -235,10 +222,11 @@ class App extends React.Component {
     // When the document changes, save the serialized HTML to Local Storage.
     if (value.document !== this.state.value.document) {
       const string = html.serialize(value)
-      localStorage.setItem('html', string)
+      this.setState({html: string})
     }
 
     this.setState({ value })
+    console.log(this.state)
   }
 
   // Define a new handler which prints the key that was pressed.
@@ -349,43 +337,57 @@ class App extends React.Component {
     return value.blocks.some(node => node.type == type)
   }
 
-  // Function to set state and local storage when story selected from dropdown menu
-  handleChange = e => {
+    // Function to set state and local storage when story selected from dropdown menu
+  handleChange = async e => {
     const storyNum = parseInt(e.target.value) + 300;
-    axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${storyNum}.json`)
+    this.setState({data: Data[parseInt(e.target.value)]})
+    await axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${storyNum}.json`)
       .then(response => {
-        this.setState({savedData: response.data})
-        console.log(this.state.savedData)
-      });
-      
-    
+        this.setState({
+          savedData: response.data
+        });
+      }) 
+    console.log(this.state)
     this.setState({
-      story: storyNum,
-      data: Data[e.target.value],
-    })
-    localStorage.setItem('story', storyNum)
-    localStorage.setItem('title', this.state.savedData.title)
-    localStorage.setItem('bookId', this.state.savedData.bookId)
+        value: html.deserialize(this.state.savedData.html)
+      })
+    
+    };
+      
+  
+    // this.setState({
+    //   story: storyNum,
+    //   data: Data[e.target.value],
+    // })
+    // if (this.state.savedData === undefined) {
+    //   console.log('No data saved for this story yet')
+    // } else {
+    //   console.log(this.state.savedData);
+    // }
+    // localStorage.setItem('story', storyNum)
+    // localStorage.setItem('title', this.state.savedData.title || null)
+    // localStorage.setItem('bookId', this.state.savedData.bookId)
     // localStorage.setItem('bookName', Data[e.target.value].bookName)
-    localStorage.setItem('ref', Data[e.target.value].ref)
-    localStorage.setItem('prevPath', Data[e.target.value].prevPath)
-    localStorage.setItem('path', Data[e.target.value].path)
-    localStorage.setItem('nextPath', Data[e.target.value].nextPath)
-    localStorage.setItem('display', Data[e.target.value].display)
+    // localStorage.setItem('ref', Data[e.target.value].ref)
+    // localStorage.setItem('prevPath', Data[e.target.value].prevPath)
+    // localStorage.setItem('path', Data[e.target.value].path)
+    // localStorage.setItem('nextPath', Data[e.target.value].nextPath)
+    // localStorage.setItem('display', Data[e.target.value].display)
     // localStorage.setItem('questionsTitle', Data[e.target.value].questionsTitle)
     // localStorage.setItem('Question1', Data[e.target.value].Question1)
     // localStorage.setItem('Question2', Data[e.target.value].Question2)
     // localStorage.setItem('Question3', Data[e.target.value].Question3)
     // localStorage.setItem('Question4', Data[e.target.value].Question4)
-};
+// };
 
   languageChange = e => {
     this.setState({language: e.target.value})
-    localStorage.setItem('language', e.target.value)
+    // localStorage.setItem('language', e.target.value)
   }
 
   // Render the editor.
   render() {
+    // localStorage.clear();
     return (
     <div style={{
       margin: '0',
@@ -425,11 +427,11 @@ class App extends React.Component {
           languageChange={this.languageChange}
         />
         <Inputs1 
-          storyNum={this.state.story}
-          display={this.state.display}
-          reference={this.state.ref}
-          title={this.state.title}
-          bookName={this.state.bookName}
+          storyNum={this.state.data.story}
+          display={this.state.data.display}
+          reference={this.state.data.ref}
+          title={this.state.data.title}
+          bookName={this.state.data.bookName}
           handleChange={this.handleChange}
         />
       </div>
@@ -457,15 +459,16 @@ class App extends React.Component {
           textAlign: 'left'
         }}>
           <Inputs2 
-            display={this.state.display}
-            questionsTitle={this.state.questionsTitle}
-            Question1={this.state.Question1}
-            Question2={this.state.Question2}
-            Question3={this.state.Question3}
-            Question4={this.state.Question4}
+            display={this.state.data.display}
+            questionsTitle={this.state.data.questionsTitle}
+            Question1={this.state.data.Question1}
+            Question2={this.state.data.Question2}
+            Question3={this.state.data.Question3}
+            Question4={this.state.data.Question4}
           />
           <hr />
           <SaveButton 
+            currentState={this.state.savedData}
             language={localStorage.getItem('language')}
             story={localStorage.getItem('story')}
             display={localStorage.getItem('display')}
