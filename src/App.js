@@ -533,7 +533,7 @@ class App extends React.Component {
         display: this.state.updatedData.display,
         bookId: this.state.updatedData.bookId,
         bookName: this.state.updatedData.bookName,
-        ref: this.state.updatedData.reference,
+        ref: this.state.updatedData.ref,
         prevPath: this.state.updatedData.prevPath,
         nextPath: this.state.updatedData.nextPath,
         path: this.state.updatedData.path,
@@ -545,8 +545,10 @@ class App extends React.Component {
         Question3: this.state.updatedData.Question3,
         Question4: this.state.updatedData.Question4,
     }
+
+    const dataPath = `S${this.state.updatedData.story}`
     
-    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${this.state.updatedData.story}.json`, items)
+    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${dataPath}.json`, items)
     .then(alert('Your data was saved successfully!'))
     .catch(error => alert(`Sorry, there was an error:\n${error}`));
   }
@@ -597,7 +599,7 @@ class App extends React.Component {
         />
         <hr />
         <div style={{marginLeft: '10%', textAlign: 'left'}}>
-          <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.reference}</h1>
+          <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.ref}</h1>
           <p>English Story Title: <span style={{color: 'red'}}>{this.state.data.title}</span></p>
           <PrevData data={this.state.savedData !== null && this.state.savedData.title } />
           <input type='text' placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
