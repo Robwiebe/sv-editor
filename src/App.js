@@ -488,11 +488,12 @@ class App extends React.Component {
   handleChange = async e => {
     const storyData = Data[parseInt(e.target.value)];
     const storyNum = parseInt(e.target.value) + 300;
+    const StoryDBref = `S${storyNum.toString()}`
     this.setState({
       data: storyData,
       updatedData: storyData
     })
-    await axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${storyNum}.json`)
+    await axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${StoryDBref}.json`)
       .then(response => {
         if (response.data !== null) {
         this.setState({
