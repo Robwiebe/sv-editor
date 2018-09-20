@@ -553,8 +553,9 @@ class SVEditor extends Component {
     }
 
     const dataPath = `S${this.state.updatedData.story}`
+    const token = localStorage.getItem('token')
     
-    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${dataPath}.json`, items)
+    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${dataPath}.json?auth=${token}`, items)
     .then(alert('Your data was saved successfully!'))
     .catch(error => alert(`Sorry, there was an error:\n${error}`));
   }
@@ -570,7 +571,7 @@ class SVEditor extends Component {
             color: 'Black',
             fontSize: '20px',
             textAlign:'center',
-            marginTop: '150px'
+            marginTop: '180px'
         }}>Commands:</p>
       <hr style={{width: '120px', margin: '0 auto'}}/>
       <p

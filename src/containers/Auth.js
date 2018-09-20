@@ -4,6 +4,7 @@ import Input from '../components/Input'
 import classes from './Auth.css'
 import axios from 'axios'
 import Credential from '../firebase-key.json'
+import SVEditorLogo from '../images/sv-editor-logo.png'
 
 class Auth extends Component {
     state = {
@@ -149,8 +150,17 @@ class Auth extends Component {
         ));
 
         return (
-            <div className={classes.Auth}>
-                <form onSubmit={this.submitHandler}>
+            <div style={{
+                margin: '20px auto',
+                width: '80%',
+                textAlign: 'center',
+                boxShadow: '0 2px 3px #ccc',
+                border: '1px solid #eee',
+                padding: '10px',
+                boxSizing: 'border-box'
+            }}>
+                <img src={SVEditorLogo} alt="SVEditor Logo" style={{width: '200px', height: 'auto'}}/>
+                <form className={classes.Form} onSubmit={this.submitHandler}>
                     {form}
                     <Button btnType="Success">LOGIN</Button>
                 </form>
