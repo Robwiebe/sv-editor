@@ -560,6 +560,12 @@ class SVEditor extends Component {
     .catch(error => alert(`Sorry, there was an error:\n${error}`));
   }
 
+  logOutButton = (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    this.props.history.push({pathname: '/'});
+  }
+
   // Render the editor.
   render() {
     return (
@@ -571,7 +577,7 @@ class SVEditor extends Component {
             color: 'Black',
             fontSize: '20px',
             textAlign:'center',
-            marginTop: '180px'
+            marginTop: '100px'
         }}>Commands:</p>
       <hr style={{width: '120px', margin: '0 auto'}}/>
       <p
@@ -592,6 +598,7 @@ class SVEditor extends Component {
           blue={event => this.onClickBlock(event, 'h4')}
           footnote={event => this.onClickBlock(event, 'h5')}
           subtitle={event => this.onClickBlock(event, 'h6')}
+          logOutButton={event => this.logOutButton(event)}
       />
       <div style={{
         margin: '0 auto 20px auto',
@@ -609,12 +616,12 @@ class SVEditor extends Component {
           <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.ref}</h1>
           <p>English Story Title: <span style={{color: 'red'}}>{this.state.data.title}</span></p>
           <PrevData data={this.state.savedData !== null && this.state.savedData.title } />
-          <input type='text' placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
+          <input type='text' placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px', boxSizing: "border-box"}} required="required"/>
           <br />
           <hr />
           <p>English Book Name: <span style={{color: 'red'}}>{this.state.data.bookName}</span></p>
           <PrevData data={this.state.savedData !== null && this.state.savedData.bookName } />
-          <input type='text' placeholder='Translation of red text goes here...' onChange={this.bookNameInput} style={{border: 'solid 0.5px black', width: '100%', height: '15px'}} required="required"/>
+          <input type='text' placeholder='Translation of red text goes here...' onChange={this.bookNameInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px', boxSizing: "border-box"}} required="required"/>
           <br />
         </div>
       </div>

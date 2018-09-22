@@ -30,9 +30,9 @@ Editor {
 }
 
 img {
-    height: 50px;
-    width: auto;
-    margin: 5px;
+    height: auto;
+    width: 6.25%;
+    margin: 1%;
 }
 
 p, h1, h2, h3, h4, h5, strong, u, {

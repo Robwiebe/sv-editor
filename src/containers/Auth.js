@@ -113,10 +113,9 @@ class Auth extends Component {
                 localStorage.setItem('UID', response.data.localId)
                 localStorage.setItem('email', this.state.controls.email.value)
                 // localStorage.setItem('password', this.state.controls.password.value)
-
             })
             .catch(error => {
-                console.log(error)
+                console.log(`I caught this ${error}`)
                 this.setState({
                     user: {
                         error: error
@@ -125,6 +124,7 @@ class Auth extends Component {
             })
         console.log(this.state)
         this.props.history.push({pathname: '/editor'})
+        console.log('I did everything before this')
     }
 
     render() {

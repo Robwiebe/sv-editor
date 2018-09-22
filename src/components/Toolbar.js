@@ -10,18 +10,18 @@ import Footnote from '../images/Footnote.png'
 import Subtitle from '../images/Subtitle.png'
 import SVReader from '../images/SVReader.png'
 import Editor from '../images/editor.png'
-import styles from './Toolbar.css'
+import LogOut from '../images/LogOut.png'
 
 const Toolbar = (props) => {
     return (
         <div style={{
-            width: 'fit-content',
+            width: '97.8%',
             height: 'fit-content',
             padding: '4px 4px 0 4px',
             border: '2px solid',
             margin: '0 auto',
-            borderRadius: '10px',
-            textAlign: 'center',
+            // borderRadius: '10px',
+            textAlign: 'left',
             backgroundColor: 'rgba(255,255,255,1)',
             position: 'fixed',
             top: '0',
@@ -29,17 +29,18 @@ const Toolbar = (props) => {
             right: '0',
             zIndex: '1000'
           }}>
-            <img className={styles.toolbarButtons} src={SVReader} alt='Logo' style={{marginRight: '0px'}}/>
-            <img className={styles.toolbarButtons} src={Editor} alt='Logo' style={{marginRight: '20px'}}/>
-            <img className={styles.toolbarButtons} src={Chapter} onClick={props.chapter} alt='Chapter'/>
-            <img className={styles.toolbarButtons} src={Verse} onClick={props.verse} alt='Verse'/>
-            <img className={styles.toolbarButtons} src={Source} onClick={props.source} alt='Source'/>
-            <img className={styles.toolbarButtons} src={Black} onClick={props.black} alt='Black'/>
-            <img className={styles.toolbarButtons} src={Red} onClick={props.red} alt='Red'/>
-            <img className={styles.toolbarButtons} src={Green} onClick={props.green} alt='Green'/>
-            <img className={styles.toolbarButtons} src={Blue} onClick={props.blue} alt='Blue'/>
-            <img className={styles.toolbarButtons} src={Footnote} onClick={props.footnote} alt='Footnote'/>
-            <img className={styles.toolbarButtons} src={Subtitle} onClick={props.subtitle} alt='Subtitle'/>
+            <img src={SVReader} alt='Logo' style={{marginRight: '0px'}}/>
+            <img src={Editor} alt='Logo' style={{marginRight: '2%'}}/>
+            <img src={Chapter} onClick={props.chapter} alt='Chapter'/>
+            <img src={Verse} onClick={props.verse} alt='Verse'/>
+            <img src={Source} onClick={props.source} alt='Source'/>
+            <img src={Black} onClick={props.black} alt='Black'/>
+            <img src={Red} onClick={props.red} alt='Red'/>
+            <img src={Green} onClick={props.green} alt='Green'/>
+            <img src={Blue} onClick={props.blue} alt='Blue'/>
+            <img src={Footnote} onClick={props.footnote} alt='Footnote'/>
+            <img src={Subtitle} onClick={props.subtitle} alt='Subtitle'/>
+            <img src={LogOut} onClick={props.logOutButton} alt='LogOut'/> 
         </div>
     )
 }
