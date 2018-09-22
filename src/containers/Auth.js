@@ -123,8 +123,7 @@ class Auth extends Component {
                 })
             })
         console.log(this.state)
-        this.props.history.push({pathname: '/editor'})
-        console.log('I did everything before this')
+        this.props.history.push({pathname: `/SVB-EDITOR/editor`})
     }
 
     render() {

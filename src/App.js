@@ -14,8 +14,8 @@ class App extends Component {
     return (
       <div>
           <Switch>
-            <Route path="/editor" component={SVEditor} />
-            <Route path="/" exact component={Auth} />
+            <Route path="/SVB-EDITOR/editor" component={SVEditor} />
+            <Route path="/SVB-EDITOR/" exact component={Auth} />
           </Switch>
       </div>
     );

@@ -493,6 +493,7 @@ class SVEditor extends Component {
   handleChange = async e => {
     const storyData = Data[parseInt(e.target.value)];
     const storyNum = parseInt(e.target.value) + 300;
+    console.log(storyNum)
     const StoryDBref = `S${storyNum.toString()}`
     const token = localStorage.getItem('token')
     this.setState({
@@ -505,7 +506,21 @@ class SVEditor extends Component {
         this.setState({
           updatedData: response.data,
           savedData: response.data
-        })};
+        })} 
+        else {
+          this.setState({
+            updatedData: {
+              story: storyNum,
+              html: '<p></p>',
+              ref: storyData.ref,
+              bookId: storyData.bookId,
+              display: storyData.display,
+              nextPath: storyData.nextPath,
+              path: storyData.path,
+              prevPath: storyData.prevPath
+            }
+          })
+        }
       })
 
     if (this.state.savedData.html === undefined) {
@@ -518,18 +533,13 @@ class SVEditor extends Component {
       })
     }
     this.settingInputValues();
+    console.log(this.state);
 
     };
 
   languageChange = e => {
     this.setState({language: e.target.value})
   }
-
-  // previousDataDisplayed = (key) => {
-  //   if (this.state.savedData !== null) {
-  //     return(<p>{key}</p>)
-  //   }
-  // }
 
   saveInput = () => {
     const items = {

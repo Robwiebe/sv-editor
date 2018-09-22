@@ -1,6 +1,6 @@
 {
   "name": "sv-editor",
-  "homepage": "https://sourceviewbible.github.io/sv-editor",
+  "homepage": "https://sourceviewbible.github.io/SVB-EDITOR",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
