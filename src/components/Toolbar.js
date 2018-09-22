@@ -15,13 +15,14 @@ import LogOut from '../images/LogOut.png'
 const Toolbar = (props) => {
     return (
         <div style={{
-            width: '97.8%',
+            width: '97.7%',
             height: 'fit-content',
+            maxHeight: '90px',
             padding: '4px 4px 0 4px',
             border: '2px solid',
             margin: '0 auto',
             // borderRadius: '10px',
-            textAlign: 'left',
+            textAlign: 'center',
             backgroundColor: 'rgba(255,255,255,1)',
             position: 'fixed',
             top: '0',

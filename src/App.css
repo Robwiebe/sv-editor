@@ -31,7 +31,9 @@ Editor {
 
 img {
     height: auto;
+    max-height: 40px;
     width: 6.25%;
+    max-width: 40px;
     margin: 1%;
 }
 

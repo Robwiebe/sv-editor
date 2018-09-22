@@ -362,6 +362,7 @@ class SVEditor extends Component {
       Question4Input.disabled = false;
     }
   }
+  
   onChange = ({ value }) => {
     // When the document changes, save the serialized HTML to Local Storage.
     if (value.document !== this.state.value.document) {
@@ -506,7 +507,7 @@ class SVEditor extends Component {
           savedData: response.data
         })};
       })
-    console.log(this.state)
+
     if (this.state.savedData.html === undefined) {
       this.setState({
         value: html.deserialize(this.state.updatedData.html)
@@ -522,15 +523,13 @@ class SVEditor extends Component {
 
   languageChange = e => {
     this.setState({language: e.target.value})
-    console.log(this.state)
   }
 
-  previousDataDisplayed = (key) => {
-    if (this.state.savedData !== null) {
-      console.log('previousDataDisplayed')
-      return(<p>{key}</p>)
-    }
-  }
+  // previousDataDisplayed = (key) => {
+  //   if (this.state.savedData !== null) {
+  //     return(<p>{key}</p>)
+  //   }
+  // }
 
   saveInput = () => {
     const items = {
@@ -585,7 +584,8 @@ class SVEditor extends Component {
           color: 'Black',
           fontSize: '20px',
           textAlign:'center',
-      }}><span style={{color: 'darkblue'}}>CTRL + ENTER</span>  =  Paragraph break (within the same colored text)</p><br />
+      }}><span style={{color: 'darkblue'}}>CTRL + ENTER</span>  =  Paragraph break (within the same colored text)<br />
+      <span style={{color: 'darkblue'}}>TAB</span>  =  Paragraph Indentation</p><br />
       <hr  style={{width: '420px', margin: '0 auto', border: 'solid 2px'}}/>
       <br />
       <Toolbar
@@ -611,8 +611,9 @@ class SVEditor extends Component {
           storyNum={this.state.data.story}
           handleChange={this.handleChange}
         />
-        <hr />
-        <div style={{marginLeft: '10%', textAlign: 'left'}}>
+        
+        <div style={{marginLeft: '10%', marginRight: '10%', textAlign: 'left'}}>
+          <hr />
           <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.ref}</h1>
           <p>English Story Title: <span style={{color: 'red'}}>{this.state.data.title}</span></p>
           <PrevData data={this.state.savedData !== null && this.state.savedData.title } />
