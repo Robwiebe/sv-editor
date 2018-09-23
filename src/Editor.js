@@ -544,27 +544,23 @@ class SVEditor extends Component {
   clearEditor = () => {
     this.setState({
       savedData: null,
-      updatedData: {
-        story: null,
-        html: '<p></p>',
-        ref: this.state.data.ref,
-        bookId: this.state.data.bookId,
-        display: this.state.data.display,
-        nextPath: this.state.data.nextPath,
-        path: this.state.data.path,
-        prevPath: this.state.data.prevPath
-      },
+      updatedData: undefined,
       data: Data[132],
       language: this.state.language
     });
     document.getElementsByTagName('input').value = "";
+    document.getElementsByTagName('select')[0].options.selectedIndex = "";
+    document.getElementsByTagName('select')[1].options.selectedIndex = "";
+    
+    
     alert('Your data was saved successfully');
     console.log(this.state);
   }
 
   saveInput = async () => {
+    
     const items = {
-        language: this.state.updatedData.language,
+        language: this.state.language,
         story: this.state.updatedData.story,
         display: this.state.updatedData.display,
         bookId: this.state.updatedData.bookId,
@@ -588,7 +584,6 @@ class SVEditor extends Component {
     await axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${dataPath}.json?auth=${token}`, items)
     .then(this.clearEditor())
     .catch(error => alert(`Sorry, there was an error:\n${error}`))
-
   }
 
   logOutButton = (event) => {
@@ -599,6 +594,14 @@ class SVEditor extends Component {
 
   // Render the editor.
   render() {
+
+    let SaveButton = null;
+    if (this.state.updatedData !== undefined) {
+      SaveButton = <button onClick={this.saveInput} style={{height: '40px', width: '100px', padding: '5px', color: 'green', border: '2px, green, solid', borderRadius: '10px', fontStyle: 'bold', fontSize: '20px', margin: '0 auto'}}>SAVE</button>
+    } else {
+      SaveButton = <button style={{height: '40px', width: '100px', padding: '5px', color: 'grey', border: '2px, grey, solid', borderRadius: '10px', fontStyle: 'bold', fontSize: '20px', marginLeft: 'calc(50%-50px)'}}>SAVE</button>
+    }
+
     return (
     <div style={{
       margin: '0',
@@ -709,7 +712,7 @@ class SVEditor extends Component {
         </div>
           <hr />
           <div>
-           <button onClick={this.saveInput} style={{height: '25px', width: 'fit-content', padding: '5px'}}>SAVE</button>
+           {SaveButton}
         </div>
     </div>
     </div>
