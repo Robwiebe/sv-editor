@@ -152,6 +152,7 @@ class Auth extends Component {
             <div style={{
                 margin: '20px auto',
                 width: '80%',
+                maxWidth: '300px',
                 textAlign: 'center',
                 boxShadow: '0 2px 3px #ccc',
                 border: '1px solid #eee',
