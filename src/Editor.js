@@ -541,7 +541,28 @@ class SVEditor extends Component {
     this.setState({language: e.target.value})
   }
 
-  saveInput = () => {
+  clearEditor = () => {
+    this.setState({
+      savedData: null,
+      updatedData: {
+        story: null,
+        html: '<p></p>',
+        ref: this.state.data.ref,
+        bookId: this.state.data.bookId,
+        display: this.state.data.display,
+        nextPath: this.state.data.nextPath,
+        path: this.state.data.path,
+        prevPath: this.state.data.prevPath
+      },
+      data: Data[132],
+      language: this.state.language
+    });
+    document.getElementsByTagName('input').value = "";
+    alert('Your data was saved successfully');
+    console.log(this.state);
+  }
+
+  saveInput = async () => {
     const items = {
         language: this.state.updatedData.language,
         story: this.state.updatedData.story,
@@ -564,15 +585,16 @@ class SVEditor extends Component {
     const dataPath = `S${this.state.updatedData.story}`
     const token = localStorage.getItem('token')
     
-    axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${dataPath}.json?auth=${token}`, items)
-    .then(alert('Your data was saved successfully!'))
-    .catch(error => alert(`Sorry, there was an error:\n${error}`));
+    await axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${dataPath}.json?auth=${token}`, items)
+    .then(this.clearEditor())
+    .catch(error => alert(`Sorry, there was an error:\n${error}`))
+
   }
 
   logOutButton = (event) => {
     event.preventDefault();
     localStorage.clear();
-    this.props.history.push({pathname: '/'});
+    this.props.history.push({pathname: '/SVB-EDITOR/'});
   }
 
   // Render the editor.
