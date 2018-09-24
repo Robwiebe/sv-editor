@@ -549,7 +549,7 @@ class SVEditor extends Component {
       language: this.state.language
     });
     document.getElementsByTagName('input').value = "";
-    document.getElementsByTagName('select')[0].options.selectedIndex = "";
+    // document.getElementsByTagName('select')[0].options.selectedIndex = "";
     document.getElementsByTagName('select')[1].options.selectedIndex = "";
     
     
