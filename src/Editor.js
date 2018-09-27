@@ -8,6 +8,7 @@ import Data from './data/English.json'
 import Language from './components/LanguageInput'
 import PrevData from './components/PrevData'
 import axios from 'axios'
+import databaseURL from './firebase-key.json'
 
 const DEFAULT_NODE = 'p'
 
@@ -500,7 +501,7 @@ class SVEditor extends Component {
       data: storyData,
       updatedData: storyData
     })
-    await axios.get(`https://sourceview-reader.firebaseio.com/${this.state.language}/${StoryDBref}.json?auth=${token}`)
+    await axios.get(`${databaseURL.databaseURL}/${this.state.language}/${StoryDBref}.json?auth=${token}`)
       .then(response => {
         if (response.data !== null) {
         this.setState({
@@ -522,7 +523,6 @@ class SVEditor extends Component {
           })
         }
       })
-
     if (this.state.savedData.html === undefined) {
       this.setState({
         value: html.deserialize(this.state.updatedData.html)
@@ -581,7 +581,7 @@ class SVEditor extends Component {
     const dataPath = `S${this.state.updatedData.story}`
     const token = localStorage.getItem('token')
     
-    await axios.put(`https://sourceview-reader.firebaseio.com/${this.state.language}/${dataPath}.json?auth=${token}`, items)
+    await axios.put(`${databaseURL.databaseURL}/${this.state.language}/${dataPath}.json?auth=${token}`, items)
     .then(this.clearEditor())
     .catch(error => alert(`Sorry, there was an error:\n${error}`))
   }
