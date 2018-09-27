@@ -206,7 +206,7 @@ const plugins = [
 class SVEditor extends Component {
   state = {
     value: html.deserialize(initialValue),
-    data: Data[132],
+    data: Data,
     savedData: "",
     user: {
       UID: localStorage.getItem('UID'),
@@ -228,7 +228,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           title: val,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         })
       )
@@ -243,7 +243,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           bookName: val,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         })
       )
@@ -258,7 +258,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           questionsTitle: val,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         })
       )
@@ -273,7 +273,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question1: val,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         })
       )
@@ -288,7 +288,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question2: val,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         })
       )
@@ -303,7 +303,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question3: val,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         })
       )
@@ -318,7 +318,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question4: val,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         })
       )
@@ -373,7 +373,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           html: string,
-          story: this.state.data.story + 300
+          story: this.state.data.segment
           }
         }))
     }
@@ -492,16 +492,18 @@ class SVEditor extends Component {
 
     // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
-    const storyData = Data[parseInt(e.target.value)];
-    const storyNum = parseInt(e.target.value) + 300;
-    console.log(storyNum)
-    const StoryDBref = `S${storyNum.toString()}`
+    console.log(e.target.value)
+    const segment = e.target.value
+    const StoryDBref = segment
+    const storyData = Data[segment]
     const token = localStorage.getItem('token')
+    
     this.setState({
-      data: storyData,
-      updatedData: storyData
+      data: Data[segment],
+      updatedData: Data.segment
     })
-    await axios.get(`${databaseURL.databaseURL}/${this.state.language}/${StoryDBref}.json?auth=${token}`)
+    console.log(this.state)
+    await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Segments/${StoryDBref}.json?auth=${token}`)
       .then(response => {
         if (response.data !== null) {
         this.setState({
@@ -511,7 +513,7 @@ class SVEditor extends Component {
         else {
           this.setState({
             updatedData: {
-              story: storyNum,
+              story: segment,
               html: '<p></p>',
               ref: storyData.ref,
               bookId: storyData.bookId,
@@ -519,6 +521,15 @@ class SVEditor extends Component {
               nextPath: storyData.nextPath,
               path: storyData.path,
               prevPath: storyData.prevPath
+            },
+            savedData: {
+              title: "",
+              bookName: "",
+              questionsTitle: "",
+              Question1: "",
+              Question2: "",
+              Question3: "",
+              Question4: ""
             }
           })
         }
@@ -545,7 +556,7 @@ class SVEditor extends Component {
     this.setState({
       savedData: null,
       updatedData: undefined,
-      data: Data[132],
+      data: Data.I040,
       language: this.state.language
     });
     document.getElementsByTagName('input').value = "";
@@ -578,10 +589,10 @@ class SVEditor extends Component {
         Question4: this.state.updatedData.Question4,
     }
 
-    const dataPath = `S${this.state.updatedData.story}`
+    const dataPath = `${this.state.updatedData.story}`
     const token = localStorage.getItem('token')
     
-    await axios.put(`${databaseURL.databaseURL}/${this.state.language}/${dataPath}.json?auth=${token}`, items)
+    await axios.put(`${databaseURL.databaseURL}/${this.state.language}/Segments/${dataPath}.json?auth=${token}`, items)
     .then(this.clearEditor())
     .catch(error => alert(`Sorry, there was an error:\n${error}`))
   }
@@ -594,7 +605,7 @@ class SVEditor extends Component {
 
   // Render the editor.
   render() {
-
+    console.log(this.state.data)
     let SaveButton = null;
     if (this.state.updatedData !== undefined) {
       SaveButton = <button onClick={this.saveInput} style={{height: '40px', width: '100px', padding: '5px', color: 'green', border: '2px, green, solid', borderRadius: '10px', fontStyle: 'bold', fontSize: '20px', margin: '0 auto'}}>SAVE</button>
@@ -643,7 +654,6 @@ class SVEditor extends Component {
           languageChange={this.languageChange}
         />
         <Inputs1 
-          storyNum={this.state.data.story}
           handleChange={this.handleChange}
         />
         
