@@ -9,6 +9,7 @@ import Language from './components/LanguageInput'
 import PrevData from './components/PrevData'
 import axios from 'axios'
 import databaseURL from './firebase-key.json'
+import Sources from './data/Sources-by-Story.json'
 
 const DEFAULT_NODE = 'p'
 
@@ -207,11 +208,13 @@ class SVEditor extends Component {
   state = {
     value: html.deserialize(initialValue),
     data: Data,
+    segment: "S001",
     savedData: "",
     user: {
       UID: localStorage.getItem('UID'),
       token: localStorage.getItem('token')
-    }
+    },
+    sources: []
 
   }
 
@@ -490,7 +493,17 @@ class SVEditor extends Component {
     return value.blocks.some(node => node.type == type)
   }
 
-    // Function to set state and local storage when story selected from dropdown menu
+  grabSources = async e => {
+    console.log(e)
+    await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Sources/${this.state.segment}.json`)
+    .then(response =>
+      this.setState({
+        sources: response.data
+      }))
+    .catch(error => console.log(error))
+    console.log(this.state.sources)
+  } 
+  // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
     console.log(e.target.value)
     const segment = e.target.value
@@ -500,7 +513,8 @@ class SVEditor extends Component {
     
     this.setState({
       data: Data[segment],
-      updatedData: Data.segment
+      updatedData: Data.segment,
+      segment: segment
     })
     console.log(this.state)
     await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Segments/${StoryDBref}.json?auth=${token}`)
@@ -544,6 +558,7 @@ class SVEditor extends Component {
       })
     }
     this.settingInputValues();
+    this.grabSources(segment);
     console.log(this.state);
 
     };
@@ -645,6 +660,7 @@ class SVEditor extends Component {
           footnote={event => this.onClickBlock(event, 'h5')}
           subtitle={event => this.onClickBlock(event, 'h6')}
           logOutButton={event => this.logOutButton(event)}
+          sources={this.state.sources}
       />
       <div style={{
         margin: '0 auto 20px auto',
@@ -682,6 +698,7 @@ class SVEditor extends Component {
           padding: '5px'
         }}
         placeholder="Paste Your Bible text here..."
+        sources={this.state.sources}
         plugins={plugins}
         value={this.state.value} 
         onChange={this.onChange}
@@ -792,10 +809,12 @@ class SVEditor extends Component {
     }
 
     this.onChange(change)
+    console.log("onClickBlock was clicked")
   }
 
 // Add a `renderNode` method to render blocks.
   renderNode = props => {
+    console.log(props.editor.props);
     switch (props.node.type) {
       case 'p':
         return <ParagraphNode {...props} />;

@@ -12,15 +12,16 @@ import SVReader from '../images/SVReader.png'
 import Editor from '../images/editor.png'
 import LogOut from '../images/LogOut.png'
 // import Popup from 'reactjs-popup';
+import Sources from '../data/Sources-by-Story.json'
 
 const Toolbar = (props) => {
-
-    // console.log(props.data.sources)
+    // const sources = Object.values(props.sources)
+    console.log(Object.values(props.sources))
     return (
         <div style={{
             width: '97.7%',
             height: 'fit-content',
-            maxHeight: '90px',
+            // maxHeight: '90px',
             padding: '4px 4px 0 4px',
             border: '2px solid',
             margin: '0 auto',
@@ -48,7 +49,7 @@ const Toolbar = (props) => {
                 <div>
                     <select id="Sources" style={{fontSize: '15px', height: '30px', margin: '10px'}}>
                         <option value="">Select Source</option>
-                        {props.data.sources.map(source  => <option value={source} key={source}>{source}</option>)}
+                        {props.sources.map(source  => <option value={source} key={source}>{source}</option>)}
                     </select> 
                     <button onClick={props.renderBubble}>OK</button>
                 </div>
@@ -58,7 +59,18 @@ const Toolbar = (props) => {
             <img src={Footnote} onClick={props.footnote} alt='Footnote'/>
             <img src={Subtitle} onClick={props.subtitle} alt='Subtitle'/>
             <img src={LogOut} onClick={props.logOutButton} alt='LogOut'/>
-            {/* <SourcesPopup sources={props.data.sources} red={props.red}/> */}
+            <br />
+        {(Object.values(props.sources)).map(source  => {
+            let sourceColor = source.color;
+            switch (source.color) {
+                case 'red':
+                  return <button style={{color: `${sourceColor}`, borderColor: `${sourceColor}`, margin: '3px'}} value={source.name} key={source.key} onClick={props.red}>{source.name}</button>;
+                case 'green':
+                  return <button style={{color: `${sourceColor}`, borderColor: `${sourceColor}`, margin: '3px'}} value={source.name} key={source.key} onClick={props.green}>{source.name}</button>;
+                case 'blue':
+                  return <button style={{color: `${sourceColor}`, borderColor: `${sourceColor}`, margin: '3px'}} value={source.name} key={source.key} onClick={props.blue}>{source.name}</button>;
+            }
+        })}
         </div>
     )
 }
