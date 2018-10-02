@@ -486,13 +486,22 @@ class SVEditor extends Component {
     return value.blocks.some(node => node.type === type)
   }
 
+<<<<<<< HEAD
   grabSources = async () => {
+=======
+  grabSources = async e => {
+    console.log(e)
+>>>>>>> e9320b8a31af98eb1b55eceab5fcb8c3f3ab430b
     await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Sources/${this.state.segment}.json`)
     .then(response =>
       this.setState({
         sources: response.data
       }))
     .catch(error => console.log(error))
+<<<<<<< HEAD
+=======
+    console.log(this.state.sources)
+>>>>>>> e9320b8a31af98eb1b55eceab5fcb8c3f3ab430b
   } 
   // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
@@ -548,6 +557,10 @@ class SVEditor extends Component {
     }
     this.settingInputValues();
     this.grabSources(segment);
+<<<<<<< HEAD
+=======
+    console.log(this.state);
+>>>>>>> e9320b8a31af98eb1b55eceab5fcb8c3f3ab430b
 
     };
 
