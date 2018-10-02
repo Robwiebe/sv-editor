@@ -100,7 +100,6 @@ class Auth extends Component {
         }
         await axios.post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${Credential.apiKey}`, authData)
             .then (response => {
-                console.log(response.data)
                 this.setState({
                     user: {
                         token: response.data.idToken,

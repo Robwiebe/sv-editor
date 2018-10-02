@@ -15,12 +15,13 @@ import LogOut from '../images/LogOut.png'
 
 const Toolbar = (props) => {
 
-    // console.log(props.data.sources)
+    
+
     return (
         <div style={{
             width: '97.7%',
             height: 'fit-content',
-            maxHeight: '90px',
+            // maxHeight: '90px',
             padding: '4px 4px 0 4px',
             border: '2px solid',
             margin: '0 auto',
@@ -40,25 +41,11 @@ const Toolbar = (props) => {
             <img src={Source} onClick={props.source} alt='Source'/>
             <img src={Black} onClick={props.black} alt='Black'/>
             <img src={Red} onClick={props.red} alt='Red'/>
-            {/* <Popup
-                trigger={<img src={Red} onClick={props.red} alt='Red'/>}
-                position="bottom center"
-                closeOnDocumentClick
-                >
-                <div>
-                    <select id="Sources" style={{fontSize: '15px', height: '30px', margin: '10px'}}>
-                        <option value="">Select Source</option>
-                        {props.data.sources.map(source  => <option value={source} key={source}>{source}</option>)}
-                    </select> 
-                    <button onClick={props.renderBubble}>OK</button>
-                </div>
-            </Popup> */}
             <img src={Green} onClick={props.green} alt='Green'/>
             <img src={Blue} onClick={props.blue} alt='Blue'/>
             <img src={Footnote} onClick={props.footnote} alt='Footnote'/>
             <img src={Subtitle} onClick={props.subtitle} alt='Subtitle'/>
             <img src={LogOut} onClick={props.logOutButton} alt='LogOut'/>
-            {/* <SourcesPopup sources={props.data.sources} red={props.red}/> */}
         </div>
     )
 }

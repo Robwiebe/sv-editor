@@ -70,6 +70,8 @@ const rules = [
             return <h5>{children}</h5>
           case 'h6':
             return <h6>{children}</h6>
+          default:
+            return <p className={obj.data.get('className')}>{children}</p>
         }
       }
     },
@@ -207,11 +209,13 @@ class SVEditor extends Component {
   state = {
     value: html.deserialize(initialValue),
     data: Data,
+    segment: "S001",
     savedData: "",
     user: {
       UID: localStorage.getItem('UID'),
       token: localStorage.getItem('token')
-    }
+    },
+    sources: []
 
   }
 
@@ -232,7 +236,6 @@ class SVEditor extends Component {
           }
         })
       )
-      console.log(this.state)
   }
 
   bookNameInput = (event) => {
@@ -247,7 +250,6 @@ class SVEditor extends Component {
           }
         })
       )
-      console.log(this.state)
   }
   
   qTitleInput = (event) => {
@@ -262,7 +264,6 @@ class SVEditor extends Component {
           }
         })
       )
-      console.log(this.state)
   }
   
   q1Input = (event) => {
@@ -277,7 +278,6 @@ class SVEditor extends Component {
           }
         })
       )
-      console.log(this.state)
   }
   
   q2Input = (event) => {
@@ -292,7 +292,6 @@ class SVEditor extends Component {
           }
         })
       )
-      console.log(this.state)
   }
   
   q3Input = (event) => {
@@ -307,7 +306,6 @@ class SVEditor extends Component {
           }
         })
       )
-      console.log(this.state)
   }
   
   q4Input = (event) => {
@@ -322,7 +320,6 @@ class SVEditor extends Component {
           }
         })
       )
-      console.log(this.state)
   }
 
   settingInputValues = () => {
@@ -379,7 +376,6 @@ class SVEditor extends Component {
     }
 
     this.setState({ value })
-    console.log(this.state)
   }
 
   // Define a new handler which prints the key that was pressed.
@@ -475,7 +471,7 @@ class SVEditor extends Component {
 
   hasMark = type => {
     const { value } = this.state
-    return value.activeMarks.some(mark => mark.type == type)
+    return value.activeMarks.some(mark => mark.type === type)
   }
 
   /**
@@ -487,12 +483,19 @@ class SVEditor extends Component {
 
   hasBlock = type => {
     const { value } = this.state
-    return value.blocks.some(node => node.type == type)
+    return value.blocks.some(node => node.type === type)
   }
 
-    // Function to set state and local storage when story selected from dropdown menu
+  grabSources = async () => {
+    await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Sources/${this.state.segment}.json`)
+    .then(response =>
+      this.setState({
+        sources: response.data
+      }))
+    .catch(error => console.log(error))
+  } 
+  // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
-    console.log(e.target.value)
     const segment = e.target.value
     const StoryDBref = segment
     const storyData = Data[segment]
@@ -500,9 +503,9 @@ class SVEditor extends Component {
     
     this.setState({
       data: Data[segment],
-      updatedData: Data.segment
+      updatedData: Data.segment,
+      segment: segment
     })
-    console.log(this.state)
     await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Segments/${StoryDBref}.json?auth=${token}`)
       .then(response => {
         if (response.data !== null) {
@@ -544,7 +547,7 @@ class SVEditor extends Component {
       })
     }
     this.settingInputValues();
-    console.log(this.state);
+    this.grabSources(segment);
 
     };
 
@@ -565,7 +568,6 @@ class SVEditor extends Component {
     
     
     alert('Your data was saved successfully');
-    console.log(this.state);
   }
 
   saveInput = async () => {
@@ -605,7 +607,7 @@ class SVEditor extends Component {
 
   // Render the editor.
   render() {
-    console.log(this.state.data)
+    console.log(this.state)
     let SaveButton = null;
     if (this.state.updatedData !== undefined) {
       SaveButton = <button onClick={this.saveInput} style={{height: '40px', width: '100px', padding: '5px', color: 'green', border: '2px, green, solid', borderRadius: '10px', fontStyle: 'bold', fontSize: '20px', margin: '0 auto'}}>SAVE</button>
@@ -645,6 +647,7 @@ class SVEditor extends Component {
           footnote={event => this.onClickBlock(event, 'h5')}
           subtitle={event => this.onClickBlock(event, 'h6')}
           logOutButton={event => this.logOutButton(event)}
+          sources={this.state.sources}
       />
       <div style={{
         margin: '0 auto 20px auto',
@@ -682,6 +685,7 @@ class SVEditor extends Component {
           padding: '5px'
         }}
         placeholder="Paste Your Bible text here..."
+        sources={this.state.sources}
         plugins={plugins}
         value={this.state.value} 
         onChange={this.onChange}
@@ -721,9 +725,71 @@ class SVEditor extends Component {
             <br />
         </div>
           <hr />
-          <div>
-           {SaveButton}
-        </div>
+          <div style={{margin: '0 auto 100px auto'}}>
+            {SaveButton}
+          </div>
+    </div>
+    <div style={{
+            width: '97.7%',
+            height: 'fit-content',
+            // maxHeight: '90px',
+            padding: '4px 4px 0 4px',
+            border: '2px solid',
+            margin: '0 auto',
+            // borderRadius: '10px',
+            textAlign: 'center',
+            backgroundColor: 'rgba(255,255,255,1)',
+            position: 'fixed',
+            bottom: '0',
+            left: '0',
+            right: '0',
+            zIndex: '1000'
+          }}>
+          {(Object.values(this.state.sources)).map(source  => {
+            switch (source.color) {
+                case 'red':
+                  return <p style={{
+                    color: `#d60000`, 
+                    fontSize: '10px',
+                    fontStyle: 'bold',
+                    margin: '5px',
+                    borderRadius: '15px',
+                    width: 'fit-content',
+                    padding: '3px',
+                    float: 'left'
+                    }} id={source.name} 
+                    key={source.key} 
+                    >{source.name}</p>;
+                case 'green':
+                  return <p style={{
+                    color: `#006400`, 
+                    fontSize: '10px', 
+                    fontStyle: 'bold',
+                    margin: '5px',
+                    borderRadius: '15px',
+                    width: 'fit-content',
+                    padding: '3px',
+                    float: 'left'
+                    }} id={source.name} 
+                    key={source.key} 
+                    >{source.name}</p>;
+                case 'blue':
+                  return <p style={{
+                    color: `blue`, 
+                    margin: '5px',
+                    fontSize: '10px',
+                    fontStyle: 'bold',
+                    borderRadius: '15px',
+                    width: 'fit-content',
+                    padding: '3px',
+                    float: 'left'
+                    }} id={source.name} 
+                    key={source.key} 
+                    >{source.name}</p>;
+                default:
+                    return
+            }
+        })}
     </div>
     </div>
     )}
@@ -753,43 +819,44 @@ class SVEditor extends Component {
     event.preventDefault()
     const { value } = this.state
     const change = value.change()
-    const { document } = value
+    // const { document } = value
 
     // Handle everything but list buttons.
-    if (type != 'bulleted-list' && type != 'numbered-list') {
+    // if (type != 'bulleted-list' && type != 'numbered-list') {
       const isActive = this.hasBlock(type)
-      const isList = this.hasBlock('list-item')
+      // const isList = this.hasBlock('list-item')
 
-      if (isList) {
-        change
-          .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock('bulleted-list')
-          .unwrapBlock('numbered-list')
-      } else {
+      // if (isList) {
+      //   change
+      //     .setBlocks(isActive ? DEFAULT_NODE : type)
+      //     .unwrapBlock('bulleted-list')
+      //     .unwrapBlock('numbered-list')
+      // } else {
         change.setBlocks(isActive ? DEFAULT_NODE : type)
-      }
-    } else {
-      // Handle the extra wrapping required for list buttons.
-      const isList = this.hasBlock('list-item')
-      const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type == type)
-      })
+      // }
+    // } 
+    // else {
+    //   // Handle the extra wrapping required for list buttons.
+    //   const isList = this.hasBlock('list-item')
+    //   const isType = value.blocks.some(block => {
+    //     return !!document.getClosest(block.key, parent => parent.type == type)
+    //   })
 
-      if (isList && isType) {
-        change
-          .setBlocks(DEFAULT_NODE)
-          .unwrapBlock('bulleted-list')
-          .unwrapBlock('numbered-list')
-      } else if (isList) {
-        change
-          .unwrapBlock(
-            type == 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
-          )
-          .wrapBlock(type)
-      } else {
-        change.setBlocks('list-item').wrapBlock(type)
-      }
-    }
+    //   if (isList && isType) {
+    //     change
+    //       .setBlocks(DEFAULT_NODE)
+    //       .unwrapBlock('bulleted-list')
+    //       .unwrapBlock('numbered-list')
+    //   } else if (isList) {
+    //     change
+    //       .unwrapBlock(
+    //         type == 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
+    //       )
+    //       .wrapBlock(type)
+    //   } else {
+    //     change.setBlocks('list-item').wrapBlock(type)
+    //   }
+    // }
 
     this.onChange(change)
   }
@@ -811,6 +878,9 @@ class SVEditor extends Component {
         return <Heading5Node {...props} />;
       case 'h6':
         return <Heading6Node {...props} />;
+      default:
+        return 
+    
     }
   }
 
@@ -826,6 +896,8 @@ class SVEditor extends Component {
         return <del>{props.children}</del>
       case 'underline':
         return <u>{props.children}</u>
+      default:
+        return
     }
   }
 }

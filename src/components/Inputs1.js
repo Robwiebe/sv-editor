@@ -3,7 +3,7 @@ import React from 'react'
 const Inputs = (props) => {      
     return (
         <div style={{textAlign: 'left', margin: '0 auto', width: '80%'}}>
-            <p style={{textDecoration: 'underline', color: 'darkred'}}>SELECT YOUR STORY:</p><p>Story Number:</p>
+            <p style={{textDecoration: 'underline', color: 'darkred'}}>SELECT YOUR SEGMENT:</p><p>Segment Number:</p>
             <select name="Story Number" onChange={props.handleChange} style={{fontSize: '12px', height: '30px', margin: '10px'}}>
                 <option value='null'>-</option>
                 <option value="I040">I040 - Introduction to Matthew (Matthew )</option>
