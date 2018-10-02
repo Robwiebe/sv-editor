@@ -11,12 +11,8 @@ import Subtitle from '../images/Subtitle.png'
 import SVReader from '../images/SVReader.png'
 import Editor from '../images/editor.png'
 import LogOut from '../images/LogOut.png'
-// import Popup from 'reactjs-popup';
 
 const Toolbar = (props) => {
-
-    
-
     return (
         <div style={{
             width: '97.7%',

@@ -486,22 +486,13 @@ class SVEditor extends Component {
     return value.blocks.some(node => node.type === type)
   }
 
-<<<<<<< HEAD
   grabSources = async () => {
-=======
-  grabSources = async e => {
-    console.log(e)
->>>>>>> e9320b8a31af98eb1b55eceab5fcb8c3f3ab430b
     await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Sources/${this.state.segment}.json`)
     .then(response =>
       this.setState({
         sources: response.data
       }))
     .catch(error => console.log(error))
-<<<<<<< HEAD
-=======
-    console.log(this.state.sources)
->>>>>>> e9320b8a31af98eb1b55eceab5fcb8c3f3ab430b
   } 
   // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
@@ -557,11 +548,6 @@ class SVEditor extends Component {
     }
     this.settingInputValues();
     this.grabSources(segment);
-<<<<<<< HEAD
-=======
-    console.log(this.state);
->>>>>>> e9320b8a31af98eb1b55eceab5fcb8c3f3ab430b
-
     };
 
   languageChange = e => {
@@ -765,7 +751,7 @@ class SVEditor extends Component {
                     color: `#d60000`, 
                     fontSize: '10px',
                     fontStyle: 'bold',
-                    margin: '5px',
+                    margin: '2px 5px',
                     borderRadius: '15px',
                     width: 'fit-content',
                     padding: '3px',
@@ -778,7 +764,7 @@ class SVEditor extends Component {
                     color: `#006400`, 
                     fontSize: '10px', 
                     fontStyle: 'bold',
-                    margin: '5px',
+                    margin: '2px 5px',
                     borderRadius: '15px',
                     width: 'fit-content',
                     padding: '3px',
@@ -789,7 +775,7 @@ class SVEditor extends Component {
                 case 'blue':
                   return <p style={{
                     color: `blue`, 
-                    margin: '5px',
+                    margin: '2px 5px',
                     fontSize: '10px',
                     fontStyle: 'bold',
                     borderRadius: '15px',
@@ -872,6 +858,7 @@ class SVEditor extends Component {
     // }
 
     this.onChange(change)
+    console.log("onClickBlock was clicked")
   }
 
 // Add a `renderNode` method to render blocks.
