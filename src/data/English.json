@@ -1,4 +1,2954 @@
 {
+  "I001": {
+    "segment": "I001",
+    "bookId": 1,
+    "book": "Genesis",
+    "title": "Introduction to Genesis",
+    "prevPath": "/",
+    "path": "/001",
+    "nextPath": "/002"
+  },
+  "S001": {
+    "segment": "S001",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "1:1-2:25",
+    "title": "God Creates",
+    "prevPath": "/001",
+    "path": "/002",
+    "nextPath": "/003"
+  },
+  "S002": {
+    "segment": "S002",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "3:1-5:32",
+    "title": "People Sin",
+    "prevPath": "/002",
+    "path": "/003",
+    "nextPath": "/004"
+  },
+  "S003": {
+    "segment": "S003",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "6:1-9:29",
+    "title": "The Flood",
+    "prevPath": "/003",
+    "path": "/004",
+    "nextPath": "/005"
+  },
+  "S004": {
+    "segment": "S004",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "10:1-11:26",
+    "title": "The Tower",
+    "prevPath": "/004",
+    "path": "/005",
+    "nextPath": "/006"
+  },
+  "S005": {
+    "segment": "S005",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "11:27-14:24",
+    "title": "Abraham Obeys God's Call",
+    "prevPath": "/005",
+    "path": "/006",
+    "nextPath": "/007"
+  },
+  "S006": {
+    "segment": "S006",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "15:1-18:15",
+    "title": "God Makes A Covenant With Abraham",
+    "prevPath": "/006",
+    "path": "/007",
+    "nextPath": "/008"
+  },
+  "S007": {
+    "segment": "S007",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "18:16-19:38",
+    "title": "Sodom & Gomorrah",
+    "prevPath": "/007",
+    "path": "/008",
+    "nextPath": "/009"
+  },
+  "S008": {
+    "segment": "S008",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "20:1-23:20",
+    "title": "Abraham's Faith Tested",
+    "prevPath": "/008",
+    "path": "/009",
+    "nextPath": "/010"
+  },
+  "S009": {
+    "segment": "S009",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "24:1-25:26",
+    "title": "Isaac: The Family Expands",
+    "prevPath": "/009",
+    "path": "/010",
+    "nextPath": "/011"
+  },
+  "S010": {
+    "segment": "S010",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "25:27-28:9",
+    "title": "Jacob Deceives Isaac & Steals the Blessing",
+    "prevPath": "/010",
+    "path": "/011",
+    "nextPath": "/012"
+  },
+  "S011": {
+    "segment": "S011",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "28:10-30:43",
+    "title": "Jacob: The Family Expands",
+    "prevPath": "/011",
+    "path": "/012",
+    "nextPath": "/013"
+  },
+  "S012": {
+    "segment": "S012",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "31:1-33:20",
+    "title": "Jacob Flees Laban & Wrestles With God",
+    "prevPath": "/012",
+    "path": "/013",
+    "nextPath": "/014"
+  },
+  "S013": {
+    "segment": "S013",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "34:1-36:43",
+    "title": "Jacob Resettles in Canaan",
+    "prevPath": "/013",
+    "path": "/014",
+    "nextPath": "/015"
+  },
+  "S014": {
+    "segment": "S014",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "37:1-40:23",
+    "title": "Joseph the Dreamer Suffers Hardship",
+    "prevPath": "/014",
+    "path": "/015",
+    "nextPath": "/016"
+  },
+  "S015": {
+    "segment": "S015",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "41:1-43:34",
+    "title": "A Miraculous Turn of Events in Egypt",
+    "prevPath": "/015",
+    "path": "/016",
+    "nextPath": "/017"
+  },
+  "S016": {
+    "segment": "S016",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "44:1-47:26",
+    "title": "Joseph Reunites With His Family",
+    "prevPath": "/016",
+    "path": "/017",
+    "nextPath": "/018"
+  },
+  "S017": {
+    "segment": "S017",
+    "bookId": 1,
+    "book": "Genesis",
+    "ref": "47:27-50:26",
+    "title": "The Last Days of Jacob & Joseph",
+    "prevPath": "/017",
+    "path": "/018",
+    "nextPath": "/019"
+  },
+  "I002": {
+    "segment": "I002",
+    "bookId": 2,
+    "book": "Exodus",
+    "title": "Introduction to Exodus",
+    "prevPath": "/018",
+    "path": "/019",
+    "nextPath": "/020"
+  },
+  "S018": {
+    "segment": "S018",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "1:1-4:31",
+    "title": "Israelites Enslaved & Moses Called",
+    "prevPath": "/019",
+    "path": "/020",
+    "nextPath": "/021"
+  },
+  "S019": {
+    "segment": "S019",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "5:1-7:13",
+    "title": "Moses Returns to Egypt & Faces Pharaoh",
+    "prevPath": "/020",
+    "path": "/021",
+    "nextPath": "/022"
+  },
+  "S020": {
+    "segment": "S020",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "7:14-10:29",
+    "title": "The Nine Plagues",
+    "prevPath": "/021",
+    "path": "/022",
+    "nextPath": "/023"
+  },
+  "S021": {
+    "segment": "S021",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "11:1-13:16",
+    "title": "The Passover",
+    "prevPath": "/022",
+    "path": "/023",
+    "nextPath": "/024"
+  },
+  "S022": {
+    "segment": "S022",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "13:17-15:21",
+    "title": "Israelites Leave Egypt & Cross the Red Sea",
+    "prevPath": "/023",
+    "path": "/024",
+    "nextPath": "/025"
+  },
+  "S023": {
+    "segment": "S023",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "15:22-18:27",
+    "title": "The Wilderness Journey to Sinai",
+    "prevPath": "/024",
+    "path": "/025",
+    "nextPath": "/026"
+  },
+  "S024": {
+    "segment": "S024",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "19:1-20:21",
+    "title": "The Ten Commandments",
+    "prevPath": "/025",
+    "path": "/026",
+    "nextPath": "/027"
+  },
+  "S025": {
+    "segment": "S025",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "20:22-23:33",
+    "title": "Covenantal Laws",
+    "prevPath": "/026",
+    "path": "/027",
+    "nextPath": "/028"
+  },
+  "S026": {
+    "segment": "S026",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "24:1-27:21",
+    "title": "Instructions For the Tabernacle 1",
+    "prevPath": "/027",
+    "path": "/028",
+    "nextPath": "/029"
+  },
+  "S027": {
+    "segment": "S027",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "28:1-29:46",
+    "title": "Instructions For the Priests",
+    "prevPath": "/028",
+    "path": "/029",
+    "nextPath": "/030"
+  },
+  "S028": {
+    "segment": "S028",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "30:1-31:18",
+    "title": "Instructions For the Tabernacle 2",
+    "prevPath": "/029",
+    "path": "/030",
+    "nextPath": "/031"
+  },
+  "S029": {
+    "segment": "S029",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "32:1-34:35",
+    "title": "Israel's Idolatry & God's Mercy",
+    "prevPath": "/030",
+    "path": "/031",
+    "nextPath": "/032"
+  },
+  "S030": {
+    "segment": "S030",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "35:1-38:31",
+    "title": "Tabernacle Construction Begins",
+    "prevPath": "/031",
+    "path": "/032",
+    "nextPath": "/033"
+  },
+  "S031": {
+    "segment": "S031",
+    "bookId": 2,
+    "book": "Exodus",
+    "ref": "39:1-40:38",
+    "title": "Tabernacle Finished & Filled with God's Glory",
+    "prevPath": "/032",
+    "path": "/033",
+    "nextPath": "/034"
+  },
+  "I003": {
+    "segment": "I003",
+    "bookId": 3,
+    "book": "Leviticus",
+    "title": "Introduction to Leviticus",
+    "prevPath": "/033",
+    "path": "/034",
+    "nextPath": "/035"
+  },
+  "S032": {
+    "segment": "S032",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "1:1-4:35",
+    "title": "Offerings 1",
+    "prevPath": "/034",
+    "path": "/035",
+    "nextPath": "/036"
+  },
+  "S033": {
+    "segment": "S033",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "5:1-7:38",
+    "title": "Offerings 2",
+    "prevPath": "/035",
+    "path": "/036",
+    "nextPath": "/037"
+  },
+  "S034": {
+    "segment": "S034",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "8:1-10:20",
+    "title": "Ordination of Priests",
+    "prevPath": "/036",
+    "path": "/037",
+    "nextPath": "/038"
+  },
+  "S035": {
+    "segment": "S035",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "11:1-13:59",
+    "title": "Clean & Unclean 1",
+    "prevPath": "/037",
+    "path": "/038",
+    "nextPath": "/039"
+  },
+  "S036": {
+    "segment": "S036",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "14:1-15:33",
+    "title": "Clean & Unclean 2",
+    "prevPath": "/038",
+    "path": "/039",
+    "nextPath": "/040"
+  },
+  "S037": {
+    "segment": "S037",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "16:1-17:16",
+    "title": "Atonement & Purification",
+    "prevPath": "/039",
+    "path": "/040",
+    "nextPath": "/041"
+  },
+  "S038": {
+    "segment": "S038",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "18:1-20:27",
+    "title": "Be Holy For I am Holy",
+    "prevPath": "/040",
+    "path": "/041",
+    "nextPath": "/042"
+  },
+  "S039": {
+    "segment": "S039",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "21:1-22:33",
+    "title": "Laws For Priests",
+    "prevPath": "/041",
+    "path": "/042",
+    "nextPath": "/043"
+  },
+  "S040": {
+    "segment": "S040",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "23:1-24:23",
+    "title": "Special Days",
+    "prevPath": "/042",
+    "path": "/043",
+    "nextPath": "/044"
+  },
+  "S041": {
+    "segment": "S041",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "25:1-25:55",
+    "title": "Special Years",
+    "prevPath": "/043",
+    "path": "/044",
+    "nextPath": "/045"
+  },
+  "S042": {
+    "segment": "S042",
+    "bookId": 3,
+    "book": "Leviticus",
+    "ref": "26:1-27:34",
+    "title": "Blessings & Curses",
+    "prevPath": "/044",
+    "path": "/045",
+    "nextPath": "/046"
+  },
+  "I004": {
+    "segment": "I004",
+    "bookId": 4,
+    "book": "Numbers",
+    "title": "Introduction to Numbers",
+    "prevPath": "/045",
+    "path": "/046",
+    "nextPath": "/047"
+  },
+  "S043": {
+    "segment": "S043",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "1:1-2:34",
+    "title": "The First Census",
+    "prevPath": "/046",
+    "path": "/047",
+    "nextPath": "/048"
+  },
+  "S044": {
+    "segment": "S044",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "3:1-4:49",
+    "title": "Levites Numbered and Set Apart",
+    "prevPath": "/047",
+    "path": "/048",
+    "nextPath": "/049"
+  },
+  "S045": {
+    "segment": "S045",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "5:1-6:27",
+    "title": "Purity, Consecration & Blessing",
+    "prevPath": "/048",
+    "path": "/049",
+    "nextPath": "/050"
+  },
+  "S046": {
+    "segment": "S046",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "7:1-8:26",
+    "title": "Celebration & Preparation For The Journey",
+    "prevPath": "/049",
+    "path": "/050",
+    "nextPath": "/051"
+  },
+  "S047": {
+    "segment": "S047",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "9:1-12:16",
+    "title": "Departure & Complaining in the Desert",
+    "prevPath": "/050",
+    "path": "/051",
+    "nextPath": "/052"
+  },
+  "S048": {
+    "segment": "S048",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "13:1-15:31",
+    "title": "Promised Land Explored & Inheritance Rejected",
+    "prevPath": "/051",
+    "path": "/052",
+    "nextPath": "/053"
+  },
+  "S049": {
+    "segment": "S049",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "15:32-18:32",
+    "title": "Rebellion in the Desert",
+    "prevPath": "/052",
+    "path": "/053",
+    "nextPath": "/054"
+  },
+  "S050": {
+    "segment": "S050",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "19:1-21:35",
+    "title": "Provision & Victories in the Desert",
+    "prevPath": "/053",
+    "path": "/054",
+    "nextPath": "/055"
+  },
+  "S051": {
+    "segment": "S051",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "22:1-25:18",
+    "title": "Balaam",
+    "prevPath": "/054",
+    "path": "/055",
+    "nextPath": "/056"
+  },
+  "S052": {
+    "segment": "S052",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "26:1-27:23",
+    "title": "The Second Census",
+    "prevPath": "/055",
+    "path": "/056",
+    "nextPath": "/057"
+  },
+  "S053": {
+    "segment": "S053",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "28:1-30:16",
+    "title": "Offerings & Vows",
+    "prevPath": "/056",
+    "path": "/057",
+    "nextPath": "/058"
+  },
+  "S054": {
+    "segment": "S054",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "31:1-33:49",
+    "title": "Wars & Wanderings",
+    "prevPath": "/057",
+    "path": "/058",
+    "nextPath": "/059"
+  },
+  "S055": {
+    "segment": "S055",
+    "bookId": 4,
+    "book": "Numbers",
+    "ref": "33:50-36:13",
+    "title": "Preparing to Inherit the Promised Land",
+    "prevPath": "/058",
+    "path": "/059",
+    "nextPath": "/060"
+  },
+  "I005": {
+    "segment": "I005",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "title": "Introduction to Deuteronomy",
+    "prevPath": "/059",
+    "path": "/060",
+    "nextPath": "/061"
+  },
+  "S056": {
+    "segment": "S056",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "1:1-3:20",
+    "title": "Remembering a 40 Year Journey",
+    "prevPath": "/060",
+    "path": "/061",
+    "nextPath": "/062"
+  },
+  "S057": {
+    "segment": "S057",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "3:21-4:43",
+    "title": "Hear & Obey",
+    "prevPath": "/061",
+    "path": "/062",
+    "nextPath": "/063"
+  },
+  "S058": {
+    "segment": "S058",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "4:44-7:26",
+    "title": "The Heart of the Covenant",
+    "prevPath": "/062",
+    "path": "/063",
+    "nextPath": "/064"
+  },
+  "S059": {
+    "segment": "S059",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "8:1-11:32",
+    "title": "The Goal of the Covenant",
+    "prevPath": "/063",
+    "path": "/064",
+    "nextPath": "/065"
+  },
+  "S060": {
+    "segment": "S060",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "12:1-14:29",
+    "title": "Covenantal Laws 1",
+    "prevPath": "/064",
+    "path": "/065",
+    "nextPath": "/066"
+  },
+  "S061": {
+    "segment": "S061",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "15:1-18:22",
+    "title": "Covenantal Laws 2",
+    "prevPath": "/065",
+    "path": "/066",
+    "nextPath": "/067"
+  },
+  "S062": {
+    "segment": "S062",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "19:1-22:12",
+    "title": "Covenantal Laws 3",
+    "prevPath": "/066",
+    "path": "/067",
+    "nextPath": "/068"
+  },
+  "S063": {
+    "segment": "S063",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "22:13-26:19",
+    "title": "Covenantal Laws 4",
+    "prevPath": "/067",
+    "path": "/068",
+    "nextPath": "/069"
+  },
+  "S064": {
+    "segment": "S064",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "27:1-28:68",
+    "title": "Blessings & Curses",
+    "prevPath": "/068",
+    "path": "/069",
+    "nextPath": "/070"
+  },
+  "S065": {
+    "segment": "S065",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "29:1-30:20",
+    "title": "Life & Death",
+    "prevPath": "/069",
+    "path": "/070",
+    "nextPath": "/071"
+  },
+  "S066": {
+    "segment": "S066",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "31:1-32:52",
+    "title": "Joshua Appointed & Moses' Song",
+    "prevPath": "/070",
+    "path": "/071",
+    "nextPath": "/072"
+  },
+  "S067": {
+    "segment": "S067",
+    "bookId": 5,
+    "book": "Deuteronomy",
+    "ref": "33:1-34:12",
+    "title": "Moses' Blessing & Death",
+    "prevPath": "/071",
+    "path": "/072",
+    "nextPath": "/073"
+  },
+  "I006": {
+    "segment": "I006",
+    "bookId": 6,
+    "book": "Joshua",
+    "title": "Introduction to Joshua",
+    "prevPath": "/072",
+    "path": "/073",
+    "nextPath": "/074"
+  },
+  "S068": {
+    "segment": "S068",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "1:1-5:1",
+    "title": "Preparing to Inherit the Land",
+    "prevPath": "/073",
+    "path": "/074",
+    "nextPath": "/075"
+  },
+  "S069": {
+    "segment": "S069",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "5:2-6:27",
+    "title": "Victory At Jericho",
+    "prevPath": "/074",
+    "path": "/075",
+    "nextPath": "/076"
+  },
+  "S070": {
+    "segment": "S070",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "7:1-8:35",
+    "title": "Defeat At Ai",
+    "prevPath": "/075",
+    "path": "/076",
+    "nextPath": "/077"
+  },
+  "S071": {
+    "segment": "S071",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "9:1-12:24",
+    "title": "Possessing of the Inheritance",
+    "prevPath": "/076",
+    "path": "/077",
+    "nextPath": "/078"
+  },
+  "S072": {
+    "segment": "S072",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "13:1-15:63",
+    "title": "Inheritance 1",
+    "prevPath": "/077",
+    "path": "/078",
+    "nextPath": "/079"
+  },
+  "S073": {
+    "segment": "S073",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "16:1-19:51",
+    "title": "Inheritance 2",
+    "prevPath": "/078",
+    "path": "/079",
+    "nextPath": "/080"
+  },
+  "S074": {
+    "segment": "S074",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "20:1-22:34",
+    "title": "Inheritance 3",
+    "prevPath": "/079",
+    "path": "/080",
+    "nextPath": "/081"
+  },
+  "S075": {
+    "segment": "S075",
+    "bookId": 6,
+    "book": "Joshua",
+    "ref": "23:1-24:33",
+    "title": "Joshua's Farewell Words",
+    "prevPath": "/080",
+    "path": "/081",
+    "nextPath": "/082"
+  },
+  "I007": {
+    "segment": "I007",
+    "bookId": 7,
+    "book": "Judges",
+    "title": "Introduction to Judges",
+    "prevPath": "/081",
+    "path": "/082",
+    "nextPath": "/083"
+  },
+  "S076": {
+    "segment": "S076",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "1:1-3:6",
+    "title": "Sin, Servitude, Supplication, Salvation",
+    "prevPath": "/082",
+    "path": "/083",
+    "nextPath": "/084"
+  },
+  "S077": {
+    "segment": "S077",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "3:7-5:31",
+    "title": "Othniel, Ehud, Shamgar & Deborah",
+    "prevPath": "/083",
+    "path": "/084",
+    "nextPath": "/085"
+  },
+  "S078": {
+    "segment": "S078",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "6:1-8:32",
+    "title": "Gideon",
+    "prevPath": "/084",
+    "path": "/085",
+    "nextPath": "/086"
+  },
+  "S079": {
+    "segment": "S079",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "8:33-10:5",
+    "title": "Abimilech, Tola & Jair",
+    "prevPath": "/085",
+    "path": "/086",
+    "nextPath": "/087"
+  },
+  "S080": {
+    "segment": "S080",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "10:6-12:15",
+    "title": "Jephthah, Ibzan, Elon & Abdon",
+    "prevPath": "/086",
+    "path": "/087",
+    "nextPath": "/088"
+  },
+  "S081": {
+    "segment": "S081",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "13:1-16:31",
+    "title": "Samson",
+    "prevPath": "/087",
+    "path": "/088",
+    "nextPath": "/089"
+  },
+  "S082": {
+    "segment": "S082",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "17:1-18:31",
+    "title": "Doing Right in Their Own Eyes 1",
+    "prevPath": "/088",
+    "path": "/089",
+    "nextPath": "/090"
+  },
+  "S083": {
+    "segment": "S083",
+    "bookId": 7,
+    "book": "Judges",
+    "ref": "19:1-21:25",
+    "title": "Doing Right in Their Own Eyes 2",
+    "prevPath": "/089",
+    "path": "/090",
+    "nextPath": "/091"
+  },
+  "I008": {
+    "segment": "I008",
+    "bookId": 8,
+    "book": "Ruth",
+    "title": "Introduction to Ruth",
+    "prevPath": "/090",
+    "path": "/091",
+    "nextPath": "/092"
+  },
+  "S084": {
+    "segment": "S084",
+    "bookId": 8,
+    "book": "Ruth",
+    "ref": "1:1-4:22",
+    "title": "A Surprising Love Story",
+    "prevPath": "/091",
+    "path": "/092",
+    "nextPath": "/093"
+  },
+  "I009": {
+    "segment": "I009",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "title": "Introduction to 1 Samuel",
+    "prevPath": "/092",
+    "path": "/093",
+    "nextPath": "/094"
+  },
+  "S085": {
+    "segment": "S085",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "1:1-4:1a",
+    "title": "God is With Samuel",
+    "prevPath": "/093",
+    "path": "/094",
+    "nextPath": "/095"
+  },
+  "S086": {
+    "segment": "S086",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "4:1b-8:22",
+    "title": "Israel Demands A King",
+    "prevPath": "/094",
+    "path": "/095",
+    "nextPath": "/096"
+  },
+  "S087": {
+    "segment": "S087",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "9:1-12:25",
+    "title": "Saul Becomes King",
+    "prevPath": "/095",
+    "path": "/096",
+    "nextPath": "/097"
+  },
+  "S088": {
+    "segment": "S088",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "13:1-14:52",
+    "title": "Saul's Foolishness",
+    "prevPath": "/096",
+    "path": "/097",
+    "nextPath": "/098"
+  },
+  "S089": {
+    "segment": "S089",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "15:1-16:23",
+    "title": "God Rejects Saul & Samuel Anoints David",
+    "prevPath": "/097",
+    "path": "/098",
+    "nextPath": "/099"
+  },
+  "S090": {
+    "segment": "S090",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "17:1-18:30",
+    "title": "Saul Decreases & David Increases 1",
+    "prevPath": "/098",
+    "path": "/099",
+    "nextPath": "/100"
+  },
+  "S091": {
+    "segment": "S091",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "19:1-20:42",
+    "title": "Saul Decreases & David Increases 2",
+    "prevPath": "/099",
+    "path": "/100",
+    "nextPath": "/101"
+  },
+  "S092": {
+    "segment": "S092",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "21:1-23:29",
+    "title": "Saul Decreases & David Increases 3",
+    "prevPath": "/100",
+    "path": "/101",
+    "nextPath": "/102"
+  },
+  "S093": {
+    "segment": "S093",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "24:1-27:12",
+    "title": "Saul Decreases & David Increases 4",
+    "prevPath": "/101",
+    "path": "/102",
+    "nextPath": "/103"
+  },
+  "S094": {
+    "segment": "S094",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "28:1-30:31",
+    "title": "Saul Decreases & David Increases 5",
+    "prevPath": "/102",
+    "path": "/103",
+    "nextPath": "/104"
+  },
+  "S095": {
+    "segment": "S095",
+    "bookId": 9,
+    "book": "1 Samuel",
+    "ref": "31:1-2 Samuel 2:7",
+    "title": "Saul's Death & David's Lament",
+    "prevPath": "/103",
+    "path": "/104",
+    "nextPath": "/105"
+  },
+  "I010": {
+    "segment": "I010",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "title": "Introduction to 2 Samuel",
+    "prevPath": "/104",
+    "path": "/105",
+    "nextPath": "/106"
+  },
+  "S096": {
+    "segment": "S096",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "2:8-5:25",
+    "title": "David Becomes King",
+    "prevPath": "/105",
+    "path": "/106",
+    "nextPath": "/107"
+  },
+  "S097": {
+    "segment": "S097",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "6:1-7:29",
+    "title": "God Makes A Covenant With David",
+    "prevPath": "/106",
+    "path": "/107",
+    "nextPath": "/108"
+  },
+  "S098": {
+    "segment": "S098",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "8:1-10:19",
+    "title": "David's Victories",
+    "prevPath": "/107",
+    "path": "/108",
+    "nextPath": "/109"
+  },
+  "S099": {
+    "segment": "S099",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "11:1-13:39",
+    "title": "David's Failures",
+    "prevPath": "/108",
+    "path": "/109",
+    "nextPath": "/110"
+  },
+  "S100": {
+    "segment": "S100",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "14:1-16:14",
+    "title": "Absalom's Coup 1",
+    "prevPath": "/109",
+    "path": "/110",
+    "nextPath": "/111"
+  },
+  "S101": {
+    "segment": "S101",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "16:15-19:8a",
+    "title": "Absalom's Coup 2",
+    "prevPath": "/110",
+    "path": "/111",
+    "nextPath": "/112"
+  },
+  "S102": {
+    "segment": "S102",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "19:8b-21:14",
+    "title": "David Restored As King",
+    "prevPath": "/111",
+    "path": "/112",
+    "nextPath": "/113"
+  },
+  "S103": {
+    "segment": "S103",
+    "bookId": 10,
+    "book": "2 Samuel",
+    "ref": "21:15-24:25",
+    "title": "David's Latter Reign",
+    "prevPath": "/112",
+    "path": "/113",
+    "nextPath": "/114"
+  },
+  "I011": {
+    "segment": "I011",
+    "bookId": 11,
+    "book": "1 Kings",
+    "title": "Introduction to 1 Kings",
+    "prevPath": "/113",
+    "path": "/114",
+    "nextPath": "/115"
+  },
+  "S104": {
+    "segment": "S104",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "1:1-2:46",
+    "title": "Solomon Becomes King",
+    "prevPath": "/114",
+    "path": "/115",
+    "nextPath": "/116"
+  },
+  "S105": {
+    "segment": "S105",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "3:1-6:38",
+    "title": "Solomon's Wise Beginning",
+    "prevPath": "/115",
+    "path": "/116",
+    "nextPath": "/117"
+  },
+  "S106": {
+    "segment": "S106",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "7:1-9:1",
+    "title": "Solomon Completes & Dedicates The Temple",
+    "prevPath": "/116",
+    "path": "/117",
+    "nextPath": "/118"
+  },
+  "S107": {
+    "segment": "S107",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "9:2-11:43",
+    "title": "Solomon's Foolish Ending",
+    "prevPath": "/117",
+    "path": "/118",
+    "nextPath": "/119"
+  },
+  "S108": {
+    "segment": "S108",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "12:1-14:20",
+    "title": "Kingdom Divided! Rehoboam of Judah; Jeroboam I of Israel",
+    "prevPath": "/118",
+    "path": "/119",
+    "nextPath": "/120"
+  },
+  "S109": {
+    "segment": "S109",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "14:21-16:28",
+    "title": "Jeroboam, Ahijah & Asa of Judah; Nadab, Baasha, Elah, Zimri & Omri of Israel",
+    "prevPath": "/119",
+    "path": "/120",
+    "nextPath": "/121"
+  },
+  "S110": {
+    "segment": "S110",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "16:29-18:46",
+    "title": "Elijah the Prophet & Ahab of Israel 1",
+    "prevPath": "/120",
+    "path": "/121",
+    "nextPath": "/122"
+  },
+  "S111": {
+    "segment": "S111",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "19:1-20:43",
+    "title": "Elijah the Prophet & Ahab of Israel 2",
+    "prevPath": "/121",
+    "path": "/122",
+    "nextPath": "/123"
+  },
+  "S112": {
+    "segment": "S112",
+    "bookId": 11,
+    "book": "1 Kings",
+    "ref": "21:1-22:40",
+    "title": "Elijah the Prophet & Ahab of Israel 3",
+    "prevPath": "/122",
+    "path": "/123",
+    "nextPath": "/124"
+  },
+  "S113": {
+    "segment": "S113",
+    "BookId": "11",
+    "ref": "1 Kings 22:41 - 2 Kings 2:25",
+    "title": "Jehoshaphat of Judah; Ahaziah of Israel",
+    "prevPath": "/123",
+    "path": "/124",
+    "nextPath": "/125"
+  },
+  "I012": {
+    "segment": "I012",
+    "bookId": 12,
+    "book": "2 Kings",
+    "title": "Introduction to 2 Kings",
+    "prevPath": "/124",
+    "path": "/125",
+    "nextPath": "/126"
+  },
+  "S114": {
+    "segment": "S114",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "3:1-6:7",
+    "title": "Elisha's Ministry to Individuals",
+    "prevPath": "/125",
+    "path": "/126",
+    "nextPath": "/127"
+  },
+  "S115": {
+    "segment": "S115",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "6:8-8:15",
+    "title": "Elisha's Ministry to Nations",
+    "prevPath": "/126",
+    "path": "/127",
+    "nextPath": "/128"
+  },
+  "S116": {
+    "segment": "S116",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "8:16-10:36",
+    "title": "Jehoram & Ahaziah of Judah; Jehu of Israel",
+    "prevPath": "/127",
+    "path": "/128",
+    "nextPath": "/129"
+  },
+  "S117": {
+    "segment": "S117",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "11:1-13:25",
+    "title": "Athaliah & Jehoash of Judah; Jehoahaz & Jehoash of Israel",
+    "prevPath": "/128",
+    "path": "/129",
+    "nextPath": "/130"
+  },
+  "S118": {
+    "segment": "S118",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "14:1-15:31",
+    "title": "Amaziah & Azariah of Judah; Jeroboam II, Zechariah, Shallum, Menahem, Pekahiah & Pekah of Israel",
+    "prevPath": "/129",
+    "path": "/130",
+    "nextPath": "/131"
+  },
+  "S119": {
+    "segment": "S119",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "15:32-17:41",
+    "title": "Jotham & Ahaz of Judah; Hoshea of Israel",
+    "prevPath": "/130",
+    "path": "/131",
+    "nextPath": "/132"
+  },
+  "S120": {
+    "segment": "S120",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "18:1-20:21",
+    "title": "Hezekiah of Judah",
+    "prevPath": "/131",
+    "path": "/132",
+    "nextPath": "/133"
+  },
+  "S121": {
+    "segment": "S121",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "21:1-23:30",
+    "title": "Manasseh. Amon & Josiah of Judah",
+    "prevPath": "/132",
+    "path": "/133",
+    "nextPath": "/134"
+  },
+  "S122": {
+    "segment": "S122",
+    "bookId": 12,
+    "book": "2 Kings",
+    "ref": "23:31-25:30",
+    "title": "Jehoahaz, Jehoiakim, Jehoiachin & Zedekiah of Judah",
+    "prevPath": "/133",
+    "path": "/134",
+    "nextPath": "/135"
+  },
+  "I013": {
+    "segment": "I013",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "title": "Introduction to 1 Chronicles",
+    "prevPath": "/134",
+    "path": "/135",
+    "nextPath": "/136"
+  },
+  "S123": {
+    "segment": "S123",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "1:1-4:23",
+    "title": "Geneology from Adam to the Returned Exiles 1",
+    "prevPath": "/135",
+    "path": "/136",
+    "nextPath": "/137"
+  },
+  "S124": {
+    "segment": "S124",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "4:24-6:81",
+    "title": "Geneology from Adam to the Returned Exiles 2",
+    "prevPath": "/136",
+    "path": "/137",
+    "nextPath": "/138"
+  },
+  "S125": {
+    "segment": "S125",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "7:1-9:44",
+    "title": "Geneology from Adam to the Returned Exiles 3",
+    "prevPath": "/137",
+    "path": "/138",
+    "nextPath": "/139"
+  },
+  "S126": {
+    "segment": "S126",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "10:1-12:40",
+    "title": "Saul Killed & David Becomes King",
+    "prevPath": "/138",
+    "path": "/139",
+    "nextPath": "/140"
+  },
+  "S127": {
+    "segment": "S127",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "13:1-16:43",
+    "title": "David Brings The Ark to Jerusalem",
+    "prevPath": "/139",
+    "path": "/140",
+    "nextPath": "/141"
+  },
+  "S128": {
+    "segment": "S128",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "17:1-20:8",
+    "title": "God's Covenant; David's Victories",
+    "prevPath": "/140",
+    "path": "/141",
+    "nextPath": "/142"
+  },
+  "S129": {
+    "segment": "S129",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "21:1-23:1",
+    "title": "Census & Temple Preparations",
+    "prevPath": "/141",
+    "path": "/142",
+    "nextPath": "/143"
+  },
+  "S130": {
+    "segment": "S130",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "23:2-26:32",
+    "title": "David Organizes Religious Structures",
+    "prevPath": "/142",
+    "path": "/143",
+    "nextPath": "/144"
+  },
+  "S131": {
+    "segment": "S131",
+    "bookId": 13,
+    "book": "1 Chronicles",
+    "ref": "27:1-29:30",
+    "title": "David Organizes Governmental Structures",
+    "prevPath": "/143",
+    "path": "/144",
+    "nextPath": "/145"
+  },
+  "I014": {
+    "segment": "I014",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "title": "Introduction to 2 Chronicles",
+    "prevPath": "/144",
+    "path": "/145",
+    "nextPath": "/146"
+  },
+  "S132": {
+    "segment": "S132",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "1:1-5:1",
+    "title": "Solomon Builds The Temple",
+    "prevPath": "/145",
+    "path": "/146",
+    "nextPath": "/147"
+  },
+  "S133": {
+    "segment": "S133",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "5:2-7:22",
+    "title": "Solomon Dedicates The Temple",
+    "prevPath": "/146",
+    "path": "/147",
+    "nextPath": "/148"
+  },
+  "S134": {
+    "segment": "S134",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "8:1-9:31",
+    "title": "Solomon's Accomplishments",
+    "prevPath": "/147",
+    "path": "/148",
+    "nextPath": "/149"
+  },
+  "S135": {
+    "segment": "S135",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "10:1-12:16",
+    "title": "Rehoboam of Judah",
+    "prevPath": "/148",
+    "path": "/149",
+    "nextPath": "/150"
+  },
+  "S136": {
+    "segment": "S136",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "13:1-16:14",
+    "title": "Abijah & Asa of Judah",
+    "prevPath": "/149",
+    "path": "/150",
+    "nextPath": "/151"
+  },
+  "S137": {
+    "segment": "S137",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "17:1-20:37",
+    "title": "Jehoshaphat of Judah",
+    "prevPath": "/150",
+    "path": "/151",
+    "nextPath": "/152"
+  },
+  "S138": {
+    "segment": "S138",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "21:1-24:27",
+    "title": "Jehoram, Ahaziah, Athaliah & Joash of Judah",
+    "prevPath": "/151",
+    "path": "/152",
+    "nextPath": "/153"
+  },
+  "S139": {
+    "segment": "S139",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "25:1-28:27",
+    "title": "Amaziah, Uzziah, Jotham & Ahaz of Judah",
+    "prevPath": "/152",
+    "path": "/153",
+    "nextPath": "/154"
+  },
+  "S140": {
+    "segment": "S140",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "29:1-31:21",
+    "title": "Hezekiah (Part 1) of Judah ",
+    "prevPath": "/153",
+    "path": "/154",
+    "nextPath": "/155"
+  },
+  "S141": {
+    "segment": "S141",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "32:1-33:25",
+    "title": "Hezekiah (Part 2), Manasseh & Amnon of Judah",
+    "prevPath": "/154",
+    "path": "/155",
+    "nextPath": "/156"
+  },
+  "S142": {
+    "segment": "S142",
+    "bookId": 14,
+    "book": "2 Chronicles",
+    "ref": "34:1-36:23",
+    "title": "Josiah, Jehoahaz, Jehoiakim, Jehoiachin & Zedekiah of Judah",
+    "prevPath": "/155",
+    "path": "/156",
+    "nextPath": "/157"
+  },
+  "I0115": {
+    "segment": "I0115",
+    "bookId": 115,
+    "book": "Ezra",
+    "title": "Introduction to Ezra",
+    "prevPath": "/156",
+    "path": "/157",
+    "nextPath": "/158"
+  },
+  "S143": {
+    "segment": "S143",
+    "bookId": 15,
+    "book": "Ezra",
+    "ref": "1:1-3:13",
+    "title": "First Return of the Exiles: Zerubbabel",
+    "prevPath": "/157",
+    "path": "/158",
+    "nextPath": "/159"
+  },
+  "S144": {
+    "segment": "S144",
+    "bookId": 15,
+    "book": "Ezra",
+    "ref": "4:1-6:22",
+    "title": "Opposition & Rebuilding Of The Temple",
+    "prevPath": "/158",
+    "path": "/159",
+    "nextPath": "/160"
+  },
+  "S145": {
+    "segment": "S145",
+    "bookId": 15,
+    "book": "Ezra",
+    "ref": "7:1-10:44",
+    "title": "Second Return of the Exiles: Ezra",
+    "prevPath": "/159",
+    "path": "/160",
+    "nextPath": "/161"
+  },
+  "I016": {
+    "segment": "I016",
+    "bookId": 16,
+    "book": "Nehemiah",
+    "title": "Introduction to Nehemiah",
+    "prevPath": "/160",
+    "path": "/161",
+    "nextPath": "/162"
+  },
+  "S146": {
+    "segment": "S146",
+    "bookId": 16,
+    "book": "Nehemiah",
+    "ref": "1:1-3:32",
+    "title": "Nehemiah Begins Rebuilding the Wall",
+    "prevPath": "/161",
+    "path": "/162",
+    "nextPath": "/163"
+  },
+  "S147": {
+    "segment": "S147",
+    "bookId": 16,
+    "book": "Nehemiah",
+    "ref": "4:1-7:73a",
+    "title": "The Wall is Rebuilt Amidst Opposition",
+    "prevPath": "/162",
+    "path": "/163",
+    "nextPath": "/164"
+  },
+  "S148": {
+    "segment": "S148",
+    "bookId": 16,
+    "book": "Nehemiah",
+    "ref": "7:73b-10:39",
+    "title": "The People Are Restored",
+    "prevPath": "/163",
+    "path": "/164",
+    "nextPath": "/165"
+  },
+  "S149": {
+    "segment": "S149",
+    "bookId": 16,
+    "book": "Nehemiah",
+    "ref": "11:1-13:31",
+    "title": "The Wall and the People are Rededicated",
+    "prevPath": "/164",
+    "path": "/165",
+    "nextPath": "/166"
+  },
+  "I017": {
+    "segment": "I017",
+    "bookId": 17,
+    "book": "Esther",
+    "title": "Introduction to Esther",
+    "prevPath": "/165",
+    "path": "/166",
+    "nextPath": "/167"
+  },
+  "S150": {
+    "segment": "S150",
+    "bookId": 17,
+    "book": "Esther",
+    "ref": "1:1-4:17",
+    "title": "Esther Becomes Queen",
+    "prevPath": "/166",
+    "path": "/167",
+    "nextPath": "/168"
+  },
+  "S151": {
+    "segment": "S151",
+    "bookId": 17,
+    "book": "Esther",
+    "ref": "5:1-10:3",
+    "title": "Esther Saves Her People",
+    "prevPath": "/167",
+    "path": "/168",
+    "nextPath": "/169"
+  },
+  "I018": {
+    "segment": "I018",
+    "bookId": 18,
+    "book": "Job",
+    "title": "Introduction to Job",
+    "prevPath": "/168",
+    "path": "/169",
+    "nextPath": "/170"
+  },
+  "S152": {
+    "segment": "S152",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "1:1-3:26",
+    "title": "A Cosmic Challenge; Job Speaks",
+    "prevPath": "/169",
+    "path": "/170",
+    "nextPath": "/171"
+  },
+  "S153": {
+    "segment": "S153",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "4:1-10:22",
+    "title": "Eliphaz & Bildad Speak; Job Responds",
+    "prevPath": "/170",
+    "path": "/171",
+    "nextPath": "/172"
+  },
+  "S154": {
+    "segment": "S154",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "11:1-17:16",
+    "title": "Zophar & Eliphaz Speak; Job Responds",
+    "prevPath": "/171",
+    "path": "/172",
+    "nextPath": "/173"
+  },
+  "S155": {
+    "segment": "S155",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "18:1-21:34",
+    "title": "Bildad & Zophar Speak; Job Responds",
+    "prevPath": "/172",
+    "path": "/173",
+    "nextPath": "/174"
+  },
+  "S156": {
+    "segment": "S156",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "22:1-24:25",
+    "title": "Eliphaz Speaks; Job Responds",
+    "prevPath": "/173",
+    "path": "/174",
+    "nextPath": "/175"
+  },
+  "S157": {
+    "segment": "S157",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "25:1-31:40",
+    "title": "Bildad Speaks; Job Responds",
+    "prevPath": "/174",
+    "path": "/175",
+    "nextPath": "/176"
+  },
+  "S158": {
+    "segment": "S158",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "32:1-37:24",
+    "title": "Elihu Speaks",
+    "prevPath": "/175",
+    "path": "/176",
+    "nextPath": "/177"
+  },
+  "S159": {
+    "segment": "S159",
+    "bookId": 18,
+    "book": "Job",
+    "ref": "38:1-42:17",
+    "title": "God Speaks; Job Responds",
+    "prevPath": "/176",
+    "path": "/177",
+    "nextPath": "/178"
+  },
+  "I019": {
+    "segment": "I019",
+    "bookId": 19,
+    "book": "Psalms",
+    "title": "Introduction to Psalms",
+    "prevPath": "/177",
+    "path": "/178",
+    "nextPath": "/179"
+  },
+  "S160": {
+    "segment": "S160",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "1:1-13:6",
+    "title": "Book 1: Songs of Praise & Prayers of Faith 1",
+    "prevPath": "/178",
+    "path": "/179",
+    "nextPath": "/180"
+  },
+  "S161": {
+    "segment": "S161",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "14:1-22:31",
+    "title": "Book 1: Songs of Praise & Prayers of Faith 2",
+    "prevPath": "/179",
+    "path": "/180",
+    "nextPath": "/181"
+  },
+  "S162": {
+    "segment": "S162",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "23:1-33:22",
+    "title": "Book 1: Songs of Praise & Prayers of Faith 3",
+    "prevPath": "/180",
+    "path": "/181",
+    "nextPath": "/182"
+  },
+  "S163": {
+    "segment": "S163",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "34:1-41:13",
+    "title": "Book 1: Songs of Praise & Prayers of Faith 4",
+    "prevPath": "/181",
+    "path": "/182",
+    "nextPath": "/183"
+  },
+  "S164": {
+    "segment": "S164",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "42:1-51:19",
+    "title": "Book 2: Songs of Conflict & Salvation 1",
+    "prevPath": "/182",
+    "path": "/183",
+    "nextPath": "/184"
+  },
+  "S165": {
+    "segment": "S165",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "52:1-64:10",
+    "title": "Book 2: Songs of Conflict & Salvation 2",
+    "prevPath": "/183",
+    "path": "/184",
+    "nextPath": "/185"
+  },
+  "S166": {
+    "segment": "S166",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "65:1-72:20",
+    "title": "Book 2: Songs of Conflict & Salvation 3",
+    "prevPath": "/184",
+    "path": "/185",
+    "nextPath": "/186"
+  },
+  "S167": {
+    "segment": "S167",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "73:1-77:20",
+    "title": "Book 3: Songs of Asaph 1",
+    "prevPath": "/185",
+    "path": "/186",
+    "nextPath": "/187"
+  },
+  "S168": {
+    "segment": "S168",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "78:1-83:18",
+    "title": "Book 3: Songs of Asaph 2",
+    "prevPath": "/186",
+    "path": "/187",
+    "nextPath": "/188"
+  },
+  "S169": {
+    "segment": "S169",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "84:1-89:52",
+    "title": "Book 3: Songs by Many Psalmists",
+    "prevPath": "/187",
+    "path": "/188",
+    "nextPath": "/189"
+  },
+  "S170": {
+    "segment": "S170",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "90:1-100:5",
+    "title": "Book 4: God our King & Refuge",
+    "prevPath": "/188",
+    "path": "/189",
+    "nextPath": "/190"
+  },
+  "S171": {
+    "segment": "S171",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "101:1-106:48",
+    "title": "Book 4: God our Deliverer",
+    "prevPath": "/189",
+    "path": "/190",
+    "nextPath": "/191"
+  },
+  "S172": {
+    "segment": "S172",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "107:1-112:10",
+    "title": "Book 5: God our Deliverer",
+    "prevPath": "/190",
+    "path": "/191",
+    "nextPath": "/192"
+  },
+  "S173": {
+    "segment": "S173",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "113:1-118:29",
+    "title": "Book 5: The Egyptian Hallel",
+    "prevPath": "/191",
+    "path": "/192",
+    "nextPath": "/193"
+  },
+  "S174": {
+    "segment": "S174",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "119:1-119:176",
+    "title": "Book 5: The Word of God",
+    "prevPath": "/192",
+    "path": "/193",
+    "nextPath": "/194"
+  },
+  "S175": {
+    "segment": "S175",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "120:1-136:26",
+    "title": "Book 5: The Great Hallel",
+    "prevPath": "/193",
+    "path": "/194",
+    "nextPath": "/195"
+  },
+  "S176": {
+    "segment": "S176",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "137:1-145:21",
+    "title": "Book 5: Prayers for Deliverance",
+    "prevPath": "/194",
+    "path": "/195",
+    "nextPath": "/196"
+  },
+  "S177": {
+    "segment": "S177",
+    "bookId": 19,
+    "book": "Psalms",
+    "ref": "146:1-150:6",
+    "title": "Book 5: The Final Hallel",
+    "prevPath": "/195",
+    "path": "/196",
+    "nextPath": "/197"
+  },
+  "I020": {
+    "segment": "I020",
+    "bookId": 20,
+    "book": "Proverbs",
+    "title": "Introduction to Proverbs",
+    "prevPath": "/196",
+    "path": "/197",
+    "nextPath": "/198"
+  },
+  "S178": {
+    "segment": "S178",
+    "bookId": 20,
+    "book": "Proverbs",
+    "ref": "1:1-5:23",
+    "title": "Proverbs Reveal Wisdom & Folly 1",
+    "prevPath": "/197",
+    "path": "/198",
+    "nextPath": "/199"
+  },
+  "S179": {
+    "segment": "S179",
+    "bookId": 20,
+    "book": "Proverbs",
+    "ref": "6:1-9:18",
+    "title": "Proverbs Reveal Wisdom & Folly 2",
+    "prevPath": "/198",
+    "path": "/199",
+    "nextPath": "/200"
+  },
+  "S180": {
+    "segment": "S180",
+    "bookId": 20,
+    "book": "Proverbs",
+    "ref": "10:1-15:33",
+    "title": "The Proverbs of Solomon 1",
+    "prevPath": "/199",
+    "path": "/200",
+    "nextPath": "/201"
+  },
+  "S181": {
+    "segment": "S181",
+    "bookId": 20,
+    "book": "Proverbs",
+    "ref": "16:1-22:16",
+    "title": "The Proverbs of Solomon 2",
+    "prevPath": "/200",
+    "path": "/201",
+    "nextPath": "/202"
+  },
+  "S182": {
+    "segment": "S182",
+    "bookId": 20,
+    "book": "Proverbs",
+    "ref": "22:17-24:34",
+    "title": "The Proverbs of the Wise 1",
+    "prevPath": "/201",
+    "path": "/202",
+    "nextPath": "/203"
+  },
+  "S183": {
+    "segment": "S183",
+    "bookId": 20,
+    "book": "Proverbs",
+    "ref": "25:1-29:27",
+    "title": "The Proverbs of Solomon 3",
+    "prevPath": "/202",
+    "path": "/203",
+    "nextPath": "/204"
+  },
+  "S184": {
+    "segment": "S184",
+    "bookId": 20,
+    "book": "Proverbs",
+    "ref": "30:1-31:31",
+    "title": "The Proverbs of the Wise 2",
+    "prevPath": "/203",
+    "path": "/204",
+    "nextPath": "/205"
+  },
+  "I021": {
+    "segment": "I021",
+    "bookId": 21,
+    "book": "Ecclesiastes",
+    "title": "Introduction to Ecclesiastes",
+    "prevPath": "/204",
+    "path": "/205",
+    "nextPath": "/206"
+  },
+  "S185": {
+    "segment": "S185",
+    "bookId": 21,
+    "book": "Ecclesiastes",
+    "ref": "1:1-6:12",
+    "title": "Life Under The Sun",
+    "prevPath": "/205",
+    "path": "/206",
+    "nextPath": "/207"
+  },
+  "S186": {
+    "segment": "S186",
+    "bookId": 21,
+    "book": "Ecclesiastes",
+    "ref": "7:1-12:14",
+    "title": "Enjoy Life & Fear God",
+    "prevPath": "/206",
+    "path": "/207",
+    "nextPath": "/208"
+  },
+  "I022": {
+    "segment": "I022",
+    "bookId": 22,
+    "book": "Song of Solomon",
+    "title": "Introduction to Song of Solomon",
+    "prevPath": "/207",
+    "path": "/208",
+    "nextPath": "/209"
+  },
+  "S187": {
+    "segment": "S187",
+    "bookId": 22,
+    "book": "Song of Solomon",
+    "ref": "1:1-8:14",
+    "title": "Romantic Love At It's Best",
+    "prevPath": "/208",
+    "path": "/209",
+    "nextPath": "/210"
+  },
+  "I023": {
+    "segment": "I023",
+    "bookId": 23,
+    "book": "Isaiah",
+    "title": "Introduction to Isaiah",
+    "prevPath": "/209",
+    "path": "/210",
+    "nextPath": "/211"
+  },
+  "S188": {
+    "segment": "S188",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "1:1-5:30",
+    "title": "Isaiah Prophesies During Uzziah's Reign",
+    "prevPath": "/210",
+    "path": "/211",
+    "nextPath": "/212"
+  },
+  "S189": {
+    "segment": "S189",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "6:1-9:7",
+    "title": "Isaiah Volunteers; God Promises Emmanuel",
+    "prevPath": "/211",
+    "path": "/212",
+    "nextPath": "/213"
+  },
+  "S190": {
+    "segment": "S190",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "9:8-12:6",
+    "title": "Judah's Enemies Judged; Emmanuel's Coming Reign",
+    "prevPath": "/212",
+    "path": "/213",
+    "nextPath": "/214"
+  },
+  "S191": {
+    "segment": "S191",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "13:1-17:14",
+    "title": "Prophecies For Babylon, Assyria, Philistia, Moab, Syria, & Israel",
+    "prevPath": "/213",
+    "path": "/214",
+    "nextPath": "/215"
+  },
+  "S192": {
+    "segment": "S192",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "18:1-23:18",
+    "title": "Prophecies For Ethiopia, Egypt, Babylon, Edom, Arabia, Judah & Tyre",
+    "prevPath": "/214",
+    "path": "/215",
+    "nextPath": "/216"
+  },
+  "S193": {
+    "segment": "S193",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "24:1-27:13",
+    "title": "Coming Judgment & Salvation 1",
+    "prevPath": "/215",
+    "path": "/216",
+    "nextPath": "/217"
+  },
+  "S194": {
+    "segment": "S194",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "28:1-32:20",
+    "title": "Powerful Alliances Can't Deliver; God Will!",
+    "prevPath": "/216",
+    "path": "/217",
+    "nextPath": "/218"
+  },
+  "S195": {
+    "segment": "S195",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "33:1-35:10",
+    "title": "Coming Judgment & Salvation 2",
+    "prevPath": "/217",
+    "path": "/218",
+    "nextPath": "/219"
+  },
+  "S196": {
+    "segment": "S196",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "36:1-39:8",
+    "title": "Hezekiah's Reign: A Miraculous Deliverance & Disasterous Mistakes",
+    "prevPath": "/218",
+    "path": "/219",
+    "nextPath": "/220"
+  },
+  "S197": {
+    "segment": "S197",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "40:1-41:29",
+    "title": "The Gospel Proclaimed: God & Idols Contrasted",
+    "prevPath": "/219",
+    "path": "/220",
+    "nextPath": "/221"
+  },
+  "S198": {
+    "segment": "S198",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "42:1-44:23",
+    "title": "First Servant Song: God & Idols Contrasted",
+    "prevPath": "/220",
+    "path": "/221",
+    "nextPath": "/222"
+  },
+  "S199": {
+    "segment": "S199",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "44:24-48:22",
+    "title": "God's Servant Cyrus: God & Idols Contrasted",
+    "prevPath": "/221",
+    "path": "/222",
+    "nextPath": "/223"
+  },
+  "S200": {
+    "segment": "S200",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "49:1-52:12",
+    "title": "Two Servant Songs",
+    "prevPath": "/222",
+    "path": "/223",
+    "nextPath": "/224"
+  },
+  "S201": {
+    "segment": "S201",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "52:13-57:21",
+    "title": "A Final Servant Song - God's Way of Salvation",
+    "prevPath": "/223",
+    "path": "/224",
+    "nextPath": "/225"
+  },
+  "S202": {
+    "segment": "S202",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "58:1-62:12",
+    "title": "Preparing God's Reign & Salvation",
+    "prevPath": "/224",
+    "path": "/225",
+    "nextPath": "/226"
+  },
+  "S203": {
+    "segment": "S203",
+    "bookId": 23,
+    "book": "Isaiah",
+    "ref": "63:1-66:24",
+    "title": "Coming Judgment & Salvation 3",
+    "prevPath": "/225",
+    "path": "/226",
+    "nextPath": "/227"
+  },
+  "I024": {
+    "segment": "I024",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "title": "Introduction to Jeremiah",
+    "prevPath": "/226",
+    "path": "/227",
+    "nextPath": "/228"
+  },
+  "S204": {
+    "segment": "S204",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "1:1-4:2",
+    "title": "Jeremiah Called To Prophesy; Judah Called To Repentance",
+    "prevPath": "/227",
+    "path": "/228",
+    "nextPath": "/229"
+  },
+  "S205": {
+    "segment": "S205",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "4:3-6:30",
+    "title": "Shall I Not Punish? Judah Must Be Punished!",
+    "prevPath": "/228",
+    "path": "/229",
+    "nextPath": "/230"
+  },
+  "S206": {
+    "segment": "S206",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "7:1-10:25",
+    "title": "Shall I Not Punish? Judah Will Be Punished!",
+    "prevPath": "/229",
+    "path": "/230",
+    "nextPath": "/231"
+  },
+  "S207": {
+    "segment": "S207",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "11:1-12:17",
+    "title": "The Covenant Broken",
+    "prevPath": "/230",
+    "path": "/231",
+    "nextPath": "/232"
+  },
+  "S208": {
+    "segment": "S208",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "13:1-15:21",
+    "title": "God Reluctant To Relent",
+    "prevPath": "/231",
+    "path": "/232",
+    "nextPath": "/233"
+  },
+  "S209": {
+    "segment": "S209",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "16:1-17:27",
+    "title": "God Willing To Relent",
+    "prevPath": "/232",
+    "path": "/233",
+    "nextPath": "/234"
+  },
+  "S210": {
+    "segment": "S210",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "18:1-20:18",
+    "title": "Jeremiah Prophesies & Suffers Persecution 1",
+    "prevPath": "/233",
+    "path": "/234",
+    "nextPath": "/235"
+  },
+  "S211": {
+    "segment": "S211",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "21:1-24:10",
+    "title": "Judgment On Civil & Religious Leaders",
+    "prevPath": "/234",
+    "path": "/235",
+    "nextPath": "/236"
+  },
+  "S212": {
+    "segment": "S212",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "25:1-28:17",
+    "title": "Jeremiah Prophesies & Suffers Persecution 2",
+    "prevPath": "/235",
+    "path": "/236",
+    "nextPath": "/237"
+  },
+  "S213": {
+    "segment": "S213",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "29:1-31:40",
+    "title": "Letter to Exiles in Babylon: A New Covenant Promised",
+    "prevPath": "/236",
+    "path": "/237",
+    "nextPath": "/238"
+  },
+  "S214": {
+    "segment": "S214",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "32:1-33:26",
+    "title": "Covenantal Hope Inspires Jeremiah To Buy A Field",
+    "prevPath": "/237",
+    "path": "/238",
+    "nextPath": "/239"
+  },
+  "S215": {
+    "segment": "S215",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "34:1-35:19",
+    "title": "Zedekiah's Covenant Broken; Jonadab's Covenant Unbroken",
+    "prevPath": "/238",
+    "path": "/239",
+    "nextPath": "/240"
+  },
+  "S216": {
+    "segment": "S216",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "36:1-38:28",
+    "title": "Jeremiah Prophesies & Suffers Persecution 3",
+    "prevPath": "/239",
+    "path": "/240",
+    "nextPath": "/241"
+  },
+  "S217": {
+    "segment": "S217",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "39:1-41:18",
+    "title": "Jerusalem Falls!",
+    "prevPath": "/240",
+    "path": "/241",
+    "nextPath": "/242"
+  },
+  "S218": {
+    "segment": "S218",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "42:1-45:5",
+    "title": "Futile Flight to Egypt",
+    "prevPath": "/241",
+    "path": "/242",
+    "nextPath": "/243"
+  },
+  "S219": {
+    "segment": "S219",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "46:1-49:39",
+    "title": "Babylon, An Agent of Judgment",
+    "prevPath": "/242",
+    "path": "/243",
+    "nextPath": "/244"
+  },
+  "S220": {
+    "segment": "S220",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "50:1-51:64",
+    "title": "Babylon, A Recipient of Judgment",
+    "prevPath": "/243",
+    "path": "/244",
+    "nextPath": "/245"
+  },
+  "S221": {
+    "segment": "S221",
+    "bookId": 24,
+    "book": "Jeremiah",
+    "ref": "52:1-52:34",
+    "title": "Jerusalem Falls!",
+    "prevPath": "/244",
+    "path": "/245",
+    "nextPath": "/246"
+  },
+  "I025": {
+    "segment": "I025",
+    "bookId": 25,
+    "book": "Lamentations",
+    "title": "Introduction to Lamentations",
+    "prevPath": "/245",
+    "path": "/246",
+    "nextPath": "/247"
+  },
+  "S222": {
+    "segment": "S222",
+    "bookId": 25,
+    "book": "Lamentations",
+    "ref": "1:1-5:22",
+    "title": "A city in ruins",
+    "prevPath": "/246",
+    "path": "/247",
+    "nextPath": "/248"
+  },
+  "I026": {
+    "segment": "I026",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "title": "Introduction to Ezekiel",
+    "prevPath": "/247",
+    "path": "/248",
+    "nextPath": "/249"
+  },
+  "S223": {
+    "segment": "S223",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "1:1-3:15",
+    "title": "A Vision of the Glory of the Lord",
+    "prevPath": "/248",
+    "path": "/249",
+    "nextPath": "/250"
+  },
+  "S224": {
+    "segment": "S224",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "3:16-7:27",
+    "title": "The Coming Destruction Dramatized",
+    "prevPath": "/249",
+    "path": "/250",
+    "nextPath": "/251"
+  },
+  "S225": {
+    "segment": "S225",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "8:1-11:25",
+    "title": "The Glory of the Lord Leaves",
+    "prevPath": "/250",
+    "path": "/251",
+    "nextPath": "/252"
+  },
+  "S226": {
+    "segment": "S226",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "12:1-14:23",
+    "title": "The Coming Exile Dramatized",
+    "prevPath": "/251",
+    "path": "/252",
+    "nextPath": "/253"
+  },
+  "S227": {
+    "segment": "S227",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "15:1-16:63",
+    "title": "The Worthless Vine & The Faithless Wife",
+    "prevPath": "/252",
+    "path": "/253",
+    "nextPath": "/254"
+  },
+  "S228": {
+    "segment": "S228",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "17:1-19:14",
+    "title": "Eagles & Funerals; Justice & Mercy",
+    "prevPath": "/253",
+    "path": "/254",
+    "nextPath": "/255"
+  },
+  "S229": {
+    "segment": "S229",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "20:1-21:32",
+    "title": "Idolatry Leads To Judgment",
+    "prevPath": "/254",
+    "path": "/255",
+    "nextPath": "/256"
+  },
+  "S230": {
+    "segment": "S230",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "22:1-24:27",
+    "title": "Allegory of Oholah & Oholibah",
+    "prevPath": "/255",
+    "path": "/256",
+    "nextPath": "/257"
+  },
+  "S231": {
+    "segment": "S231",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "25:1-28:26",
+    "title": "Judgment Upon Amnon, Moab, Edom, Philistia, Tyre & Sidon",
+    "prevPath": "/256",
+    "path": "/257",
+    "nextPath": "/258"
+  },
+  "S232": {
+    "segment": "S232",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "29:1-32:32",
+    "title": "Judgment Upon Egypt & Ethiopia",
+    "prevPath": "/257",
+    "path": "/258",
+    "nextPath": "/259"
+  },
+  "S233": {
+    "segment": "S233",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "33:1-33:33",
+    "title": "The Watchman Learns of Jerusalem's Fall",
+    "prevPath": "/258",
+    "path": "/259",
+    "nextPath": "/260"
+  },
+  "S234": {
+    "segment": "S234",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "34:1-36:38",
+    "title": "The Good Shepherd Restores His People",
+    "prevPath": "/259",
+    "path": "/260",
+    "nextPath": "/261"
+  },
+  "S235": {
+    "segment": "S235",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "37:1-39:29",
+    "title": "Prophecy of Hope & Restoration",
+    "prevPath": "/260",
+    "path": "/261",
+    "nextPath": "/262"
+  },
+  "S236": {
+    "segment": "S236",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "40:1-42:20",
+    "title": "A Vision of The Temple Measured",
+    "prevPath": "/261",
+    "path": "/262",
+    "nextPath": "/263"
+  },
+  "S237": {
+    "segment": "S237",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "43:1-44:31",
+    "title": "The Glory of the Lord Returns",
+    "prevPath": "/262",
+    "path": "/263",
+    "nextPath": "/264"
+  },
+  "S238": {
+    "segment": "S238",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "45:1-46:24",
+    "title": "A Vision of the Holy Land & Feasts",
+    "prevPath": "/263",
+    "path": "/264",
+    "nextPath": "/265"
+  },
+  "S239": {
+    "segment": "S239",
+    "bookId": 26,
+    "book": "Ezekiel",
+    "ref": "47:1-48:35",
+    "title": "The River of Life & The City of God's Presence",
+    "prevPath": "/264",
+    "path": "/265",
+    "nextPath": "/266"
+  },
+  "I027": {
+    "segment": "I027",
+    "bookId": 27,
+    "book": "Daniel",
+    "title": "Introduction to Daniel",
+    "prevPath": "/265",
+    "path": "/266",
+    "nextPath": "/267"
+  },
+  "S240": {
+    "segment": "S240",
+    "bookId": 27,
+    "book": "Daniel",
+    "ref": "1:1-2:49",
+    "title": "Faithful to God in a Pagan Nation",
+    "prevPath": "/266",
+    "path": "/267",
+    "nextPath": "/268"
+  },
+  "S241": {
+    "segment": "S241",
+    "bookId": 27,
+    "book": "Daniel",
+    "ref": "3:1-4:37",
+    "title": "Companions Saved; Nebuchadnezzar Humbled",
+    "prevPath": "/267",
+    "path": "/268",
+    "nextPath": "/269"
+  },
+  "S242": {
+    "segment": "S242",
+    "bookId": 27,
+    "book": "Daniel",
+    "ref": "5:1-6:28",
+    "title": "Beltshazzar Humbled: Daniel Saved",
+    "prevPath": "/268",
+    "path": "/269",
+    "nextPath": "/270"
+  },
+  "S243": {
+    "segment": "S243",
+    "bookId": 27,
+    "book": "Daniel",
+    "ref": "7:1-9:27",
+    "title": "Three Visions of God's Future Rule",
+    "prevPath": "/269",
+    "path": "/270",
+    "nextPath": "/271"
+  },
+  "S244": {
+    "segment": "S244",
+    "bookId": 27,
+    "book": "Daniel",
+    "ref": "10:1-12:13",
+    "title": "A Vision of the Kings of the North & the South",
+    "prevPath": "/270",
+    "path": "/271",
+    "nextPath": "/272"
+  },
+  "I028": {
+    "segment": "I028",
+    "bookId": 28,
+    "book": "Hosea",
+    "title": "Introduction to Hosea",
+    "prevPath": "/271",
+    "path": "/272",
+    "nextPath": "/273"
+  },
+  "S245": {
+    "segment": "S245",
+    "bookId": 28,
+    "book": "Hosea",
+    "ref": "1:1-6:11",
+    "title": "Hosea Loves A Wayward Wife",
+    "prevPath": "/272",
+    "path": "/273",
+    "nextPath": "/274"
+  },
+  "S246": {
+    "segment": "S246",
+    "bookId": 28,
+    "book": "Hosea",
+    "ref": "7:1-14:9",
+    "title": "God Loves A Wayward People",
+    "prevPath": "/273",
+    "path": "/274",
+    "nextPath": "/275"
+  },
+  "I029": {
+    "segment": "I029",
+    "bookId": 29,
+    "book": "Joel",
+    "title": "Introduction to Joel",
+    "prevPath": "/274",
+    "path": "/275",
+    "nextPath": "/276"
+  },
+  "S247": {
+    "segment": "S247",
+    "bookId": 29,
+    "book": "Joel",
+    "ref": "1:1-3:21",
+    "title": "The Coming Day of the Lord",
+    "prevPath": "/275",
+    "path": "/276",
+    "nextPath": "/277"
+  },
+  "I030": {
+    "segment": "I030",
+    "bookId": 30,
+    "book": "Amos",
+    "title": "Introduction to Amos",
+    "prevPath": "/276",
+    "path": "/277",
+    "nextPath": "/278"
+  },
+  "S248": {
+    "segment": "S248",
+    "bookId": 30,
+    "book": "Amos",
+    "ref": "1:1-6:14",
+    "title": "Prophecies of Judgment",
+    "prevPath": "/277",
+    "path": "/278",
+    "nextPath": "/279"
+  },
+  "S249": {
+    "segment": "S249",
+    "bookId": 30,
+    "book": "Amos",
+    "ref": "7:1-9:15",
+    "title": "Visions of Judgment & Restoration",
+    "prevPath": "/278",
+    "path": "/279",
+    "nextPath": "/280"
+  },
+  "I031": {
+    "segment": "I031",
+    "bookId": 31,
+    "book": "Obadiah",
+    "title": "Introduction to Obadiah",
+    "prevPath": "/279",
+    "path": "/280",
+    "nextPath": "/281"
+  },
+  "S250": {
+    "segment": "S250",
+    "bookId": 31,
+    "book": "Obadiah",
+    "ref": "1:1-1:21",
+    "title": "Poetic Justice",
+    "prevPath": "/280",
+    "path": "/281",
+    "nextPath": "/282"
+  },
+  "I032": {
+    "segment": "I032",
+    "bookId": 32,
+    "book": "Jonah",
+    "title": "Introduction to Jonah",
+    "prevPath": "/281",
+    "path": "/282",
+    "nextPath": "/283"
+  },
+  "S251": {
+    "segment": "S251",
+    "bookId": 32,
+    "book": "Jonah",
+    "ref": "1:1-4:11",
+    "title": "Ninevah Spared!",
+    "prevPath": "/282",
+    "path": "/283",
+    "nextPath": "/284"
+  },
+  "I033": {
+    "segment": "I033",
+    "bookId": 33,
+    "book": "Micah",
+    "title": "Introduction to Micah",
+    "prevPath": "/283",
+    "path": "/284",
+    "nextPath": "/285"
+  },
+  "S252": {
+    "segment": "S252",
+    "bookId": 33,
+    "book": "Micah",
+    "ref": "1:1-7:20",
+    "title": "Glimpses of a Matchless God",
+    "prevPath": "/284",
+    "path": "/285",
+    "nextPath": "/286"
+  },
+  "I034": {
+    "segment": "I034",
+    "bookId": 34,
+    "book": "Nahum",
+    "title": "Introduction to Nahum",
+    "prevPath": "/285",
+    "path": "/286",
+    "nextPath": "/287"
+  },
+  "S253": {
+    "segment": "S253",
+    "bookId": 34,
+    "book": "Nahum",
+    "ref": "1:1-3:19",
+    "title": "Ninevah Doomed!",
+    "prevPath": "/286",
+    "path": "/287",
+    "nextPath": "/288"
+  },
+  "I035": {
+    "segment": "I035",
+    "bookId": 35,
+    "book": "Habakkuk",
+    "title": "Introduction to Habakkuk",
+    "prevPath": "/287",
+    "path": "/288",
+    "nextPath": "/289"
+  },
+  "S254": {
+    "segment": "S254",
+    "bookId": 35,
+    "book": "Habakkuk",
+    "ref": "1:1-3:19",
+    "title": "A Gripping Confrontation with God",
+    "prevPath": "/288",
+    "path": "/289",
+    "nextPath": "/290"
+  },
+  "I036": {
+    "segment": "I036",
+    "bookId": 36,
+    "book": "Zephaniah",
+    "title": "Introduction to Zephaniah",
+    "prevPath": "/289",
+    "path": "/290",
+    "nextPath": "/291"
+  },
+  "S255": {
+    "segment": "S255",
+    "bookId": 36,
+    "book": "Zephaniah",
+    "ref": "1:1-3:20",
+    "title": "From Gloom to Ecstasy",
+    "prevPath": "/290",
+    "path": "/291",
+    "nextPath": "/292"
+  },
+  "I037": {
+    "segment": "I037",
+    "bookId": 37,
+    "book": "Haggai",
+    "title": "Introduction to Haggai",
+    "prevPath": "/291",
+    "path": "/292",
+    "nextPath": "/293"
+  },
+  "S256": {
+    "segment": "S256",
+    "bookId": 37,
+    "book": "Haggai",
+    "ref": "1:1-2:23",
+    "title": "The Prophet Who Got Results",
+    "prevPath": "/292",
+    "path": "/293",
+    "nextPath": "/294"
+  },
+  "I038": {
+    "segment": "I038",
+    "bookId": 38,
+    "book": "Zechariah",
+    "title": "Introduction to Zechariah",
+    "prevPath": "/293",
+    "path": "/294",
+    "nextPath": "/295"
+  },
+  "S257": {
+    "segment": "S257",
+    "bookId": 38,
+    "book": "Zechariah",
+    "ref": "1:1-6:15",
+    "title": "A Call To Build The Temple (9 Visions)",
+    "prevPath": "/294",
+    "path": "/295",
+    "nextPath": "/296"
+  },
+  "S258": {
+    "segment": "S258",
+    "bookId": 38,
+    "book": "Zechariah",
+    "ref": "7:1-8:23",
+    "title": "A Call To Holiness (2 Prophecies)",
+    "prevPath": "/295",
+    "path": "/296",
+    "nextPath": "/297"
+  },
+  "S259": {
+    "segment": "S259",
+    "bookId": 38,
+    "book": "Zechariah",
+    "ref": "9:1-14:21",
+    "title": "The Coming Shepherd King",
+    "prevPath": "/296",
+    "path": "/297",
+    "nextPath": "/298"
+  },
+  "I039": {
+    "segment": "I039",
+    "bookId": 39,
+    "book": "Malachi",
+    "title": "Introduction to Malachi",
+    "prevPath": "/297",
+    "path": "/298",
+    "nextPath": "/299"
+  },
+  "S260": {
+    "segment": "S260",
+    "bookId": 39,
+    "book": "Malachi",
+    "ref": "1:1-4:6",
+    "title": "Crucial Questions for Spiritual Leaders",
+    "prevPath": "/298",
+    "path": "/299",
+    "nextPath": "/300"
+  },
   "I040": {
     "segment": "I040",
     "bookId": 40,
