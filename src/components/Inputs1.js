@@ -1,10 +1,13 @@
 import React from 'react'
+import AutoComplete from './AutoComplete'
+import SegmentsList from '../data/SegmentsList.json'
 
 const Inputs = (props) => {      
     return (
         <div style={{textAlign: 'left', margin: '0 auto', width: '80%'}}>
             <p style={{textDecoration: 'underline', color: 'darkred'}}>SELECT YOUR SEGMENT:</p><p>Segment Number:</p>
-            <select name="Story Number" onChange={props.handleChange} style={{fontSize: '12px', height: '30px', margin: '10px'}}>
+            <AutoComplete suggestions={SegmentsList} handleChange={props.handleChange} style={{fontSize: '15px', height: '20px', margin: '10px', border: '2px, solid, black'}}/>
+            {/* <select name="Story Number" onChange={props.handleChange} style={{fontSize: '12px', height: '30px', margin: '10px'}}>
                 <option value='null'>-</option>
                 <option value="I001">I001 Introduction to Genesis (Genesis )</option>
                 <option value="S001">S001 God Creates (Genesis 1:1-2:25)</option>
@@ -437,7 +440,7 @@ const Inputs = (props) => {
                 <option value="S363">S363 - Seven Bowls (Revelation 15:1-16:21)</option>
                 <option value="S364">S364 - The Sinful City is Fallen (Revelation 17:1-20:3)</option>
                 <option value="S365">S365 - The Holy City is Coming (Revelation 20:4-22:21)</option>
-            </select>
+            </select> */}
             <br />
             
         </div>

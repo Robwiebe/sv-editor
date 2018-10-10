@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Editor } from 'slate-react'
+import { Editor, getEventTransfer } from 'slate-react'
 import './App.css'
 import Toolbar from './components/Toolbar'
 import Inputs1 from './components/Inputs1'
@@ -33,6 +33,7 @@ const BLOCK_TAGS = {
 const MARK_TAGS = {
   strong: 'bold',
   u: 'underline',
+  sup: 'underline'
 }
 
 const rules = [
@@ -100,11 +101,92 @@ const rules = [
       },
   },
 ]
+
+// Add a dictionary of Block tags.
+const PASTE_BLOCK_TAGS = {
+  p: 'p',
+  h3: 'subtitle',
+  // a: 'footnote',
+  // ol: 'h5',
+  // li: 'break'
+}
+
+// Add a dictionary of mark tags.
+const PASTE_MARK_TAGS = {
+  strong: 'bold',
+  u: 'underline',
+  sup: 'underline'
+}
+
+const pasteRules = [
+  // Add our first rule with a deserializing function.
+  {
+    deserialize(el, next) {
+      const type = PASTE_BLOCK_TAGS[el.tagName.toLowerCase()]
+      if (type) {
+        return {
+          object: 'block',
+          type: type,
+          data: {
+            className: el.getAttribute('class')
+          },
+          nodes: next(el.childNodes),
+        }
+      }
+    },
+    // Add a serializing function property to our rule...
+    // Switch serialize to handle more blocks...
+    serialize(obj, children) {
+      if (obj.object === 'block') {
+        switch (obj.type) {
+          case 'p':
+            return <p>{children}</p>
+          case 'subtitle':
+            return <p></p>
+          // case 'footnote':
+          //   return <span>footnote</span>
+          // case 'break':
+          //   return <br />
+          // case 'h5':
+          //   return <h5>{children}</h5>
+          default:
+            return <p>{children}</p>
+        }
+      }
+    },
+  },
+  // Add a new rule that handles marks...
+  {
+      deserialize(el, next) {
+      const type = PASTE_MARK_TAGS[el.tagName.toLowerCase()]
+      if (type) {
+          return {
+          object: 'mark',
+          type: type,
+          nodes: next(el.childNodes),
+          }
+      }
+      },
+      serialize(obj, children) {
+      if (obj.object === 'mark') {
+          switch (obj.type) {
+            case 'bold':
+                return <strong>{children}</strong>
+            case 'underline':
+                return <u>{children}</u>
+          }
+      }
+      },
+  },
+]
+
 //----------------------------------------
 //----- SERIALIZING & LOCALSTORAGE -------
 //----------------------------------------
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules })
+
+const serializer = new Html({ rules: pasteRules })
 
 //----------------------------------------
 //----------- RENDERING JSX --------------
@@ -199,8 +281,6 @@ const plugins = [
   MarkHotkey({ key: 'u', type: 'underline' }),
 ];
 
-
-
 //----------------------------------------
 //---------------- APP -------------------
 //----------------------------------------
@@ -232,7 +312,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           title: val,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         })
       )
@@ -246,7 +326,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           bookName: val,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         })
       )
@@ -260,7 +340,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           questionsTitle: val,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         })
       )
@@ -274,7 +354,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question1: val,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         })
       )
@@ -288,7 +368,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question2: val,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         })
       )
@@ -302,7 +382,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question3: val,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         })
       )
@@ -316,7 +396,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           Question4: val,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         })
       )
@@ -370,7 +450,7 @@ class SVEditor extends Component {
         updatedData: {
           ...prevState.updatedData,
           html: string,
-          story: this.state.data.segment
+          segment: this.state.data.segment
           }
         }))
     }
@@ -496,7 +576,8 @@ class SVEditor extends Component {
   } 
   // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
-    const segment = e.target.value
+    
+    const segment = e
     const StoryDBref = segment
     const storyData = Data[segment]
     const token = localStorage.getItem('token')
@@ -516,7 +597,7 @@ class SVEditor extends Component {
         else {
           this.setState({
             updatedData: {
-              story: segment,
+              segment: segment,
               html: '<p></p>',
               ref: storyData.ref,
               bookId: storyData.bookId,
@@ -547,21 +628,60 @@ class SVEditor extends Component {
       })
     }
     this.settingInputValues();
+    this.clearInputs();
     this.grabSources(segment);
+    console.log('handleChange was called')
     };
 
-  languageChange = e => {
-    this.setState({language: e.target.value})
+  insertNewLanguageToDatabase = async (selectedLanguage) => {
+    const token = localStorage.getItem('token');
+    let addLanguage  = {[selectedLanguage]: "true"};
+    console.log(addLanguage);
+    await axios.put(`${databaseURL.databaseURL}/${selectedLanguage}.json?auth=${token}`, addLanguage)
+    .then(response => console.log(response))
+    .catch (error => console.log(error))
+  }
+
+  checkLanguageInDatabase = async (selectedLanguage) => {
+  
+    await axios.get(`${databaseURL.databaseURL}/${selectedLanguage}.json`)
+    .then(response => {
+      if (response.data != null) {
+        console.log(`${selectedLanguage} exists already!`)
+      } else {
+        this.insertNewLanguageToDatabase(selectedLanguage)
+      }
+    } )
+    .catch(error => console.log(error))
+  }
+
+  languageChange = async (e) => {
+    let selectedLanguage = e.target.value;
+    this.checkLanguageInDatabase(selectedLanguage);
+    this.setState({language: selectedLanguage});
+  }
+
+  clearInputs = () => {
+    if (document.getElementsByTagName('input')) {
+      document.getElementById('segmentTitle').value = ""
+      document.getElementById('bookName').value = ""
+      document.getElementById('questionsTitle').value = ""
+      document.getElementById('Question1').value = ""
+      document.getElementById('Question2').value = ""
+      document.getElementById('Question3').value = ""
+      document.getElementById('Question4').value = ""
+    }
   }
 
   clearEditor = () => {
     this.setState({
       savedData: null,
       updatedData: undefined,
-      data: Data.I040,
+      data: Data.I000,
+      value: html.deserialize('<p></p>'),
       language: this.state.language
     });
-    document.getElementsByTagName('input').value = "";
+    this.clearInputs();
     // document.getElementsByTagName('select')[0].options.selectedIndex = "";
     document.getElementsByTagName('select')[1].options.selectedIndex = "";
     
@@ -573,7 +693,7 @@ class SVEditor extends Component {
     
     const items = {
         language: this.state.language,
-        story: this.state.updatedData.story,
+        segment: this.state.updatedData.segment,
         display: this.state.updatedData.display,
         bookId: this.state.updatedData.bookId,
         bookName: this.state.updatedData.bookName,
@@ -590,7 +710,7 @@ class SVEditor extends Component {
         Question4: this.state.updatedData.Question4,
     }
 
-    const dataPath = `${this.state.updatedData.story}`
+    const dataPath = `${this.state.updatedData.segment}`
     const token = localStorage.getItem('token')
     
     await axios.put(`${databaseURL.databaseURL}/${this.state.language}/Segments/${dataPath}.json?auth=${token}`, items)
@@ -662,14 +782,14 @@ class SVEditor extends Component {
         <div style={{marginLeft: '10%', marginRight: '10%', textAlign: 'left'}}>
           <hr />
           <h1 style={{display: `${this.state.data.display}`, margin: '5px'}}>REFERENCE: {this.state.data.bookName} {this.state.data.ref}</h1>
-          <p>English Story Title: <span style={{color: 'red'}}>{this.state.data.title}</span></p>
+          <p>English Segment Title: <span style={{color: 'red'}}>{this.state.data.title}</span></p>
           <PrevData data={this.state.savedData !== null && this.state.savedData.title } />
-          <input type='text' placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px', boxSizing: "border-box"}} required="required"/>
+          <input type='text' id="segmentTitle" placeholder='Translation of red text goes here...' onChange={this.storyTitleInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px', boxSizing: "border-box"}} required="required"/>
           <br />
           <hr />
           <p>English Book Name: <span style={{color: 'red'}}>{this.state.data.bookName}</span></p>
           <PrevData data={this.state.savedData !== null && this.state.savedData.bookName } />
-          <input type='text' placeholder='Translation of red text goes here...' onChange={this.bookNameInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px', boxSizing: "border-box"}} required="required"/>
+          <input type='text' id="bookName" placeholder='Translation of red text goes here...' onChange={this.bookNameInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px', boxSizing: "border-box"}} required="required"/>
           <br />
         </div>
       </div>
@@ -690,6 +810,7 @@ class SVEditor extends Component {
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
         onClick={this.onClick}
+        onPaste={this.onPaste}
         renderNode={this.renderNode}
         renderMark={this.renderMark} />
         <div style={{
@@ -700,27 +821,27 @@ class SVEditor extends Component {
           <div style={{display: `${this.state.data.display}`}}>
             <p>English Questions Title: <span style={{color: 'red'}}>{this.state.data.questionsTitle}</span></p>
             <PrevData data={this.state.savedData !== null && this.state.savedData.questionsTitle } />
-            <input type='text' placeholder='Translation of red text goes here...' onChange={this.qTitleInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <input type='text' id="questionsTitle" placeholder='Translation of red text goes here...' onChange={this.qTitleInput} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
             <p>English Question #1:<span style={{color: 'red'}}>{this.state.data.Question1}</span></p>
             <PrevData data={this.state.savedData !== null && this.state.savedData.Question1 } />
-            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q1Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <input type='text' id="Question1" placeholder='Translation of red text goes here...' onChange={this.q1Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
             <p>English Question #2:<span style={{color: 'red'}}>{this.state.data.Question2}</span></p>
             <PrevData data={this.state.savedData !== null && this.state.savedData.Question2 } />
-            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q2Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <input type='text' id="Question2" placeholder='Translation of red text goes here...' onChange={this.q2Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
             <p>English Question #3: <span style={{color: 'red'}}>{this.state.data.Question3}</span></p>
             <PrevData data={this.state.savedData !== null && this.state.savedData.Question3 } />
-            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q3Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <input type='text' id="Question3" placeholder='Translation of red text goes here...' onChange={this.q3Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
             <hr />
             <p>English Question #4: <span style={{color: 'red'}}>{this.state.data.Question4}</span></p>
             <PrevData data={this.state.savedData !== null && this.state.savedData.Question4 } />
-            <input type='text' placeholder='Translation of red text goes here...' onChange={this.q4Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
+            <input type='text' id="Question4" placeholder='Translation of red text goes here...' onChange={this.q4Input} style={{border: 'solid 0.5px black', width: '80%', height: '15px'}}/>
             <br />
         </div>
           <hr />
@@ -878,6 +999,10 @@ class SVEditor extends Component {
         return <Heading5Node {...props} />;
       case 'h6':
         return <Heading6Node {...props} />;
+      case 'subtitle':
+        return <p></p>;
+      case 'footnote':
+        return '*';
       default:
         return 
     
@@ -900,6 +1025,16 @@ class SVEditor extends Component {
         return
     }
   }
+
+  onPaste = (event, change) => {
+    const transfer = getEventTransfer(event)
+    console.log(transfer);
+    if (transfer.type != 'html') return
+    const { document } = serializer.deserialize(transfer.html)
+    change.insertFragment(document)
+    return true
+  }
+
 }
 
 export default SVEditor;
