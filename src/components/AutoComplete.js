@@ -148,7 +148,7 @@ class Autocomplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
           style={{fontSize: '15px', height: '20px', margin: '0px', width: '80%', border: '0.5px solid black'}}
-          placeholder="Start typing here"
+          placeholder="Start typing here..."
         />
         {suggestionsListComponent}
       </Fragment>
