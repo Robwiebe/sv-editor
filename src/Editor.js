@@ -801,7 +801,8 @@ class SVEditor extends Component {
           border: '2px solid',
           margin: '0 auto 0 auto',
           marginBottom: '50px',
-          padding: '5px'
+          padding: '5px',
+          textAlign: this.state.language !== 'Hebrew' ? 'left' : 'right'
         }}
         placeholder="Paste Your Bible text here..."
         sources={this.state.sources}
@@ -816,7 +817,9 @@ class SVEditor extends Component {
         <div style={{
           width: '80%',
           margin: '0 auto 20px auto',
-          textAlign: 'left'
+          textAlign: 'left',
+          
+          
         }}>
           <div style={{display: `${this.state.data.display}`}}>
             <p>English Questions Title: <span style={{color: 'red'}}>{this.state.data.questionsTitle}</span></p>

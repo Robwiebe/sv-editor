@@ -64,7 +64,8 @@ h4:after {
 	border: 20px solid transparent;
 	border-top: 0;
 	margin-left: 15px;
-	margin-top: -16px;
+    margin-top: -16px;
+    
 }
 
 h1, h5 {
