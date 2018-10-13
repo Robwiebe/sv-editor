@@ -567,12 +567,16 @@ class SVEditor extends Component {
   }
 
   grabSources = async () => {
-    await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Sources/${this.state.segment}.json`)
-    .then(response =>
+    console.log(this.state.language)
+    const token = localStorage.getItem('token')
+    await axios.get(`${databaseURL.databaseURL}/${this.state.language}/Sources/${this.state.segment}.json?auth=${token}`)
+    .then(response => 
       this.setState({
         sources: response.data
-      }))
+      })
+    )
     .catch(error => console.log(error))
+    
   } 
   // Function to set state and local storage when story selected from dropdown menu
   handleChange = async e => {
@@ -643,8 +647,8 @@ class SVEditor extends Component {
   }
 
   checkLanguageInDatabase = async (selectedLanguage) => {
-  
-    await axios.get(`${databaseURL.databaseURL}/${selectedLanguage}.json`)
+    const token = localStorage.getItem('token');
+    await axios.get(`${databaseURL.databaseURL}/${selectedLanguage}.json?auth=${token}`)
     .then(response => {
       if (response.data != null) {
         console.log(`${selectedLanguage} exists already!`)
@@ -726,7 +730,7 @@ class SVEditor extends Component {
 
   // Render the editor.
   render() {
-    console.log(this.state)
+    console.log(this.state.sources)
     let SaveButton = null;
     if (this.state.updatedData !== undefined) {
       SaveButton = <button onClick={this.saveInput} style={{height: '40px', width: '100px', padding: '5px', color: 'green', border: '2px, green, solid', borderRadius: '10px', fontStyle: 'bold', fontSize: '20px', margin: '0 auto'}}>SAVE</button>
