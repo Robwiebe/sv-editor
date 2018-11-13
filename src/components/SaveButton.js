@@ -28,7 +28,7 @@ const SaveButton = (props) => {
     
     return (
         <div>
-           <button onClick={saveInput} style={{height: '25px', width: 'fit-content', padding: '5px'}}>SAVE</button>
+           <button onClick={saveInput} style={{height: '25px', width: 'fit-content', padding: '5px'}}>{props.text}</button>
         </div>
     )
 }

@@ -21,7 +21,7 @@ const LanguageInput = (props) => {
                 <option value="Norwegian">Norwegian</option>
                 <option value="Portuguese">Portuguese</option>
                 <option value="Russian">Russian</option>
-                <option value="Simplified Chinese">Simplified Chinese</option>
+                <option value="SimplifiedChinese">Simplified Chinese</option>
                 <option value="Spanish">Spanish</option>
                 <option value="Thai">Thai</option>
                 <option value="UniSkript (English)">UniSkript (English)</option>

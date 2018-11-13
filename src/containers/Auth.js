@@ -100,6 +100,7 @@ class Auth extends Component {
         }
         await axios.post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${Credential.apiKey}`, authData)
             .then (response => {
+                console.log(response.data)
                 this.setState({
                     user: {
                         token: response.data.idToken,
@@ -108,9 +109,13 @@ class Auth extends Component {
                         loading: false
                     }
                 })
+                const expirationDate = new Date().getTime()
                 localStorage.setItem('token', response.data.idToken)
                 localStorage.setItem('UID', response.data.localId)
+                localStorage.setItem('refreshToken', response.data.refreshToken)
                 localStorage.setItem('email', this.state.controls.email.value)
+                localStorage.setItem('expiration', expirationDate)
+                
                 // localStorage.setItem('password', this.state.controls.password.value)
             })
             .catch(error => {

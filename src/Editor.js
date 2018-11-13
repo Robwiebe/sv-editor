@@ -9,6 +9,8 @@ import Language from './components/LanguageInput'
 import PrevData from './components/PrevData'
 import axios from 'axios'
 import databaseURL from './firebase-key.json'
+import Credential from './firebase-key.json'
+
 
 const DEFAULT_NODE = 'p'
 
@@ -33,7 +35,7 @@ const BLOCK_TAGS = {
 const MARK_TAGS = {
   strong: 'bold',
   u: 'underline',
-  sup: 'underline'
+  i: 'italic'
 }
 
 const rules = [
@@ -96,6 +98,8 @@ const rules = [
               return <strong>{children}</strong>
           case 'underline':
               return <u>{children}</u>
+          case 'italic':
+              return <i>{children}</i>
           }
       }
       },
@@ -115,7 +119,8 @@ const PASTE_BLOCK_TAGS = {
 const PASTE_MARK_TAGS = {
   strong: 'bold',
   u: 'underline',
-  sup: 'underline'
+  sup: 'underline',
+  i: 'italic'
 }
 
 const pasteRules = [
@@ -174,6 +179,8 @@ const pasteRules = [
                 return <strong>{children}</strong>
             case 'underline':
                 return <u>{children}</u>
+            case 'italic':
+                return <i>{children}</i>
           }
       }
       },
@@ -279,6 +286,7 @@ function MarkHotkey(options) {
 const plugins = [
   MarkHotkey({ key: 'b', type: 'bold' }),
   MarkHotkey({ key: 'u', type: 'underline' }),
+  MarkHotkey({ key: 'i', type: 'italic' }),
 ];
 
 //----------------------------------------
@@ -686,10 +694,7 @@ class SVEditor extends Component {
       language: this.state.language
     });
     this.clearInputs();
-    // document.getElementsByTagName('select')[0].options.selectedIndex = "";
-    document.getElementsByTagName('select')[1].options.selectedIndex = "";
-    
-    
+    // document.getElementsByTagName('select')[0].options.selectedIndex = ""; // This is the language dropdown       
     alert('Your data was saved successfully');
   }
 
@@ -722,6 +727,21 @@ class SVEditor extends Component {
     .catch(error => alert(`Sorry, there was an error:\n${error}`))
   }
 
+  extendLoginSession = async () => {
+    await axios.post(`https://securetoken.googleapis.com/v1/token?key=${Credential.apiKey}`, `grant_type=refresh_token&refresh_token=${localStorage.getItem('refreshToken')}`)
+    .then (response => {
+        console.log(response.data)
+        const expirationDate = new Date().getTime()
+        localStorage.setItem('token', response.data.id_token)
+        localStorage.setItem('UID', response.data.localId)
+        localStorage.setItem('refreshToken', response.data.refresh_token)
+        localStorage.setItem('expiration', expirationDate)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+  }
+
   logOutButton = (event) => {
     event.preventDefault();
     localStorage.clear();
@@ -730,7 +750,15 @@ class SVEditor extends Component {
 
   // Render the editor.
   render() {
-    console.log(this.state.sources)
+    console.log(this.state)
+    let today = new Date().getTime()
+    let expirationDate = localStorage.getItem('expiration')
+    console.log(today - expirationDate)
+
+    if ((today - expirationDate) > 1800000) {
+      this.extendLoginSession()
+    }
+
     let SaveButton = null;
     if (this.state.updatedData !== undefined) {
       SaveButton = <button onClick={this.saveInput} style={{height: '40px', width: '100px', padding: '5px', color: 'green', border: '2px, green, solid', borderRadius: '10px', fontStyle: 'bold', fontSize: '20px', margin: '0 auto'}}>SAVE</button>
@@ -946,44 +974,44 @@ class SVEditor extends Component {
     event.preventDefault()
     const { value } = this.state
     const change = value.change()
-    // const { document } = value
+    const { document } = value
 
     // Handle everything but list buttons.
-    // if (type != 'bulleted-list' && type != 'numbered-list') {
+    if (type != 'bulleted-list' && type != 'numbered-list') {
       const isActive = this.hasBlock(type)
-      // const isList = this.hasBlock('list-item')
+      const isList = this.hasBlock('list-item')
 
-      // if (isList) {
-      //   change
-      //     .setBlocks(isActive ? DEFAULT_NODE : type)
-      //     .unwrapBlock('bulleted-list')
-      //     .unwrapBlock('numbered-list')
-      // } else {
+      if (isList) {
+        change
+          .setBlocks(isActive ? DEFAULT_NODE : type)
+          .unwrapBlock('bulleted-list')
+          .unwrapBlock('numbered-list')
+      } else {
         change.setBlocks(isActive ? DEFAULT_NODE : type)
-      // }
-    // } 
-    // else {
-    //   // Handle the extra wrapping required for list buttons.
-    //   const isList = this.hasBlock('list-item')
-    //   const isType = value.blocks.some(block => {
-    //     return !!document.getClosest(block.key, parent => parent.type == type)
-    //   })
+      }
+    } 
+    else {
+      // Handle the extra wrapping required for list buttons.
+      const isList = this.hasBlock('list-item')
+      const isType = value.blocks.some(block => {
+        return !!document.getClosest(block.key, parent => parent.type == type)
+      })
 
-    //   if (isList && isType) {
-    //     change
-    //       .setBlocks(DEFAULT_NODE)
-    //       .unwrapBlock('bulleted-list')
-    //       .unwrapBlock('numbered-list')
-    //   } else if (isList) {
-    //     change
-    //       .unwrapBlock(
-    //         type == 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
-    //       )
-    //       .wrapBlock(type)
-    //   } else {
-    //     change.setBlocks('list-item').wrapBlock(type)
-    //   }
-    // }
+      if (isList && isType) {
+        change
+          .setBlocks(DEFAULT_NODE)
+          .unwrapBlock('bulleted-list')
+          .unwrapBlock('numbered-list')
+      } else if (isList) {
+        change
+          .unwrapBlock(
+            type == 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
+          )
+          .wrapBlock(type)
+      } else {
+        change.setBlocks('list-item').wrapBlock(type)
+      }
+    }
 
     this.onChange(change)
     console.log("onClickBlock was clicked")
