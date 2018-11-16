@@ -16,6 +16,7 @@ const LanguageInput = (props) => {
                 <option value="Greek">Greek</option>
                 <option value="Hebrew">Hebrew</option>
                 <option value="Kazakh">Kazakh</option>
+                <option value="Kaobrung">Kaobrung</option>
                 <option value="Korean">Korean</option>
                 <option value="Kyrgyz">Kyrgyz</option>
                 <option value="Norwegian">Norwegian</option>
@@ -24,8 +25,9 @@ const LanguageInput = (props) => {
                 <option value="SimplifiedChinese">Simplified Chinese</option>
                 <option value="Spanish">Spanish</option>
                 <option value="Thai">Thai</option>
-                <option value="UniSkript (English)">UniSkript (English)</option>
+                <option value="UniSkript(English)">UniSkript (English)</option>
                 <option value="Uzbek">Uzbek</option>
+                <option value="AdventLectionary">Advent Lectionary</option>
             </select>
             <hr />
             
