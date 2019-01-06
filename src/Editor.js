@@ -138,6 +138,61 @@ const pasteRules = [
           nodes: next(el.childNodes),
         }
       }
+      else if (el.tagName.toLowerCase() === 'div' && el.className === 'p') {
+        return {
+          object: 'block',
+          type: 'p',          
+          nodes: next(el.childNodes),
+        }
+      }
+      else if (el.tagName.toLowerCase() === 'div' && el.className === 'q1') {
+        return {
+          object: 'block',
+          type: 'p',
+          nodes: next(el.childNodes)
+        }
+      }
+      else if (el.tagName.toLowerCase() === 'div' && el.className === 'q2') {
+        return {
+          object: 'block',
+          type: 'p',
+          nodes: next(el.childNodes)
+        }
+      }
+      else if (el.tagName.toLowerCase() === 'h3') {
+        return null
+      }
+      else if (el.className === 's1') {
+        return null
+      } 
+      else if (el.className === 'heading') {
+        return null
+      } 
+      else if (el.className === 'label') {
+        return {
+          object: 'mark',
+          type: 'underline',
+          nodes: next(el.childNodes),
+        }
+      } else if (el.className === 'versenum') {
+        return {
+          object: 'mark',
+          type: 'underline',
+          nodes: next(el.childNodes),
+        }
+      } else if (el.className === 'note f') {
+          console.log(el)
+        return {
+          object: 'text',
+          text: '*'
+        }
+      } else if (el.className === 'footnote') {
+          console.log(el)
+        return {
+          object: 'text',
+          text: '*'
+        }
+      }
     },
     // Add a serializing function property to our rule...
     // Switch serialize to handle more blocks...
